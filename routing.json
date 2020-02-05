@@ -1,0 +1,36 @@
+[
+    {
+        "method":"GET",
+        "name":"accueil",
+        "route":"/",
+        "controller":"ControllerAccueil",
+        "action":"accueil",
+        "param":""
+    },
+    {
+        "method":"GET",
+        "name":"article",
+        "route":"/Article/{slug}",
+        "controller":"ControllerArticles",
+        "action":"getArticleBySlug",
+        "param":"slug"
+    },
+    {
+        "method":"GET",
+        "name":"auth",
+        "route":"/Authentification/login",
+        "controller":"ControllerAuthentification",
+        "action":"login",
+        "param":""
+
+    },
+    {
+        "method":"POST",
+        "name":"auth",
+        "route":"/Authentification/login",
+        "controller":"ControllerAuthentification",
+        "action":"loginverif",
+        "param":"login,pwd"
+
+    }
+]
