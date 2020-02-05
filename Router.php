@@ -2,8 +2,8 @@
 
 class Router
 {
-    public $listRoute =[];
-    public $_matches;
+    public $listRoute = [];
+    public $_matches = [];
 
     public function __construct()
     {   
@@ -18,12 +18,20 @@ class Router
         global $env;
         $url = str_replace($env->basepath,'',$url);
         $matchRoute = array_filter($this->listRoute,function($cel) use($url){
+            
             if($_SERVER['REQUEST_METHOD'] == 'GET' && $cel->param != ''){
                 $path = preg_replace('#{[a-z]+}#','([a-zA-Z0-9\-]+)',$cel->route);
                 if(preg_match("#^$path$#",$url,$matches)){
                     $cel->route = $matches[0];
                     unset($matches[0]);
-                    $this->_matches = $matches;
+                    $varKey = explode(',',$cel->param);
+                    foreach ($matches as $match){
+                        $tabMatches[] = $match;
+                    }
+                    //creation tab param key => value
+                    for($i=0; $i<sizeof($varKey);$i++){
+                        $this->_matches[$varKey[$i]] = $tabMatches[$i];
+                    }
                 };
             }
             return $cel->route == $url && $_SERVER['REQUEST_METHOD'] == $cel->method;
@@ -38,10 +46,7 @@ class Router
             if(empty($this->_matches)){
                 $controller->{$route->action}();
             }else{
-                foreach ($this->_matches as $match){
-                    $tabMatches[] = $match;
-                }
-                $controller->{$route->action}($tabMatches);
+                $controller->{$route->action}($this->_matches);
             }
             
         }
