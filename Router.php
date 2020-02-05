@@ -18,19 +18,20 @@ class Router
         global $env;
         $url = str_replace($env->basepath,'',$url);
         $matchRoute = array_filter($this->listRoute,function($cel) use($url){
-            
+
             if($_SERVER['REQUEST_METHOD'] == 'GET' && $cel->param != ''){
                 $path = preg_replace('#{[a-z]+}#','([a-zA-Z0-9\-]+)',$cel->route);
                 if(preg_match("#^$path$#",$url,$matches)){
                     $cel->route = $matches[0];
                     unset($matches[0]);
-                    $varKey = explode(',',$cel->param);
+                    $paramRoute = explode(',',$cel->param);
+
                     foreach ($matches as $match){
                         $tabMatches[] = $match;
                     }
                     //creation tab param key => value
-                    for($i=0; $i<sizeof($varKey);$i++){
-                        $this->_matches[$varKey[$i]] = $tabMatches[$i];
+                    for($i=0; $i<sizeof($paramRoute);$i++){
+                        $this->_matches[$paramRoute[$i]] = $tabMatches[$i];
                     }
                 };
             }

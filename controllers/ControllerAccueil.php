@@ -10,7 +10,7 @@ class ControllerAccueil
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
-        $titlePage = 'Book - Accueil';
+        $titlePage = TITLESITE.' - Accueil';
         require_once('views/viewAccueil.php');
     }
 }
