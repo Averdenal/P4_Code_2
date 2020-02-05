@@ -44,7 +44,6 @@ class Router
             }
             return $cel->route == $url && $_SERVER['REQUEST_METHOD'] == $cel->method;
         });
-        var_dump($matchRoute);
         foreach ($matchRoute as $match){
             $route = new Route($match);
         }

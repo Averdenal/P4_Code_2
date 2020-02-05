@@ -14,6 +14,11 @@ class ControllerAuthentification //extends BaseController
     {
         $this->_userManager->checkLoginPassword($info['login'],$info['pwd']);
         var_dump($_SESSION['auth']);
-        //header("location:".ROOT);
+        header("location:".ROOT);
+    }
+    public function logout()
+    {
+        session_destroy();
+        header("location:".ROOT);
     }
 }

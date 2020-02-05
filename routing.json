@@ -16,17 +16,8 @@
         "param":"slug,id"
     },
     {
-        "method":"GET",
-        "name":"auth",
-        "route":"/Authentification/login",
-        "controller":"ControllerAuthentification",
-        "action":"login",
-        "param":""
-
-    },
-    {
         "method":"POST",
-        "name":"auth",
+        "name":"connexion",
         "route":"/Authentification/login",
         "controller":"ControllerAuthentification",
         "action":"loginVerif",
@@ -35,11 +26,20 @@
     },
     {
         "method":"POST",
-        "name":"auth",
+        "name":"register",
         "route":"/Authentification/register",
         "controller":"ControllerAuthentification",
         "action":"register",
         "param":"firstname,lastname,email,login,pwd"
+
+    },
+    {
+        "method":"POST",
+        "name":"logout",
+        "route":"/Authentification/logout",
+        "controller":"ControllerAuthentification",
+        "action":"logout",
+        "param":""
 
     }
 ]
