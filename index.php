@@ -14,9 +14,9 @@ spl_autoload_register(function($class){
         require_once('models/exceptions/'.$class.'.php');
     };
 });
-require_once('_config.php');
-require_once('Router.php');
 global $env;
 $env = Environement::get();
+require_once('_config.php');
+require_once('Router.php');
 $router = new Router();
 $router->findRoute($_SERVER['REQUEST_URI']);
