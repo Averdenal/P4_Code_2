@@ -29,8 +29,17 @@
         "name":"auth",
         "route":"/Authentification/login",
         "controller":"ControllerAuthentification",
-        "action":"loginverif",
+        "action":"loginVerif",
         "param":"login,pwd"
+
+    },
+    {
+        "method":"POST",
+        "name":"auth",
+        "route":"/Authentification/register",
+        "controller":"ControllerAuthentification",
+        "action":"register",
+        "param":"firstname,lastname,email,login,pwd"
 
     }
 ]

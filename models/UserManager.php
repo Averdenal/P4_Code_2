@@ -32,7 +32,7 @@ class UserManager extends Model{
         }else {
             if($user->getPwd() === md5($password)){
                 $_SESSION['auth'] = $user->getId();
-                $_SESSION['rang'] = $user->getId();
+                $_SESSION['rang'] = $user->getRang();
                 return [true,$user];
             }else{
                 return [false];

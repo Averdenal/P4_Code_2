@@ -24,7 +24,7 @@
     <div id="connection">
         <button id="closeConnexionBtn" class="close">X</button>
         <div id="form_Connection">
-            <form method="POST" action="" class="flex flex-col">
+            <form method="POST" action="<?= ROOT ?>/Authentification/login" class="flex flex-col">
                 <h3>Connexion</h3>
                 <input type="text" name="login" placeholder="Login" required>
                 <input type="password" name="pwd" placeholder="Mot de passe" required>
@@ -33,7 +33,7 @@
             <p>Tu n'as pas de compte? <button id="action_Register" class="btn_None">S'enregistrer</button></p>
         </div>
         <div id="form_Register">
-            <form method="POST" action="" class="flex flex-col">
+            <form method="POST" action="/Authentification/register" class="flex flex-col">
                 <h3>S'enregister</h3>
                 <input type="text" name="firstName" placeholder="Prénom" required> 
                 <input type="text" name="lastName" placeholder="Nom" required>

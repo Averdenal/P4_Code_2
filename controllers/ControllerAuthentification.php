@@ -1,12 +1,19 @@
 <?php
 class ControllerAuthentification //extends BaseController
 {
+    private $_userManager;
+    function __construct()
+    {
+        $this->_userManager = new UserManager();
+    }
     public function login()
     {
         echo 'salut';
     }
-    public function loginverif($login,$pwd)
+    public function loginVerif($info)
     {
-        return null;
+        $this->_userManager->checkLoginPassword($info['login'],$info['pwd']);
+        var_dump($_SESSION['auth']);
+        //header("location:".ROOT);
     }
 }
