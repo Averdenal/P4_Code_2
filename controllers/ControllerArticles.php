@@ -10,7 +10,7 @@ class ControllerArticles{
 
     public function getArticleBySlug($slug)
     {
-        $slug = $slug[0];
+        $slug = $slug['slug'];
         $article = $this->manager->getArticleBySlug($slug);
         $comments = $this->comments->getCommentsByArticle($article->getId());
         $isconnect = $this->userManager->isConnect();
