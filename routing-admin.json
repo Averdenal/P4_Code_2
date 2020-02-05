@@ -16,6 +16,14 @@
         "param":"slug,id"
     },
     {
+        "method":"DELETE",
+        "name":"article",
+        "route":"/Article/{id}",
+        "controller":"ControllerArticles",
+        "action":"deleteArticle",
+        "param":"id"
+    },
+    {
         "method":"GET",
         "name":"auth",
         "route":"/Authentification/login",

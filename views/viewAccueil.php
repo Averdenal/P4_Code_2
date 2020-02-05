@@ -8,7 +8,7 @@ ob_start();
     <article>
         <h3><?= $article->getTitle(); ?></h3>
         <p><?= $articleManager->shortText($article->getContent()); ?>
-            <a href="Article/<?= $article->getSlug() ?>">En lire plus.</a>
+            <a href="Article/<?= $article->getSlug().'-'.$article->getId() ?>">En lire plus.</a>
         </p>
         <div class='infoArticle flex'>
             <div class="dateArticle"><?= $article->getDate(); ?></div>

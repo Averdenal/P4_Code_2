@@ -5,3 +5,10 @@
         </li>
     </ul>
 </nav>
+<nav class='flex-3'>
+    <ul class='flex flex-right'>
+        <li>
+            <button id="connexionBtn">Connexion</button>
+        </li>
+    </ul>
+</nav>
