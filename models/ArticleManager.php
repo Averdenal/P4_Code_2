@@ -101,7 +101,7 @@ class ArticleManager extends Model
     }
 
     function shortText($content){
-        $maxChar = 150;
+        $maxChar = 450;
         if(strlen($content) > $maxChar){
             return $newContent = substr($content,0,$maxChar).' ...';
         }else{

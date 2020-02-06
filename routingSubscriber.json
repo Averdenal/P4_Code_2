@@ -41,6 +41,15 @@
         "action":"logout",
         "param":""
 
+    },
+    {
+        "method":"POST",
+        "name":"addComment",
+        "route":"Comment/addComment",
+        "controller":"ControllerComment",
+        "action":"addComment",
+        "param":"content,article"
+
     }
 ]
     

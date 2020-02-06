@@ -16,13 +16,6 @@ class Article{
     public function getContent(){
         return $this->content;
     }
-    public function getLitleContent(){
-        if (strlen($this->content)>150) {
-            return substr($this->content, 0, 150).' [...]';
-        }else{
-            return $this->content;
-        }
-    }
     public function getDate(){
         return $this->date;
     }

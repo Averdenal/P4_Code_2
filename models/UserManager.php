@@ -44,17 +44,16 @@ class UserManager extends Model{
         return (int) $_SESSION['auth'];
     }
 
-    function isAdmin(){
+    function getRang(){
         $infoUser = $this->verifConnecte();
         if($infoUser[0]){
-            if($infoUser[2] !== 1){
-                header("Location: ".ROOT);
-                return false;
-            }else{
-                return true;
-            }
+            $bdd = $this->getBdd();
+            $req = $bdd->prepare('SELECT name FROM rangs WHERE id = :id');
+            $req->bindParam(':id',$infoUser[2],PDO::PARAM_INT);
+            $req->execute();
+            return $req->fetch()['name'];
         }else{
-            return false;
+            return 'noConnect';
         }
         
     }

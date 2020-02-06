@@ -11,7 +11,8 @@ ob_start();
 </article>
 <div class="Comment">
 <?php if($isconnect): ?>
-    <form id="form_Comment" method="POST" action="">
+    <form id="form_Comment" method="POST" action="<?= ROOT ?>/Comment/addComment">
+        <input type="hidden" name="article" value="<?= $article->getId(); ?>">
         <textarea type="text" rows="10" name="content"></textarea>
         <input type="submit" value="Envoyer">
     </form>

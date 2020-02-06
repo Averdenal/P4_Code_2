@@ -2,12 +2,14 @@
 
 class Router
 {
+    private $_userManager;
     public $listRoute = [];
     public $_matches = [];
 
     public function __construct()
     {   
-        $jsons = json_decode(file_get_contents('routing.json'));
+        $this->_userManager = new UserManager();
+        $jsons = json_decode(file_get_contents($this->selectDataRoute()));
         foreach($jsons as $json){
             $this->listRoute[] = new Route($json); 
         }
@@ -18,20 +20,25 @@ class Router
         global $env;
         $url = str_replace($env->basepath,'',$url);
         $matchRoute = array_filter($this->listRoute,function($cel) use($url){
-            if($cel->param != ''){
-                switch($_SERVER['REQUEST_METHOD']){
+            if($cel->param != '')
+            {
+                switch($_SERVER['REQUEST_METHOD'])
+                {
                     case 'GET':
                     $path = preg_replace('#{[a-z]+}#','([a-zA-Z0-9\-]+)',$cel->route);
-                    if(preg_match("#^$path$#",$url,$matches)){
+                    if(preg_match("#^$path$#",$url,$matches))
+                    {
                         $cel->route = $matches[0];
                         unset($matches[0]);
                         $paramRoute = explode(',',$cel->param);
 
-                        foreach ($matches as $match){
+                        foreach ($matches as $match)
+                        {
                             $tabMatches[] = $match;
                         }
                         //creation tab param key => value
-                        for($i=0; $i<sizeof($paramRoute);$i++){
+                        for($i=0; $i<sizeof($paramRoute);$i++)
+                        {
                             $this->_matches[$paramRoute[$i]] = $tabMatches[$i];
                         }
                         
@@ -59,5 +66,24 @@ class Router
             }
             
         }
+    }
+
+    private function selectDataRoute(){
+        if($this->_userManager->isConnect()){
+            switch($this->_userManager->getRang()){
+                case 'admin':
+                    $routeInfo = 'routingAdmin.json';
+                break;
+                case 'subscriber':
+                    $routeInfo = 'routingSubscriber.json';
+                break;
+                default:
+                    $routeInfo = 'routing.json';
+                break;
+            }
+        }else{
+            $routeInfo = 'routing.json';
+        }
+        return $routeInfo;
     }
 }

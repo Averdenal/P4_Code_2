@@ -30,7 +30,6 @@
         "controller":"ControllerAuthentification",
         "action":"login",
         "param":""
-
     },
     {
         "method":"POST",
@@ -39,6 +38,13 @@
         "controller":"ControllerAuthentification",
         "action":"loginverif",
         "param":"login,pwd"
-
+    },
+    {
+        "method":"POST",
+        "name":"addComment",
+        "route":"/Comment/addComment",
+        "controller":"ControllerComment",
+        "action":"addComment",
+        "param":"content,article"
     }
 ]
