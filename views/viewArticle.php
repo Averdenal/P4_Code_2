@@ -26,8 +26,9 @@ foreach($comments as $comment): ?>
             <p><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></p>
         </div>
         
-        <form action="" method="POST">
+        <form action="<?= ROOT ?>/Comment/deleteComment" method="POST">
             <input type="hidden" name="idComment" value="<?= $comment->getId(); ?>">
+            <input type="hidden" name="idArticle" value="<?= $article->getId(); ?>">
             <input type="submit" value="Supprimer">
         </form>
         
