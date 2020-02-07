@@ -46,5 +46,13 @@
         "controller":"ControllerComment",
         "action":"addComment",
         "param":"content,article"
+    },
+    {
+        "method":"POST",
+        "name":"deleteComment",
+        "route":"/Comment/delete",
+        "controller":"ControllerComment",
+        "action":"delete",
+        "param":"id"
     }
 ]

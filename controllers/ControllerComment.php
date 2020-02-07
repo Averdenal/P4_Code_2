@@ -16,4 +16,10 @@ class ControllerComment
         $article = $this->_articleManager->getArticleById($info['article']);
         header("location:".ROOT."/Article/".$article->getSlug().'-'.$article->getId(),201);
     }
+    public function delete($info)
+    {
+        $this->_commentManager->dellComment($info['id']);
+        $article = $this->_articleManager->getArticleById($info['article']);
+        header("location:".ROOT."/Article/".$article->getSlug().'-'.$article->getId(),201);
+    }
 }
