@@ -24,11 +24,11 @@
         "param":"id"
     },
     {
-        "method":"GET",
+        "method":"POST",
         "name":"auth",
-        "route":"/Authentification/login",
+        "route":"/Authentification/logout",
         "controller":"ControllerAuthentification",
-        "action":"login",
+        "action":"logout",
         "param":""
     },
     {
