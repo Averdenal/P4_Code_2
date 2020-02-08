@@ -6,15 +6,13 @@ class App{
     init(){
         let form_Connection = document.getElementById('form_Connection');
         let form_Register = document.getElementById('form_Register');
-        let zoneConnexion = document.getElementById('connection');
-        if(document.getElementById('connexionBtn') !== null){
-            let btConnexion = document.getElementById('connexionBtn');
-            btConnexion.addEventListener('click',function(){
-                zoneConnexion.style.display = 'block';
-            });
-        }
-
         let closeConnexionBtn = document.getElementById('closeConnexionBtn');
+        let zoneConnexion = document.getElementById('connection');
+
+        let btConnexion = document.getElementById('connexionBtn');
+        btConnexion.addEventListener('click',function(){
+            zoneConnexion.style.display = 'block';
+        });
         closeConnexionBtn.addEventListener('click',function(){
             zoneConnexion.style.display = 'none';
         });

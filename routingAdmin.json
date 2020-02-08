@@ -24,11 +24,11 @@
         "param":"id"
     },
     {
-        "method":"POST",
+        "method":"GET",
         "name":"auth",
-        "route":"/Authentification/logout",
+        "route":"/Authentification/login",
         "controller":"ControllerAuthentification",
-        "action":"logout",
+        "action":"login",
         "param":""
     },
     {
@@ -57,17 +57,10 @@
     },
     {
         "method":"POST",
-<<<<<<< HEAD
         "name":"addComment",
         "route":"/Comment/deleteComment",
         "controller":"ControllerComment",
         "action":"deleteComment",
-=======
-        "name":"deleteComment",
-        "route":"/Comment/delete",
-        "controller":"ControllerComment",
-        "action":"delete",
->>>>>>> 7fd046fdadea2b3d4f620e5906338e3e5359dffa
         "param":"id"
     }
 ]
