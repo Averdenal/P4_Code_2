@@ -10,10 +10,10 @@
     {
         "method":"GET",
         "name":"article",
-        "route":"/Article/{slug}-{id}",
+        "route":"/Article/([a-zA-Z0-9\\-]+)",
         "controller":"ControllerArticles",
         "action":"getArticleBySlug",
-        "param":"slug,id"
+        "param":"slug"
     },
     {
         "method":"POST",

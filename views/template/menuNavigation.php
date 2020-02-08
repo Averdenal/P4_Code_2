@@ -9,9 +9,7 @@
     <ul class='flex flex-right'>
         <?php if(isset($_SESSION['auth'])){ ?>
             <li>
-                <form action="<?= ROOT ?>/Authentification/logout" method="POST">
-                    <button type="submit">Déconnnexion</button>
-                </form>
+                <a href="<?= ROOT ?>/Authentification/logout" >Déconnnexion</a>
             </li>
         <?php }else{?>
             <li>

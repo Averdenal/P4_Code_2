@@ -25,6 +25,7 @@ class Router
                 switch($_SERVER['REQUEST_METHOD'])
                 {
                     case 'GET':
+                    case 'DELETE':
                     $path = preg_replace('#{[a-z]+}#','([a-zA-Z0-9\-]+)',$cel->route);
                     if(preg_match("#^$path$#",$url,$matches))
                     {
@@ -36,7 +37,6 @@ class Router
                         {
                             $tabMatches[] = $match;
                         }
-                        //creation tab param key => value
                         for($i=0; $i<sizeof($paramRoute);$i++)
                         {
                             $this->_matches[$paramRoute[$i]] = $tabMatches[$i];
@@ -45,6 +45,7 @@ class Router
                     };
                 break;
                 case 'POST':
+                case 'PUT':
                     $this->_matches = $_POST;
                 break;
                 }

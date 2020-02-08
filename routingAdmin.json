@@ -10,10 +10,10 @@
     {
         "method":"GET",
         "name":"article",
-        "route":"/Article/{slug}-{id}",
+        "route":"/Article/{slug}",
         "controller":"ControllerArticles",
         "action":"getArticleBySlug",
-        "param":"slug,id"
+        "param":"slug"
     },
     {
         "method":"DELETE",
@@ -38,6 +38,14 @@
         "controller":"ControllerAuthentification",
         "action":"loginverif",
         "param":"login,pwd"
+    },
+    {
+        "method":"GET",
+        "name":"auth",
+        "route":"/Authentification/logout",
+        "controller":"ControllerAuthentification",
+        "action":"logout",
+        "param":""
     },
     {
         "method":"POST",
