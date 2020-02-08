@@ -14,7 +14,7 @@ class ControllerArticles{
         $article = $this->manager->getArticleBySlug($slug);
         $comments = $this->comments->getCommentsByArticle($article->getId());
         $isconnect = $this->userManager->isConnect();
-        $titlePage = TITLESITE.' - Edition - '.$article->getTitle();
+        $titlePage = 'Edition - '.$article->getTitle();
         require_once("views/viewArticle.php");
     }
 }

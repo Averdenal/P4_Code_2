@@ -7,7 +7,13 @@
 </nav>
 <nav class='flex-3'>
     <ul class='flex flex-right'>
-        <?php if(isset($_SESSION['auth'])){ ?>
+        <?php if(isset($_SESSION['auth'])){ 
+            if($_SESSION['rang'] === 'admin'):
+            ?>
+            <li>
+                <a href="<?= ROOT ?>/Administration/administrationAccueil" >Administration</a>
+            </li>
+            <?php endif; ?>
             <li>
                 <a href="<?= ROOT ?>/Authentification/logout" >Déconnnexion</a>
             </li>

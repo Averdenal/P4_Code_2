@@ -62,5 +62,22 @@
         "controller":"ControllerComment",
         "action":"deleteComment",
         "param":"id"
+    },
+    {
+        "method":"GET",
+        "name":"accueilAdministration",
+        "route":"/Administration/administrationAccueil",
+        "controller":"ControllerAdministration",
+        "action":"administrationAccueil",
+        "param":""
+    },
+    {
+        "method":"GET",
+        "name":"accueilAdministration",
+        "route":"/Administration/articleManagement",
+        "controller":"ControllerAdministration",
+        "action":"articleManagement",
+        "param":""
     }
+    
 ]

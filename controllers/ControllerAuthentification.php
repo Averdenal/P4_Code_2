@@ -6,10 +6,7 @@ class ControllerAuthentification //extends BaseController
     {
         $this->_userManager = new UserManager();
     }
-    public function login()
-    {
-        echo 'salut';
-    }
+
     public function loginVerif($info)
     {
         $this->_userManager->checkLoginPassword($info['login'],$info['pwd']);

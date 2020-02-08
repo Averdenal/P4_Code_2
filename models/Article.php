@@ -41,4 +41,9 @@ class Article{
     public function getLastName(){
         return $this->lastname;
     }
+    public function getLitleContent()
+    {
+        $articleManager = new ArticleManager();
+        return $articleManager->shortText($this->content,150);
+    }
 }

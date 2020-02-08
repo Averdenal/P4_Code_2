@@ -32,7 +32,8 @@ class UserManager extends Model{
         }else {
             if($user->getPwd() === md5($password)){
                 $_SESSION['auth'] = $user->getId();
-                $_SESSION['rang'] = $user->getRang();
+                $_SESSION['rang'] = $this->getRang($user->getRang());
+                var_dump($this->getRang($user->getRang()));
                 return [true,$user];
             }else{
                 return [false];
@@ -44,17 +45,12 @@ class UserManager extends Model{
         return (int) $_SESSION['auth'];
     }
 
-    function getRang(){
-        $infoUser = $this->verifConnecte();
-        if($infoUser[0]){
+    function getRang($id){
             $bdd = $this->getBdd();
             $req = $bdd->prepare('SELECT name FROM rangs WHERE id = :id');
-            $req->bindParam(':id',$infoUser[2],PDO::PARAM_INT);
+            $req->bindParam(':id',$id,PDO::PARAM_INT);
             $req->execute();
             return $req->fetch()['name'];
-        }else{
-            return 'noConnect';
-        }
         
     }
 

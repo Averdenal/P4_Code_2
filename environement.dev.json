@@ -1,3 +1,4 @@
 {
-    "basepath":"/P4_Code_2"
+    "basepath":"/P4_Code_2",
+    "folder":["controllers/","models/","models/exceptions/","/"]
 }

@@ -1,13 +1,10 @@
-<?php
-ob_start(); 
-?>
 <div class="list_Article_Accueil">
     <?php 
-    foreach($articles as $article):
+    foreach($tab as $article):
     ?>
     <article>
         <h3><?= $article->getTitle(); ?></h3>
-        <p><?= $articleManager->shortText($article->getContent()); ?>
+        <p><?= $article->getLitleContent(); ?>
             <a href="Article/<?= $article->getSlug() ?>">En lire plus.</a>
         </p>
         <div class='infoArticle flex'>
@@ -19,6 +16,3 @@ ob_start();
     endforeach;
     ?>
 </div>
-<?php
-$content = ob_get_clean();
-require_once('template.php');
