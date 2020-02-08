@@ -26,6 +26,14 @@
     },
     {
         "method":"POST",
+        "name":"auth",
+        "route":"/Authentification/logout",
+        "controller":"ControllerAuthentification",
+        "action":"logout",
+        "param":""
+    },
+    {
+        "method":"POST",
         "name":"register",
         "route":"/Authentification/register",
         "controller":"ControllerAuthentification",
