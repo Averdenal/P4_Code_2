@@ -86,6 +86,14 @@
         "controller":"ControllerComment",
         "action":"warningComment",
         "param":"idArticle,idComment"
+    },
+    {
+        "method":"GET",
+        "name":"GestionUser",
+        "route":"/Administration/userManagement",
+        "controller":"ControllerAdministration",
+        "action":"userManagement",
+        "param":""
     }
     
 ]

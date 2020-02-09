@@ -1,5 +1,5 @@
 <?php
-class ControllerAuthentification //extends BaseController
+class ControllerAuthentification extends BaseController
 {
 
     function __construct()
