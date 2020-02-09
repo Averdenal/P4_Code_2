@@ -1,13 +1,11 @@
 <?php
 
-class ControllerComment
+class ControllerComment extends BaseController
 {
-    private $_commentManager;
-    private $_articleManager;
+
     function __construct()
     {
-        $this->_commentManager = new CommentManager();
-        $this->_articleManager = new ArticleManager();
+        parent::__construct();
     }
 
     public function addComment($info)
@@ -27,7 +25,7 @@ class ControllerComment
     }
     public function warningComment($info)
     {
-        $this->_commentManager->addWarning($info['idComment']);
+        $this->_warningManager->addWarning($info['idComment']);
         $article = $this->_articleManager->getArticleById($info['idArticle']);
         header('location:'.ROOT.'/Article/'.$article->getSlug());
     }

@@ -1,10 +1,10 @@
 <?php
 class ControllerAuthentification //extends BaseController
 {
-    private $_userManager;
+
     function __construct()
     {
-        $this->_userManager = new UserManager();
+        parent::__construct();
     }
 
     public function loginVerif($info)

@@ -2,10 +2,9 @@
 
 class ControllerAdministration extends BaseController
 {
-    private $articlesManager;
     public function __construct()
     {
-        $this->articleManager = new ArticleManager();
+        parent::__construct();
     }
 
     public function administrationAccueil()
@@ -15,7 +14,16 @@ class ControllerAdministration extends BaseController
     public function articleManagement()
     {
         $title = 'Gestion article';
-        $articles = $this->articleManager->getAllArticles();
+        $articles = $this->_articleManager->getAllArticles();
         $this->template('views/viewArticleManagement.php',$articles,$title);
-    }   
+    }
+    public function Edit($id)
+    {
+        $article = $this->_articleManager->getArticleById($id);
+    }
+    public function delete($id)
+    {
+
+        $this->_articlesManager->dellArticle($id);
+    }
 }

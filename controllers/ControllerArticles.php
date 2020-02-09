@@ -4,9 +4,7 @@ class ControllerArticles extends BaseController
 {
     function __construct()
     {
-        $this->manager = new ArticleManager();
-        $this->comments = new CommentManager();
-        $this->userManager = new UserManager();
+        parent::__construct();
     }
 
     public function getArticleBySlug($slug)
@@ -14,9 +12,9 @@ class ControllerArticles extends BaseController
         $slug = $slug['slug'];
         $tab = [];
 
-        $tab['article'] = $this->manager->getArticleBySlug($slug);
-        $tab['comments'] = $this->comments->getCommentsByArticle($tab['article']->getId());
-        $tab['isConnect'] = $this->userManager->isConnect();
+        $tab['article'] = $this->_articleManager->getArticleBySlug($slug);
+        $tab['comments'] = $this->_commentManager->getCommentsByArticle($tab['article']->getId());
+        $tab['isConnect'] = $this->_userManager->isConnect();
 
         $titlePage = $tab['article']->getTitle();
         

@@ -2,14 +2,13 @@
 
 class ControllerAccueil extends BaseController
 {
-    private $articleManager;
     function __construct()
     {
-        $this->articleManager = new ArticleManager();
+        parent::__construct();
     }
     public function accueil()
     {
-        $articles = $this->articleManager->getAllArticles();
+        $articles = $this->_articleManager->getAllArticles();
         $titlePage = 'Accueil';
         $this->template('views/viewAccueil.php',$articles,$titlePage);
     }
