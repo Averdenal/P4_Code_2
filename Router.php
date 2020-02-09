@@ -26,7 +26,7 @@ class Router
                 {
                     case 'GET':
                     case 'DELETE':
-                    $path = preg_replace('#{[a-z]+}#','([a-zA-Z0-9\-]+)',$cel->route);
+                    $path = preg_replace('#{[a-zA-Z]+}#','([a-zA-Z0-9\-]+)',$cel->route);
                     if(preg_match("#^$path$#",$url,$matches))
                     {
                         $cel->route = $matches[0];

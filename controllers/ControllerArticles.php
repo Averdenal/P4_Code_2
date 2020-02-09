@@ -1,6 +1,7 @@
 <?php
 
-class ControllerArticles{
+class ControllerArticles extends BaseController
+{
     function __construct()
     {
         $this->manager = new ArticleManager();
@@ -11,10 +12,14 @@ class ControllerArticles{
     public function getArticleBySlug($slug)
     {
         $slug = $slug['slug'];
-        $article = $this->manager->getArticleBySlug($slug);
-        $comments = $this->comments->getCommentsByArticle($article->getId());
-        $isconnect = $this->userManager->isConnect();
-        $titlePage = 'Edition - '.$article->getTitle();
-        require_once("views/viewArticle.php");
+        $tab = [];
+
+        $tab['article'] = $this->manager->getArticleBySlug($slug);
+        $tab['comments'] = $this->comments->getCommentsByArticle($tab['article']->getId());
+        $tab['isConnect'] = $this->userManager->isConnect();
+
+        $titlePage = $tab['article']->getTitle();
+        
+        $this->template('views/viewArticle.php',$tab,$titlePage);
     }
 }

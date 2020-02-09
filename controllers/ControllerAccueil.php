@@ -10,7 +10,7 @@ class ControllerAccueil extends BaseController
     public function accueil()
     {
         $articles = $this->articleManager->getAllArticles();
-        $titlePage = TITLESITE.' - Accueil';
-        $this->template('views/viewAccueil.php',$articles);
+        $titlePage = 'Accueil';
+        $this->template('views/viewAccueil.php',$articles,$titlePage);
     }
 }

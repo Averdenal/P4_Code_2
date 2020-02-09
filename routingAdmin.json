@@ -78,6 +78,14 @@
         "controller":"ControllerAdministration",
         "action":"articleManagement",
         "param":""
+    },
+    {
+        "method":"GET",
+        "name":"addWarning",
+        "route":"/Comment/warningComment/{idArticle}-{idComment}",
+        "controller":"ControllerComment",
+        "action":"warningComment",
+        "param":"idArticle,idComment"
     }
     
 ]

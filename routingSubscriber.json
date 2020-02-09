@@ -10,10 +10,10 @@
     {
         "method":"GET",
         "name":"article",
-        "route":"/Article/{slug}-{id}",
+        "route":"/Article/{slug}",
         "controller":"ControllerArticles",
         "action":"getArticleBySlug",
-        "param":"slug,id"
+        "param":"slug"
     },
     {
         "method":"POST",
@@ -45,11 +45,35 @@
     {
         "method":"POST",
         "name":"addComment",
-        "route":"Comment/addComment",
+        "route":"/Comment/addComment",
         "controller":"ControllerComment",
         "action":"addComment",
         "param":"content,article"
+    },
+    {
+        "method":"POST",
+        "name":"addComment",
+        "route":"/Comment/deleteComment",
+        "controller":"ControllerComment",
+        "action":"deleteComment",
+        "param":"id"
+    },
+    {
+        "method":"GET",
+        "name":"logout",
+        "route":"/Authentification/logout",
+        "controller":"ControllerAuthentification",
+        "action":"logout",
+        "param":""
 
+    },
+    {
+        "method":"GET",
+        "name":"addWarning",
+        "route":"/Comment/warningComment/{idArticle}-{idComment}",
+        "controller":"ControllerComment",
+        "action":"warningComment",
+        "param":"idArticle,idComment"
     }
 ]
     
