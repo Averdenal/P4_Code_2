@@ -3,10 +3,12 @@
 class ArticleManager extends Model
 {
     private $userManager;
+    private $_commentManager;
 
     function __construct()
     {
         $this->userManager = new UserManager();
+        $this->_commentManager = new CommentManager();
     }
 
     function getAllArticles()
@@ -48,10 +50,14 @@ class ArticleManager extends Model
 
     function dellArticle(int $id)
     {
+        if($this->_commentManager->countCommentByArticle($id) > 0){
+            $this->_commentManager->deleteAllCommentsByArticle($id);
+        }
         $bdd = $this->getBdd();
         $req = $bdd->prepare('DELETE FROM articles WHERE id = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->execute();
+        
     }
 
     function editArticle(string $title, string $content, int $id, int $idAutor){

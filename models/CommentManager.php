@@ -4,10 +4,12 @@
 class CommentManager extends Model
 {
     private $userManager;
+    private $_warningManager;
 
     function __construct()
     {
         $this->userManager = new UserManager();
+        $this->_warningManager = new WarningManager();
     }
 
     function getAllComments()
@@ -42,6 +44,19 @@ class CommentManager extends Model
         $req->execute();
     }
 
+    function deleteAllCommentsByArticle($idArticle)
+    {
+        //recherche des warning par commentaire
+        foreach($this->getCommentsByArticle($idArticle) as $comment){
+            //delete des warning
+            $this->_warningManager->deleteWarningByComment($comment->getId());
+        }
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('DELETE * FROM commentaires WHERE article = :article');
+        $req->bindParam(':article',$idArticle,PDO::PARAM_INT);
+        $req->execute();
+    }
+
     function addComment(string $content, int $idArticle){
         $date = date('Y-m-d H:i:s');
         $autor = $this->userManager->getUserConnecte();
@@ -63,7 +78,6 @@ class CommentManager extends Model
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->bindParam(':content',$content,PDO::PARAM_STR);
         $req->execute();
-        //modifier le slug 
     }
 
     function getCommentById($id){
@@ -77,4 +91,13 @@ class CommentManager extends Model
         $req->execute();
         return $req->fetchObject('Comment');
     }   
+    //à tester
+    public function countCommentByArticle($idArticle)
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('SELECT COUNT(*) FROM commentaires WHERE article = :id');
+        $req->bindParam(':id',$idArticle,PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetch();
+    }
 }

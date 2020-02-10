@@ -2,6 +2,7 @@
 global $env;
 require_once('models/Environement.php');
 $env = Environement::get();
+
 spl_autoload_register(function($class) use($env){
     foreach($env->folder as $folder){
         if(file_exists($folder.$class.'.php'))
