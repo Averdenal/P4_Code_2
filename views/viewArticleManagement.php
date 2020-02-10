@@ -18,7 +18,7 @@
         <td><?= $article->getFirstName().' '.$article->getLastName() ?></td>
         <td>
             <button>Editer</button>
-            <button>Supprimer</button>
+            <a href="<?= ROOT.'/Administration/deleteArticle/'.$article->getId() ?>">Supprimer</a>
             <button>Commentaires</button>
         </td>
 

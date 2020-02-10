@@ -38,8 +38,10 @@ class ControllerAdministration extends BaseController
     {
         $article = $this->_articleManager->getArticleById($id);
     }
-    public function deleteArticle($id)
+    public function deleteArticle($info)
     {
-        $this->_articlesManager->dellArticle($id);
+        $this->_articleManager->dellArticle($info['id']);
+        $this->articleManagement();
+        
     }
 }

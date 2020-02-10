@@ -2,11 +2,17 @@
 
 class WarningManager extends Model
 {
+    private $_userManager;
+    public function __construct()
+    {
+        $this->_userManager = new UserManager();
+    }
+
     public function addWarning($id)
     {
         $date = date('Y-m-d H:i:s');
-        $autor = $this->userManager->getUserConnecte();
-        var_dump($id);
+        $autor = $this->_userManager->getUserConnecte();
+        var_dump($autor);
         $bdd = $this->getBdd();
         $req = $bdd->prepare("INSERT INTO `warning` (`id`, `message`, `commentaire`, `user`, `date`) 
         VALUES (NULL, 'warning', :id, :autor, :newDate)");
