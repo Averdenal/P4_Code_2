@@ -19,7 +19,6 @@
         <td>
             <button>Editer</button>
             <button>Supprimer</button>
-            <button>Commentaires</button>
         </td>
 
 

@@ -6,7 +6,7 @@
             <th>Title</th>
             <th>Content</th>
             <th>Auteur</th>
-            <th><button>Nouveau</button></th>
+            <th><a href="<?= ROOT.'/Administration/newArticle' ?>">Nouveau</a></th>
         </tr>
     </thead>
     <tbody>

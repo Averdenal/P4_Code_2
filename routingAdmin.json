@@ -94,6 +94,15 @@
         "controller":"ControllerAdministration",
         "action":"userManagement",
         "param":""
+    },
+    {
+        "method":"GET",
+        "name":"newArticle",
+        "route":"/Administration/newArticle",
+        "controller":"ControllerAdministration",
+        "action":"newArticle",
+        "param":""
     }
+    
     
 ]

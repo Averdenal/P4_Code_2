@@ -24,17 +24,21 @@ class ControllerAdministration extends BaseController
         $this->template('views/viewUserManagement.php',$users,$title);
     }
 
+    public function newArticle()
+    {
+        $title = 'Nouveau Article';
+        $this->template('views/viewNewArticle.php',null,$title);
+    }
 
 
 
 
 
-
-    public function Edit($id)
+    public function EditArticle($id)
     {
         $article = $this->_articleManager->getArticleById($id);
     }
-    public function delete($id)
+    public function deleteArticle($id)
     {
         $this->_articlesManager->dellArticle($id);
     }
