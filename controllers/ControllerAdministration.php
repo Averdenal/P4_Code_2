@@ -30,10 +30,6 @@ class ControllerAdministration extends BaseController
         $this->template('views/viewNewArticle.php',null,$title);
     }
 
-
-
-
-
     public function EditArticle($id)
     {
         $article = $this->_articleManager->getArticleById($id);
