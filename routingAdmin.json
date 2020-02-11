@@ -104,6 +104,14 @@
         "param":""
     },
     {
+        "method":"GET",
+        "name":"editArticle",
+        "route":"/Administration/editArticle/{id}",
+        "controller":"ControllerAdministration",
+        "action":"editArticle",
+        "param":"id"
+    },
+    {
         "method":"POST",
         "name":"saveArticle",
         "route":"/Articles/newArticle",

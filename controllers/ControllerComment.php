@@ -23,6 +23,7 @@ class ControllerComment extends BaseController
         header('Refresh:2;url='.ROOT.'/Article/'.$article->getSlug());
         echo '<h3>le commentaire est supprimé</h3>';
     }
+    
     public function warningComment($info)
     {
         $this->_warningManager->addWarning($info['idComment']);
