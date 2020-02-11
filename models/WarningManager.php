@@ -7,7 +7,13 @@ class WarningManager extends Model
     {
         $this->_userManager = new UserManager();
     }
-
+    public function countWarning() :int
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('SELECT COUNT(*)  FROM warning' );
+        $req->execute();
+        return $req->fetch();
+    }
     public function addWarning($id)
     {
         $date = date('Y-m-d H:i:s');

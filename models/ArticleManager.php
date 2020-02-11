@@ -10,7 +10,13 @@ class ArticleManager extends Model
         $this->userManager = new UserManager();
         $this->_commentManager = new CommentManager();
     }
-
+    public function countArticle() :int
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('SELECT COUNT(*)  FROM articles' );
+        $req->execute();
+        return $req->fetch();
+    }
     function getAllArticles()
     {
         $bdd = $this->getBdd();

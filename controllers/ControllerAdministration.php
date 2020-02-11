@@ -9,8 +9,12 @@ class ControllerAdministration extends BaseController
 
     public function administrationAccueil()
     {
+        $nbArticles = $this->_articleManager->countArticle();
+        $nbComments = $this->_commentManager->countComment();
+        $nbWarning = $this->_warningManager->countWarning();
+        $info = [$nbArticles,$nbComments,$nbWarning];
         $title ='Administration';
-        $this->templateAdmin('views/viewAdministration.php',null,$title);
+        $this->templateAdmin('views/viewAdministration.php',$info,$title);
     }
     public function articleManagement()
     {

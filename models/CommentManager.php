@@ -11,7 +11,13 @@ class CommentManager extends Model
         $this->userManager = new UserManager();
         $this->_warningManager = new WarningManager();
     }
-
+    public function countComment() :int
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('SELECT COUNT(*)  FROM commentaires' );
+        $req->execute();
+        return $req->fetch();
+    }
     function getAllComments()
     {
         $bdd = $this->getBdd();
