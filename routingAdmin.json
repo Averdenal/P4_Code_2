@@ -104,6 +104,14 @@
         "param":""
     },
     {
+        "method":"POST",
+        "name":"saveArticle",
+        "route":"/Articles/newArticle",
+        "controller":"ControllerArticles",
+        "action":"newArticle",
+        "param":"title,content"
+    },
+    {
         "method":"GET",
         "name":"newArticle",
         "route":"/Administration/deleteArticle/{id}",

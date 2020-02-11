@@ -77,7 +77,7 @@ class ArticleManager extends Model
         $req->execute();
     }
 
-    function createArticle(string $title, string $content){
+    function addArticle(string $title, string $content){
         $date = date('Y-m-d H:i:s');
         $autor = $this->userManager->getUserConnecte();
         $onligne = 1;

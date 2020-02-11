@@ -20,4 +20,11 @@ class ControllerArticles extends BaseController
         
         $this->template('views/viewArticle.php',$tab,$titlePage);
     }
+
+    public function newArticle()
+    {
+        $info = $_POST;
+        $this->_articleManager->addArticle($info['title'],$info['content']);
+        header('location: '.ROOT.'/Administration/articleManagement');
+    }
 }

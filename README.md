@@ -17,7 +17,7 @@ P4_Code
 ### Gestion Articles
     - suppr OK
     - edit En cours
-    - Nouveau En cours 
+    - Nouveau OK
 
 ### Gestion Users
 
