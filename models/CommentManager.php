@@ -16,7 +16,7 @@ class CommentManager extends Model
         $bdd = $this->getBdd();
         $req = $bdd->prepare('SELECT COUNT(*)  FROM commentaires' );
         $req->execute();
-        return $req->fetch();
+        return (int) $req->fetch()[0];
     }
     function getAllComments()
     {

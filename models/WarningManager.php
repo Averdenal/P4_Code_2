@@ -12,7 +12,7 @@ class WarningManager extends Model
         $bdd = $this->getBdd();
         $req = $bdd->prepare('SELECT COUNT(*)  FROM warning' );
         $req->execute();
-        return $req->fetch();
+        return (int) $req->fetch()[0];
     }
     public function addWarning($id)
     {

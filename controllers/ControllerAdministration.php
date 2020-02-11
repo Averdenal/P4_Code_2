@@ -12,7 +12,7 @@ class ControllerAdministration extends BaseController
         $nbArticles = $this->_articleManager->countArticle();
         $nbComments = $this->_commentManager->countComment();
         $nbWarning = $this->_warningManager->countWarning();
-        $info = [$nbArticles,$nbComments,$nbWarning];
+        $info = ['articleNb' => $nbArticles,'commentNb' =>$nbComments,'warningNb' => $nbWarning];
         $title ='Administration';
         $this->templateAdmin('views/viewAdministration.php',$info,$title);
     }
