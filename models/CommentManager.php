@@ -36,7 +36,7 @@ class CommentManager extends Model
         FROM commentaires
         JOIN users
         ON commentaires.user = users.id
-        WHERE article = :article');
+        WHERE article = :article ORDER BY date desc');
         $req->bindParam(':article',$idArticle,PDO::PARAM_INT);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_CLASS,'Comment');

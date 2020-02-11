@@ -1,21 +1,50 @@
 <h2>Administration</h2>
 <div class="flex flex-wrap">
     <div class="cart flex-1">
-        <div class="cercle">
+    <p>Nombre d'articles</p>
+        <div class="cercle cercle-green">
             <h3><?= $tab['articleNb'] ?></h3> 
         </div>
-        <p>Nombre d'articles</p>
+        
     </div>
     <div class="cart flex-1">
-        <div class="cercle">
+    <p>Nombre de commentaires</p>
+        <div class="cercle cercle-orange">
             <h3><?= $tab['commentNb'] ?></h3> 
         </div>
-        <p>Nombre de commentaires</p>
+        
     </div>
     <div class="cart flex-1">
-        <div class="cercle">
+    <p>Nombre de warnings</p>
+        <div class="cercle cercle-red">
             <h3><?= $tab['warningNb'] ?></h3> 
         </div>
-        <p>Nombre de warning</p>
+        
     </div>
 </div>
+<section class="tab_comment">
+    <h3>Commentaires avec Warning</h3>
+    <table>
+        <thead>
+            <tr>
+                <th># ID</th>
+                <th>Commentaires</th>
+                <th>Auteur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($tab['commentWarning'] as $comment): ?>
+                <tr>
+                    <th># <?= $comment->getId() ?></th>
+                    <th><?= $comment->getContent() ?></th>
+                    <th><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></th>
+                    <th>
+                        <a>Supprimer</a>
+                        <a>Valider</a>
+                    </th>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</section>

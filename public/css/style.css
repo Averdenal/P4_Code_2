@@ -12,7 +12,9 @@ a{
 .infoArticle{
     justify-content: space-between;
 }
-
+tbody tr:hover{
+    background-color: rgb(90, 188, 253);
+}
 /***********************************************************************************/
 .flex{
     display: flex;
@@ -210,19 +212,47 @@ table {
     font-weight: 600;
 }
 .cart{
-    text-align: center;
+    box-shadow: 10px 10px 5px 0px #656565;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 30px;
+    margin:0 4em;
+    padding: 2em 0;
+}
+.cart:hover{
+    background-color: rgb(184, 184, 184);
+    transition: .5s;
+}
+.cart p {
+    text-align: left;
+    font-size: 1.2em;
 }
 .cercle{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 100px;
-    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid;
+    background-color: white;
+}
+
+.cercle-green{
+    border-color: green;
+}
+.cercle-orange{
+    border-color: orange;
+}
+.cercle-red{
+    border-color: red;
 }
 .cart h3{
-    font-size: 10em;
+    font-size: 5em;
     margin: 0;
     padding: 0;
+}
+.tab_comment{
+    margin:2em 0;
 }

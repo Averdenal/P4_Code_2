@@ -14,6 +14,13 @@ class WarningManager extends Model
         $req->execute();
         return (int) $req->fetch()[0];
     }
+    public function getAllWarning()
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('SELECT * FROM warning');
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_CLASS,'warning');
+    }
     public function addWarning($id)
     {
         $date = date('Y-m-d H:i:s');
