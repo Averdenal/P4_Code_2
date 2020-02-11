@@ -27,4 +27,10 @@ class ControllerArticles extends BaseController
         $this->_articleManager->addArticle($info['title'],$info['content']);
         header('location: '.ROOT.'/Administration/articleManagement');
     }
+    public function editArticle()
+    {
+        $info = $_POST;
+        $this->_articleManager->addArticle($info['title'],$info['content']);
+        header('location: '.ROOT.'/Administration/articleManagement');
+    }
 }

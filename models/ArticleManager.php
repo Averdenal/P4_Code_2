@@ -60,19 +60,17 @@ class ArticleManager extends Model
         
     }
 
-    function editArticle(string $title, string $content, int $id, int $idAutor){
+    function editArticle(string $title, string $content, int $id){
         $slug = $this->createSlug($title);
         $bdd = $this->getBdd();
         $req = $bdd->prepare('UPDATE articles
         set title = :title ,
         content = :content ,
-        autor = :autor,
         slug = :slug
         WHERE id = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->bindParam(':title',$title,PDO::PARAM_STR);
         $req->bindParam(':content',$content,PDO::PARAM_STR);
-        $req->bindParam(':autor',$idAutor,PDO::PARAM_INT);
         $req->bindParam(':slug',$slug,PDO::PARAM_STR);
         $req->execute();
     }
