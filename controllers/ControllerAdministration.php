@@ -25,16 +25,23 @@ class ControllerAdministration extends BaseController
     public function articleManagement()
     {
         $_SESSION['lastPage'] = ROOT.'/Administration/articleManagement';
-        $title = 'Gestion article';
+        $title = 'Gestion articles';
         $articles = $this->_articleManager->getAllArticles();
         $this->templateAdmin('views/viewArticleManagement.php',$articles,$title);
     }
     public function userManagement()
     {
         $_SESSION['lastPage'] = ROOT.'/Administration/userManagement';
-        $title = 'Gestion article';
+        $title = 'Gestion utilisateurs';
         $users = $this->_userManager->getAllUsers();
         $this->templateAdmin('views/viewUserManagement.php',$users,$title);
+    }
+    public function commentManagement()
+    {
+        $_SESSION['lastPage'] = ROOT.'/Administration/commentManagement';
+        $title = 'Gestion commentaires';
+        $comment = $this->_commentManager->getAllComments();
+        $this->templateAdmin('views/viewcommentManagement.php',$comment,$title);
     }
 
     public function newArticle()

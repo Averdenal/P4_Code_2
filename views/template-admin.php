@@ -23,7 +23,7 @@
             <div class="flex-1">
                 <nav class="menu_admin">
                     <a href="<?= ROOT.'/Administration/articleManagement' ?>">Gestion des Articles</a>
-                    <a href="">Gestion des Commentaires</a>
+                    <a href="<?= ROOT.'/Administration/commentManagement' ?>">Gestion des Commentaires</a>
                     <a href="<?= ROOT.'/Administration/userManagement' ?>">Gestion des utilisateurs</a>
                 </nav>
             </div>

@@ -97,6 +97,14 @@
     },
     {
         "method":"GET",
+        "name":"GestionComment",
+        "route":"/Administration/commentManagement",
+        "controller":"ControllerAdministration",
+        "action":"commentManagement",
+        "param":""
+    },
+    {
+        "method":"GET",
         "name":"newArticle",
         "route":"/Administration/newArticle",
         "controller":"ControllerAdministration",
