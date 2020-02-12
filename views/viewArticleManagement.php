@@ -7,7 +7,7 @@
             <th>Title</th>
             <th>Content</th>
             <th>Auteur</th>
-            <th><a href="<?= ROOT.'/Administration/newArticle' ?>">Nouveau</a></th>
+            <th><a class="btn btn_New" href="<?= ROOT.'/Administration/newArticle' ?>">Nouveau</a></th>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +19,8 @@
         <td><?= $article->getLitleContent() ?></td>
         <td><?= $article->getFirstName().' '.$article->getLastName() ?></td>
         <td>
-            <a href="<?= ROOT.'/Administration/editArticle/'.$article->getId() ?>">Editer</a>
-            <a href="<?= ROOT.'/Administration/deleteArticle/'.$article->getId() ?>">Supprimer</a>
-            <button>Commentaires</button>
+            <a class="btn btn_Edit" href="<?= ROOT.'/Administration/editArticle/'.$article->getId() ?>">Editer</a>
+            <a class="btn btn_Delete" href="<?= ROOT.'/Administration/deleteArticle/'.$article->getId() ?>">Supprimer</a>
         </td>
 
 
