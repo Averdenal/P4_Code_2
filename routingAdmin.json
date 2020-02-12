@@ -147,8 +147,8 @@
         "method":"GET",
         "name":"deleteWarning",
         "route":"/Warning/deleteWarning/{id}",
-        "controller":"ControllerArticles",
-        "action":"deleteArticle",
+        "controller":"ControllerWarning",
+        "action":"deleteWarning",
         "param":"id"
     }
     

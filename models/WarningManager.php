@@ -25,7 +25,6 @@ class WarningManager extends Model
     {
         $date = date('Y-m-d H:i:s');
         $autor = $this->_userManager->getUserConnecte();
-        var_dump($autor);
         $bdd = $this->getBdd();
         $req = $bdd->prepare("INSERT INTO `warning` (`id`, `message`, `commentaire`, `user`, `date`) 
         VALUES (NULL, 'warning', :id, :autor, :newDate)");
@@ -37,10 +36,10 @@ class WarningManager extends Model
     /**
      * @param {int} id du commentaire.
      */
-    function deleteWarningByComment(int $id):void
+    function deleteWarningByComment($id):void
     {
         $bdd = $this->getBdd();
-        $req = $bdd->prepare('DELETE FROM warning WHERE comment = :id');
+        $req = $bdd->prepare('DELETE FROM warning WHERE commentaire = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->execute();
         
