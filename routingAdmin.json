@@ -134,7 +134,16 @@
         "controller":"ControllerArticles",
         "action":"deleteArticle",
         "param":"id"
+    },
+    {
+        "method":"GET",
+        "name":"deleteWarning",
+        "route":"/Warning/deleteWarning/{id}",
+        "controller":"ControllerArticles",
+        "action":"deleteArticle",
+        "param":"id"
     }
+    
     
     
 ]
