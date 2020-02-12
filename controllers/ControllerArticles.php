@@ -25,12 +25,18 @@ class ControllerArticles extends BaseController
     {
         $info = $_POST;
         $this->_articleManager->addArticle($info['title'],$info['content']);
-        header('location: '.ROOT.'/Administration/articleManagement');
+        header('location: '.$_SESSION['lastPage']);
     }
     public function editArticle()
     {
         $info = $_POST;
         $this->_articleManager->addArticle($info['title'],$info['content']);
-        header('location: '.ROOT.'/Administration/articleManagement');
+        header('location: '.$_SESSION['lastPage']);
+    }
+    public function deleteArticle($info)
+    {
+        $this->_articleManager->dellArticle($info['id']);
+        header('location: '.$_SESSION['lastPage']);
+        
     }
 }

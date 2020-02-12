@@ -19,16 +19,19 @@ class ControllerAdministration extends BaseController
         $nbWarning = $this->_warningManager->countWarning();
         $info = ['articleNb' => $nbArticles,'commentNb' =>$nbComments,'warningNb' => $nbWarning,'commentWarning'=>$tabCommentWarning];
         $title ='Administration';
+        $_SESSION['lastPage'] = ROOT.'/Administration/administrationAccueil';
         $this->templateAdmin('views/viewAdministration.php',$info,$title);
     }
     public function articleManagement()
     {
+        $_SESSION['lastPage'] = ROOT.'/Administration/articleManagement';
         $title = 'Gestion article';
         $articles = $this->_articleManager->getAllArticles();
         $this->templateAdmin('views/viewArticleManagement.php',$articles,$title);
     }
     public function userManagement()
     {
+        $_SESSION['lastPage'] = ROOT.'/Administration/userManagement';
         $title = 'Gestion article';
         $users = $this->_userManager->getAllUsers();
         $this->templateAdmin('views/viewUserManagement.php',$users,$title);
@@ -45,11 +48,5 @@ class ControllerAdministration extends BaseController
         $article = $this->_articleManager->getArticleById($info['id']);
         $title = 'edition';
         $this->templateAdmin('views/viewEditArticle.php',$article,$title);
-    }
-    public function deleteArticle($info)
-    {
-        $this->_articleManager->dellArticle($info['id']);
-        $this->articleManagement();
-        
     }
 }

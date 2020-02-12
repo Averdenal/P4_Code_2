@@ -20,8 +20,12 @@ class ControllerComment extends BaseController
         $this->_commentManager->dellComment($info['idComment']);
         $article = $this->_articleManager->getArticleById($info['idArticle']);
         $message = 'succes';
-        header('Refresh:2;url='.ROOT.'/Article/'.$article->getSlug());
-        echo '<h3>le commentaire est supprimé</h3>';
+        if(empty($_SESSION['lastPage'])){
+            header("location:".$_SESSION['lastPage']);
+        }else{
+            header('Refresh:2;url='.ROOT.'/Article/'.$article->getSlug());
+            echo '<h3>le commentaire est supprimé</h3>';
+        }
     }
     
     public function warningComment($info)

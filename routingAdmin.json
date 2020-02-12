@@ -123,7 +123,7 @@
         "method":"GET",
         "name":"newArticle",
         "route":"/Administration/deleteArticle/{id}",
-        "controller":"ControllerAdministration",
+        "controller":"ControllerArticles",
         "action":"deleteArticle",
         "param":"id"
     }
