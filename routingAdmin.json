@@ -113,6 +113,14 @@
     },
     {
         "method":"POST",
+        "name":"editArticlePost",
+        "route":"/Articles/editArticle",
+        "controller":"ControllerArticles",
+        "action":"editArticle",
+        "param":"id"
+    },
+    {
+        "method":"POST",
         "name":"saveArticle",
         "route":"/Articles/newArticle",
         "controller":"ControllerArticles",
