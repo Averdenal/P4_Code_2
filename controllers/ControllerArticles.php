@@ -10,8 +10,8 @@ class ControllerArticles extends BaseController
     public function getArticleBySlug($slug)
     {
         $slug = $slug['slug'];
+        $_SESSION['lastPage'] = ROOT.'/Article/'.$slug;
         $tab = [];
-
         $tab['article'] = $this->_articleManager->getArticleBySlug($slug);
         $tab['comments'] = $this->_commentManager->getCommentsByArticle($tab['article']->getId());
         $tab['isConnect'] = $this->_userManager->isConnect();
@@ -30,7 +30,7 @@ class ControllerArticles extends BaseController
     public function editArticle()
     {
         $info = $_POST;
-        $this->_articleManager->addArticle($info['title'],$info['content']);
+        $this->_articleManager->editArticle($info['title'],$info['content'],$info['id']);
         header('location: '.$_SESSION['lastPage']);
     }
     public function deleteArticle($info)

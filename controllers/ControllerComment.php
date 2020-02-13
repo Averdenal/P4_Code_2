@@ -12,7 +12,7 @@ class ControllerComment extends BaseController
     {
         $this->_commentManager->addComment($info['content'],$info['article']);
         $article = $this->_articleManager->getArticleById($info['article']);
-        header('location: '.ROOT.'/Article/'.$article->getSlug());
+        header("location:".$_SESSION['lastPage']);
     }
 
     public function deleteComment($info)
@@ -20,19 +20,14 @@ class ControllerComment extends BaseController
         $this->_commentManager->dellComment($info['idComment']);
         $article = $this->_articleManager->getArticleById($info['idArticle']);
         $message = 'succes';
-        if(empty($_SESSION['lastPage'])){
-            header("location:".$_SESSION['lastPage']);
-        }else{
-            header('Refresh:2;url='.ROOT.'/Article/'.$article->getSlug());
-            echo '<h3>le commentaire est supprimé</h3>';
-        }
+        header("location:".$_SESSION['lastPage']);
     }
     
     public function warningComment($info)
     {
         $this->_warningManager->addWarning($info['idComment']);
         $article = $this->_articleManager->getArticleById($info['idArticle']);
-        header('location:'.ROOT.'/Article/'.$article->getSlug());
+        header("location:".$_SESSION['lastPage']);
     }
 
 }

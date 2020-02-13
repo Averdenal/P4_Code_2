@@ -8,6 +8,7 @@ class ControllerAccueil extends BaseController
     }
     public function accueil()
     {
+        $_SESSION['lastPage'] = ROOT.'/';
         $articles = $this->_articleManager->getAllArticles();
         $titlePage = 'Accueil';
         $this->template('views/viewAccueil.php',$articles,$titlePage);
