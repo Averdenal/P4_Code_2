@@ -51,9 +51,9 @@
         "param":"content,article"
     },
     {
-        "method":"POST",
+        "method":"GET",
         "name":"addComment",
-        "route":"/Comment/deleteComment",
+        "route":"/Comment/deleteComment/{id}",
         "controller":"ControllerComment",
         "action":"deleteComment",
         "param":"id"

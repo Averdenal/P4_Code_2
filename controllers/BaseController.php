@@ -21,7 +21,9 @@ class BaseController
         ob_start();
         include($view);
         $content = ob_get_clean();
+        unset($_SESSION['msg_info']);
         require_once('views/template.php');
+        
     }
     public function templateAdmin($view,$tab = null,$titlePage = null)
     {
@@ -30,6 +32,7 @@ class BaseController
         ob_start();
         include($view);
         $content = ob_get_clean();
+        unset($_SESSION['msg_info']);
         require_once('views/template-admin.php');
     }
 }

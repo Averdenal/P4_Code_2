@@ -12,14 +12,13 @@ class ControllerComment extends BaseController
     {
         $this->_commentManager->addComment($info['content'],$info['article']);
         $article = $this->_articleManager->getArticleById($info['article']);
+        $_SESSION['msg_info'] = "Commentaire est bien ajouté";
         header("location:".$_SESSION['lastPage']);
     }
 
     public function deleteComment($info)
     {
-        $this->_commentManager->dellComment($info['idComment']);
-        $article = $this->_articleManager->getArticleById($info['idArticle']);
-        $message = 'succes';
+        $this->_commentManager->dellComment($info['id']);
         header("location:".$_SESSION['lastPage']);
     }
     

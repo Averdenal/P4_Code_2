@@ -268,3 +268,11 @@ table {
 .tab_comment{
     margin:2em 0;
 }
+.alert{
+    padding: 10px 20px;
+}
+
+.alert_OK{
+    background-color: rgb(26, 221, 68);
+    color: green;
+}

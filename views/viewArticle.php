@@ -7,7 +7,11 @@
     </div>
 </article>
 <div class="Comment">
-<?php if($tab['isConnect']): ?>
+<?php if(!empty($_SESSION['msg_info'])): ?>
+    <div class="alert alert_OK">
+    <?= $_SESSION['msg_info']; ?>
+    </div>
+<?php endif; if($tab['isConnect']): ?>
     <form id="form_Comment" method="POST" action="<?= ROOT ?>/Comment/addComment">
         <input type="hidden" name="article" value="<?= $tab['article']->getId(); ?>">
         <textarea type="text" rows="10" name="content"></textarea>
