@@ -216,6 +216,8 @@ table {
 .menu_admin{
     background-color: black;
     height: 100vh;
+    position: fixed;
+    width: 250px;
 }
 .menu_admin a{
     display: block;

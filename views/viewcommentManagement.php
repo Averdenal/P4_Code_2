@@ -6,7 +6,7 @@
             <th>Date</th>
             <th>Content</th>
             <th>Auteur</th>
-            <th><a class="btn btn_New" href="<?= ROOT.'/Administration/newArticle' ?>">Nouveau</a></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +18,6 @@
         <td><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></td>
         <td>
             <a class="btn btn_Delete" href="<?= ROOT.'/Comment/deleteComment/'. $comment->getId() ?>">Supprimer</a>
-            <a class="btn btn_Edit" href="<?= ROOT.'/Warning/deleteWarning/'. $comment->getId() ?>">Valider</a>
         </td>
 
 

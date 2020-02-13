@@ -16,9 +16,12 @@ P4_Code
 ## Section Admin
 ### Gestion Articles
     - suppr OK
-    - edit En cours
+    - edit ok
     - Nouveau OK
 
 ### Gestion Users
 
 ### Gestion Commentaire
+ok
+### gestion warning 
+affichier le commentaire qu'un fois même si plusieurs warning 
