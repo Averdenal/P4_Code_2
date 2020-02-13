@@ -18,7 +18,8 @@ class ControllerComment extends BaseController
 
     public function deleteComment($info)
     {
-        $this->_commentManager->dellComment($info['id']);
+        $this->_commentManager->dellComment((int) $info['id']);
+        $_SESSION['msg_info'] = "Commentaire est supprimé";
         header("location:".$_SESSION['lastPage']);
     }
     
@@ -26,6 +27,7 @@ class ControllerComment extends BaseController
     {
         $this->_warningManager->addWarning($info['idComment']);
         $article = $this->_articleManager->getArticleById($info['idArticle']);
+        $_SESSION['msg_info'] = "Commentaire signalé";
         header("location:".$_SESSION['lastPage']);
     }
 

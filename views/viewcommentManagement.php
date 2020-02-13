@@ -1,4 +1,9 @@
 <h2>Gestion des commentaires</h2>
+<?php if(!empty($_SESSION['msg_info'])): ?>
+    <div class="alert alert_OK">
+    <?= $_SESSION['msg_info']; ?>
+    </div>
+<?php endif; ?>
 <table>
     <thead>
         <tr>

@@ -40,7 +40,7 @@
                     <th><?= $comment->getContent() ?></th>
                     <th><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></th>
                     <th>
-                        <a class="btn btn_Delete" href="<?= ROOT.'/Comment/deleteComment/'. $comment->getId() ?>">Supprimer</a>
+                        <a class="btn btn_Delete" href="<?= ROOT.'/Warning/deleteWarning/'. $comment->getId() ?>">Supprimer</a>
                         <a class="btn btn_Edit" href="<?= ROOT.'/Warning/deleteWarning/'. $comment->getId() ?>">Valider</a>
                     </th>
                 </tr>
