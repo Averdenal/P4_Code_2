@@ -20,6 +20,7 @@ class BaseController
         $titlePage = TITLESITE.' - '.$titlePage;
         ob_start();
         include($view);
+        extract($tab);
         $content = ob_get_clean();
         unset($_SESSION['msg_info']);
         require_once('views/template.php');
@@ -31,6 +32,7 @@ class BaseController
         $titlePage = TITLESITE.' - '.$titlePage;
         ob_start();
         include($view);
+        extract($tab);
         $content = ob_get_clean();
         unset($_SESSION['msg_info']);
         require_once('views/template-admin.php');
