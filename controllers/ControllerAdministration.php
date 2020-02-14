@@ -9,15 +9,11 @@ class ControllerAdministration extends BaseController
 
     public function administrationAccueil()
     {
-        $tabCommentWarning = [];
-        $warnings = $this->_warningManager->getAllWarning();
-        foreach($warnings as $warning){
-            $tabCommentWarning[] = $this->_commentManager->getCommentById($warning->getCommentaire());
-        }
+        $warnings = $this->_commentManager->getCommentWarning();
         $nbArticles = $this->_articleManager->countArticle();
         $nbComments = $this->_commentManager->countComment();
         $nbWarning = $this->_warningManager->countWarning();
-        $info = ['articleNb' => $nbArticles,'commentNb' =>$nbComments,'warningNb' => $nbWarning,'commentWarning'=>$tabCommentWarning];
+        $info = ['articleNb' => $nbArticles,'commentNb' =>$nbComments,'warningNb' => $nbWarning,'commentWarning'=>$warnings];
         $title ='Administration';
         $_SESSION['lastPage'] = ROOT.'/Administration/administrationAccueil';
         $this->templateAdmin('views/viewAdministration.php',$info,$title);
@@ -36,6 +32,7 @@ class ControllerAdministration extends BaseController
         $users = $this->_userManager->getAllUsers();
         $this->templateAdmin('views/viewUserManagement.php',$users,$title);
     }
+
     public function commentManagement()
     {
         $_SESSION['lastPage'] = ROOT.'/Administration/commentManagement';

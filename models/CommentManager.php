@@ -97,7 +97,18 @@ class CommentManager extends Model
         $req->execute();
         return $req->fetchObject('Comment');
     }   
-    //à tester
+    public function getCommentWarning()
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname 
+        FROM commentaires 
+        JOIN users ON commentaires.user = users.id 
+        JOIN warning ON warning.commentaire = commentaires.id 
+        GROUP BY commentaires.id');
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_CLASS,'Comment');
+    }
+    
     public function countCommentByArticle($idArticle)
     {
         $bdd = $this->getBdd();

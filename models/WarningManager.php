@@ -36,13 +36,12 @@ class WarningManager extends Model
     /**
      * @param {int} id du commentaire.
      */
-    function deleteWarningByComment($id):void
+    function deleteWarningByComment($id)
     {
         $bdd = $this->getBdd();
         $req = $bdd->prepare('DELETE FROM warning WHERE commentaire = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->execute();
-        
     }
     public function isWarningBy($id)
     {
