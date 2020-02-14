@@ -26,15 +26,11 @@ foreach($tab['comments'] as $comment): ?>
             <p><?= $comment->getDate() ?></p>
             <p><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></p>
         </div>
-        <?php if($tab['isConnect'] && ($_SESSION['auth'] == $comment->getAutor()[0] || $_SESSION['rang'] == 'admin')): ?>
-        <form action="<?= ROOT ?>/Comment/deleteComment" method="POST">
-            <input type="hidden" name="idComment" value="<?= $comment->getId(); ?>">
-            <input type="hidden" name="idArticle" value="<?= $tab['article']->getId(); ?>">
-            <input type="submit" value="Supprimer">
-        </form>
-        <?php endif; ?>
-        <?php if($tab['isConnect']): ?>
-            <a href='<?= ROOT .'/Comment/warningComment/'.$tab['article']->getId().'-'.$comment->getId() ?>'>Signaler</a>
+        <?php if($tab['isConnect']): 
+            if ($_SESSION['auth'] == $comment->getAutor()[0] || $_SESSION['rang'] == 'admin'):?>
+            <a class="btn btn_Delete" href="<?= ROOT.'/Comment/deleteComment/'. $comment->getId() ?>">Supprimer</a>
+            <?php endif; ?>
+            <a style='color:black' href='<?= ROOT .'/Comment/warningComment/'.$comment->getId() ?>'>Signaler</a>
         <?php endif; ?>
         
     </div>

@@ -8,6 +8,7 @@ class Comment
     private $article;
     private $lastname;
     private $firstname;
+    private $nbWarning;
 
     public function getId(){
         return $this->id;
@@ -24,5 +25,8 @@ class Comment
     }
     public function getDate(){
         return $this->date;
+    }
+    public function getNbWarning(){
+        return $this->nbWarning;
     }
 }

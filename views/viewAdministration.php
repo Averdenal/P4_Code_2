@@ -30,6 +30,7 @@
                 <th># ID</th>
                 <th>Commentaires</th>
                 <th>Auteur</th>
+                <th>Nb Warning</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -39,6 +40,7 @@
                     <th># <?= $comment->getId() ?></th>
                     <th><?= $comment->getContent() ?></th>
                     <th><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></th>
+                    <th><?= $comment->getNbWarning() ?></th>
                     <th>
                         <a class="btn btn_Delete" href="<?= ROOT.'/Warning/deleteWarning/'. $comment->getId() ?>">Supprimer</a>
                         <a class="btn btn_Edit" href="<?= ROOT.'/Warning/deleteWarning/'. $comment->getId() ?>">Valider</a>

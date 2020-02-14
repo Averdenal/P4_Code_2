@@ -26,7 +26,6 @@ class ControllerComment extends BaseController
     public function warningComment($info)
     {
         $this->_warningManager->addWarning($info['idComment']);
-        $article = $this->_articleManager->getArticleById($info['idArticle']);
         $_SESSION['msg_info'] = "Commentaire signalé";
         header("location:".$_SESSION['lastPage']);
     }

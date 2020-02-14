@@ -3,10 +3,14 @@
     foreach($tab as $article):
     ?>
     <article>
-        <h3><?= $article->getTitle(); ?></h3>
-        <p><?= $article->getLitleContent(); ?>
-            <a href="Article/<?= $article->getSlug() ?>">En lire plus.</a>
-        </p>
+        <div class='zone_Title'>
+            <h3><?= $article->getTitle(); ?></h3>
+        </div>
+        <div class='zone_Content'>
+            <p><?= $article->getLitleContent(); ?>
+                <a href="Article/<?= $article->getSlug() ?>">En lire plus.</a>
+            </p>
+        </div>
         <div class='infoArticle flex'>
             <div class="dateArticle"><?= $article->getDate(); ?></div>
             <div class="autorArticle"><?= $article->getFirstName().' '.$article->getLastName(); ?></div>

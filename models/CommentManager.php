@@ -21,10 +21,11 @@ class CommentManager extends Model
     function getAllComments()
     {
         $bdd = $this->getBdd();
-        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname
-        FROM commentaires
-        JOIN users
-        ON commentaires.user = users.id');
+        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname,
+        (SELECT COUNT(*) FROM warning WHERE warning.commentaire = commentaires.id) AS nbWarning
+               FROM commentaires
+               JOIN users
+               ON commentaires.user = users.id');
         $req->execute();
         return $req->fetchAll(PDO::FETCH_CLASS,'Comment');
     }
@@ -32,7 +33,8 @@ class CommentManager extends Model
     function getCommentsByArticle($idArticle)
     {
         $bdd = $this->getBdd();
-        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname
+        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname,
+        (SELECT COUNT(*) FROM warning WHERE warning.commentaire = commentaires.id) AS nbWarning
         FROM commentaires
         JOIN users
         ON commentaires.user = users.id
@@ -88,7 +90,8 @@ class CommentManager extends Model
 
     function getCommentById($id){
         $bdd = $this->getBdd();
-        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname
+        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname,
+        (SELECT COUNT(*) FROM warning WHERE warning.commentaire = commentaires.id) AS nbWarning
         FROM commentaires
         JOIN users
         ON commentaires.user = users.id
@@ -100,7 +103,8 @@ class CommentManager extends Model
     public function getCommentWarning()
     {
         $bdd = $this->getBdd();
-        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname 
+        $req = $bdd->prepare('SELECT commentaires.id, commentaires.content, commentaires.date, commentaires.user, commentaires.article, users.lastname, users.firstname, 
+        (SELECT COUNT(*) FROM warning WHERE warning.commentaire = commentaires.id) AS nbWarning
         FROM commentaires 
         JOIN users ON commentaires.user = users.id 
         JOIN warning ON warning.commentaire = commentaires.id 
