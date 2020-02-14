@@ -141,7 +141,17 @@ table {
     border-spacing: 0;
 }
 .list_Article_Accueil{
-    padding:0;
+    padding: 0 3em;
+    position: relative;
+}
+.list_Article_Accueil article{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px 1em;
+    margin: 1em 0;
+}
+.list_Article_Accueil article h3{
+    margin: 0;
 }
 
 
