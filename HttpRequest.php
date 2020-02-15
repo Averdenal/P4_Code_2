@@ -32,15 +32,12 @@ class HttpRequest
     public function getParam()
     {
         global $env;
-        var_dump($this->route);
         switch($this->route->method){
             case 'GET':
             case 'DELETE':
                 $url = str_replace($env->basepath,'',$this->url);
-
                 preg_match_all("#^".$this->route->route."$#s",$url,$tab);
                 if(!empty($tab)){
-                    var_dump($tab);
                     for($i = 0; $i<count($this->route->param);$i++){
                         $this->param[] = $tab[$i+1][0];
                     }
@@ -53,7 +50,8 @@ class HttpRequest
             case 'PUT':
                 foreach($this->route->param as $param){
                     if(!empty($_POST[$param])){
-                        $this->param[$param] = $_POST[$param];
+                        $this->param[] = $_POST[$param];
+                        var_dump($this->param);
                     }else{
                         throw new NoParamFoundException($param);
                     }

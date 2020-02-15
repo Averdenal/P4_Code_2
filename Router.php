@@ -4,10 +4,12 @@ class Router
 {
     public $listRoute =[];
     public $_matches;
+    private $_userManager;
 
     public function __construct()
     {   
-        $jsons = json_decode(file_get_contents('routing.json'));
+        $this->_userManager = new UserManager();
+        $jsons = $this->selectDataRoute();
         foreach($jsons as $json){
             $this->listRoute[] = new Route($json); 
         }
@@ -22,7 +24,23 @@ class Router
         }else{
             $controller->{$httpResquest->route->action}();
         }
-        
-
+    }
+    private function selectDataRoute(){
+        if($this->_userManager->isConnect()){
+            switch($this->_userManager->getRang((int) $_SESSION['auth'])){
+                case 'admin':
+                    $routeInfo = 'routingAdmin.json';
+                break;
+                case 'subscriber':
+                    $routeInfo = 'routingSubscriber.json';
+                break;
+                default:
+                    $routeInfo = 'routing.json';
+                break;
+            }
+        }else{
+            $routeInfo = 'routing.json';
+        }
+        return json_decode(file_get_contents($routeInfo));
     }
 }

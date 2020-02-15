@@ -7,10 +7,10 @@ class ControllerAuthentification extends BaseController
         parent::__construct();
     }
 
-    public function loginVerif($info)
+    public function loginVerif($login,$pwd)
     {
-        $this->_userManager->checkLoginPassword($info['login'],$info['pwd']);
-        header("location:".$_SESSION['lastPage']);
+        $this->_userManager->checkLoginPassword($login,$pwd);
+        header("location:".ROOT);
     }
     public function logout()
     {

@@ -8,12 +8,10 @@ class ControllerComment extends BaseController
         parent::__construct();
     }
 
-    public function addComment($info)
+    public function addComment($content,$article)
     {
-        $this->_commentManager->addComment($info['content'],$info['article']);
-        $article = $this->_articleManager->getArticleById($info['article']);
-        $_SESSION['msg_info'] = "Commentaire est bien ajouté";
-        header("location:".$_SESSION['lastPage']);
+        var_dump($content);
+        $this->_commentManager->addComment($content,$article);
     }
 
     public function deleteComment($info)

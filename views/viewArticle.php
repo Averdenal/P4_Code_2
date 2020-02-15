@@ -7,19 +7,15 @@
     </div>
 </article>
 <div class="Comment">
-<?php if(!empty($_SESSION['msg_info'])): ?>
-    <div class="alert alert_OK">
-    <?= $_SESSION['msg_info']; ?>
-    </div>
-<?php endif; if($tab['isConnect']): ?>
-    <form id="form_Comment" method="POST" action="<?= ROOT ?>/Comment/addComment">
+<?php if($tab['isConnect']): ?>
+<form id="form_Comment" action="">
         <input type="hidden" name="article" value="<?= $tab['article']->getId(); ?>">
         <textarea type="text" rows="10" name="content"></textarea>
-        <input type="submit" value="Envoyer">
+        <input type="submit" value="Envoyer" id="add_Comment">
     </form>
+    <p id="info"></p>
 <?php endif;
 foreach($tab['comments'] as $comment): ?>
-    
     <div class="item_Comment">
         <p><?= $comment->getContent(); ?></p>
         <div>
