@@ -10,7 +10,7 @@
     {
         "method":"GET",
         "name":"article",
-        "route":"/Article/{slug}",
+        "route":"/Article/(.*)",
         "controller":"ControllerArticles",
         "action":"getArticleBySlug",
         "param":"slug"
@@ -53,7 +53,7 @@
     {
         "method":"GET",
         "name":"addComment",
-        "route":"/Comment/deleteComment/{id}",
+        "route":"/Comment/deleteComment/(.*)",
         "controller":"ControllerComment",
         "action":"deleteComment",
         "param":"id"
@@ -70,7 +70,7 @@
     {
         "method":"GET",
         "name":"addWarning",
-        "route":"/Comment/warningComment/{idArticle}",
+        "route":"/Comment/warningComment/(.*)",
         "controller":"ControllerComment",
         "action":"warningComment",
         "param":"idArticle,idComment"
