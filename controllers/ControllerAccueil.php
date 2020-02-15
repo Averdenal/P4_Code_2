@@ -1,16 +1,16 @@
 <?php
 
-class ControllerAccueil
+class ControllerAccueil extends BaseController
 {
     function __construct()
     {
-        
+        parent::__construct();
     }
     public function accueil()
     {
-        $articleManager = new ArticleManager();
-        $articles = $articleManager->getAllArticles();
-        $titlePage = 'Book - Accueil';
-        require_once('views/viewAccueil.php');
+        $_SESSION['lastPage'] = ROOT.'/';
+        $articles = $this->_articleManager->getAllArticles();
+        $titlePage = 'Accueil';
+        $this->template('views/viewAccueil.php',$articles,$titlePage);
     }
 }

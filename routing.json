@@ -10,10 +10,10 @@
     {
         "method":"GET",
         "name":"article",
-        "route":"/Article/(.*)/(.*)",
+        "route":"/Article/(.*)",
         "controller":"ControllerArticles",
         "action":"getArticleBySlug",
-        "param":"slug,lol"
+        "param":"slug"
     },
     {
         "method":"GET",

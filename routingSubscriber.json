@@ -1,0 +1,79 @@
+[
+    {
+        "method":"GET",
+        "name":"accueil",
+        "route":"/",
+        "controller":"ControllerAccueil",
+        "action":"accueil",
+        "param":""
+    },
+    {
+        "method":"GET",
+        "name":"article",
+        "route":"/Article/{slug}",
+        "controller":"ControllerArticles",
+        "action":"getArticleBySlug",
+        "param":"slug"
+    },
+    {
+        "method":"POST",
+        "name":"connexion",
+        "route":"/Authentification/login",
+        "controller":"ControllerAuthentification",
+        "action":"loginVerif",
+        "param":"login,pwd"
+
+    },
+    {
+        "method":"POST",
+        "name":"register",
+        "route":"/Authentification/register",
+        "controller":"ControllerAuthentification",
+        "action":"register",
+        "param":"firstname,lastname,email,login,pwd"
+
+    },
+    {
+        "method":"POST",
+        "name":"logout",
+        "route":"/Authentification/logout",
+        "controller":"ControllerAuthentification",
+        "action":"logout",
+        "param":""
+
+    },
+    {
+        "method":"POST",
+        "name":"addComment",
+        "route":"/Comment/addComment",
+        "controller":"ControllerComment",
+        "action":"addComment",
+        "param":"content,article"
+    },
+    {
+        "method":"GET",
+        "name":"addComment",
+        "route":"/Comment/deleteComment/{id}",
+        "controller":"ControllerComment",
+        "action":"deleteComment",
+        "param":"id"
+    },
+    {
+        "method":"GET",
+        "name":"logout",
+        "route":"/Authentification/logout",
+        "controller":"ControllerAuthentification",
+        "action":"logout",
+        "param":""
+
+    },
+    {
+        "method":"GET",
+        "name":"addWarning",
+        "route":"/Comment/warningComment/{idArticle}",
+        "controller":"ControllerComment",
+        "action":"warningComment",
+        "param":"idArticle,idComment"
+    }
+]
+    
