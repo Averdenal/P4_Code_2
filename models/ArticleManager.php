@@ -3,20 +3,12 @@
 class ArticleManager extends Model
 {
     private $userManager;
-    private $_commentManager;
 
     function __construct()
     {
         $this->userManager = new UserManager();
-        $this->_commentManager = new CommentManager();
     }
-    public function countArticle()
-    {
-        $bdd = $this->getBdd();
-        $req = $bdd->prepare('SELECT COUNT(*)  FROM articles' );
-        $req->execute();
-        return (int) $req->fetch()[0];
-    }
+
     function getAllArticles()
     {
         $bdd = $this->getBdd();
@@ -56,32 +48,30 @@ class ArticleManager extends Model
 
     function dellArticle(int $id)
     {
-        if($this->_commentManager->countCommentByArticle($id) > 0){
-            $this->_commentManager->deleteAllCommentsByArticle($id);
-        }
         $bdd = $this->getBdd();
         $req = $bdd->prepare('DELETE FROM articles WHERE id = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->execute();
-        
     }
 
-    function editArticle(string $title, string $content, int $id){
+    function editArticle(string $title, string $content, int $id, int $idAutor){
         $slug = $this->createSlug($title);
         $bdd = $this->getBdd();
         $req = $bdd->prepare('UPDATE articles
         set title = :title ,
         content = :content ,
+        autor = :autor,
         slug = :slug
         WHERE id = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->bindParam(':title',$title,PDO::PARAM_STR);
         $req->bindParam(':content',$content,PDO::PARAM_STR);
+        $req->bindParam(':autor',$idAutor,PDO::PARAM_INT);
         $req->bindParam(':slug',$slug,PDO::PARAM_STR);
         $req->execute();
     }
 
-    function addArticle(string $title, string $content){
+    function createArticle(string $title, string $content){
         $date = date('Y-m-d H:i:s');
         $autor = $this->userManager->getUserConnecte();
         $onligne = 1;
@@ -110,7 +100,8 @@ class ArticleManager extends Model
             return $slug;      
     }
 
-    function shortText($content,$maxChar = 450){
+    function shortText($content){
+        $maxChar = 150;
         if(strlen($content) > $maxChar){
             return $newContent = substr($content,0,$maxChar).' ...';
         }else{

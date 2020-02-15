@@ -10,37 +10,26 @@
     {
         "method":"GET",
         "name":"article",
-        "route":"/Article/([a-zA-Z0-9\\-]+)",
+        "route":"/Article/(.*)/(.*)",
         "controller":"ControllerArticles",
         "action":"getArticleBySlug",
-        "param":"slug"
+        "param":"slug,lol"
     },
     {
-        "method":"POST",
-        "name":"connexion",
+        "method":"GET",
+        "name":"auth",
         "route":"/Authentification/login",
         "controller":"ControllerAuthentification",
-        "action":"loginVerif",
-        "param":"login,pwd"
-
-    },
-    {
-        "method":"POST",
-        "name":"register",
-        "route":"/Authentification/register",
-        "controller":"ControllerAuthentification",
-        "action":"register",
-        "param":"firstname,lastname,email,login,pwd"
-
-    },
-    {
-        "method":"POST",
-        "name":"logout",
-        "route":"/Authentification/logout",
-        "controller":"ControllerAuthentification",
-        "action":"logout",
+        "action":"login",
         "param":""
 
+    },
+    {
+        "method":"POST",
+        "name":"auth",
+        "route":"/Authentification/login",
+        "controller":"ControllerAuthentification",
+        "action":"loginverif",
+        "param":"login,pwd"
     }
 ]
-    

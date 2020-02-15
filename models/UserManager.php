@@ -32,7 +32,7 @@ class UserManager extends Model{
         }else {
             if($user->getPwd() === md5($password)){
                 $_SESSION['auth'] = $user->getId();
-                $_SESSION['rang'] = $this->getRang($user->getRang());
+                $_SESSION['rang'] = $user->getId();
                 return [true,$user];
             }else{
                 return [false];
@@ -44,12 +44,18 @@ class UserManager extends Model{
         return (int) $_SESSION['auth'];
     }
 
-    function getRang($id){
-            $bdd = $this->getBdd();
-            $req = $bdd->prepare('SELECT name FROM rangs WHERE id = :id');
-            $req->bindParam(':id',$id,PDO::PARAM_INT);
-            $req->execute();
-            return $req->fetch()['name'];
+    function isAdmin(){
+        $infoUser = $this->verifConnecte();
+        if($infoUser[0]){
+            if($infoUser[2] !== 1){
+                header("Location: ".ROOT);
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return false;
+        }
         
     }
 

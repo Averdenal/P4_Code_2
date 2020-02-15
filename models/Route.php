@@ -15,6 +15,10 @@ class Route{
         $this->route = $route->route;
         $this->controller = $route->controller;
         $this->action = $route->action;
-        $this->param= $route->param;
+        if($route->param != ''){
+            $this->param = explode(',',$route->param);
+        }
+
     }
+
 }

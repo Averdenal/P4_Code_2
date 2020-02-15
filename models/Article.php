@@ -16,6 +16,13 @@ class Article{
     public function getContent(){
         return $this->content;
     }
+    public function getLitleContent(){
+        if (strlen($this->content)>150) {
+            return substr($this->content, 0, 150).' [...]';
+        }else{
+            return $this->content;
+        }
+    }
     public function getDate(){
         return $this->date;
     }
@@ -40,10 +47,5 @@ class Article{
     }
     public function getLastName(){
         return $this->lastname;
-    }
-    public function getLitleContent()
-    {
-        $articleManager = new ArticleManager();
-        return $articleManager->shortText($this->content,150);
     }
 }
