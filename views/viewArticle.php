@@ -6,10 +6,10 @@
         <div class="autorArticle"><?= $tab['article']->getFirstName().' '.$tab['article']->getLastName(); ?></div>
     </div>
 </article>
-<div class="Comment">
-<div class="alert" id="info"></div>
-<?php if($tab['isConnect']): ?>
-<form id="form_Comment" action="" method="POST">
+<div class="Comment" id="container_Comment">
+    <div class="alert" id="info"></div>
+    <?php if($tab['isConnect']): ?>
+    <form id="form_Comment" action="" method="POST">
         <input type="hidden" name="article" value="<?= $tab['article']->getId(); ?>">
         <textarea type="text" rows="2" name="content"></textarea>
         <input type="submit" value="Envoyer">
