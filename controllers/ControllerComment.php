@@ -10,8 +10,8 @@ class ControllerComment extends BaseController
 
     public function addComment($content,$article)
     {
-        var_dump($content);
         $this->_commentManager->addComment($content,$article);
+        echo '<div class="alert">Commentaire bien ajouté</div>';
     }
 
     public function deleteComment($info)

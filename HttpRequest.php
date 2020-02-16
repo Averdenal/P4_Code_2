@@ -51,7 +51,6 @@ class HttpRequest
                 foreach($this->route->param as $param){
                     if(!empty($_POST[$param])){
                         $this->param[] = $_POST[$param];
-                        var_dump($this->param);
                     }else{
                         throw new NoParamFoundException($param);
                     }

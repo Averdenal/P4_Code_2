@@ -1,6 +1,7 @@
 class App{
     constructor(){
         this.init();
+        //this.tiny();
     }
 
     init(){
@@ -31,7 +32,7 @@ class App{
         });
         var formv = document.getElementById('form_Comment');
         formv.addEventListener('submit',function(e){
-            e.preventDefault();
+            
             let HttpRequest = new XMLHttpRequest();
             HttpRequest.onreadystatechange = function(){
                 if(HttpRequest.readyState === 4){
@@ -41,11 +42,27 @@ class App{
                 }
             }
             let data = new FormData(formv)
-            console.log(data);
-            HttpRequest.open('POST','/P4_Code_2/Comment/addComment',true);
+            HttpRequest.open('POST','/P4_Code_2/Comment/addComment',false);
             HttpRequest.send(data);
+            e.preventDefault();
         });
+    }
 
-        
+    tiny() {
+        tinymce.init({
+            selector: 'textarea',
+            height: 200,
+            menubar: false,
+            plugins: [
+              'advlist autolink lists link image charmap print preview anchor',
+              'searchreplace visualblocks code fullscreen',
+              'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+            ' bold italic backcolor | alignleft aligncenter ' +
+            ' alignright alignjustify | bullist numlist outdent indent |' +
+            ' removeformat | help'
+        });
+          
     }
 }

@@ -7,13 +7,13 @@
     </div>
 </article>
 <div class="Comment">
+<div class="alert" id="info"></div>
 <?php if($tab['isConnect']): ?>
-<form id="form_Comment" action="">
+<form id="form_Comment" action="" method="POST">
         <input type="hidden" name="article" value="<?= $tab['article']->getId(); ?>">
-        <textarea type="text" rows="10" name="content"></textarea>
-        <input type="submit" value="Envoyer" id="add_Comment">
+        <textarea type="text" rows="2" name="content"></textarea>
+        <input type="submit" value="Envoyer">
     </form>
-    <p id="info"></p>
 <?php endif;
 foreach($tab['comments'] as $comment): ?>
     <div class="item_Comment">
@@ -25,9 +25,10 @@ foreach($tab['comments'] as $comment): ?>
         <?php if($tab['isConnect']): 
             if ($_SESSION['auth'] == $comment->getAutor()[0] || $_SESSION['rang'] == 'admin'):?>
             <a class="btn btn_Delete" href="<?= ROOT.'/Comment/deleteComment/'. $comment->getId() ?>">Supprimer</a>
-            <?php endif; ?>
+            <?php endif; 
+            if ($_SESSION['auth'] != $comment->getAutor()[0]):?>
             <a style='color:black' href='<?= ROOT .'/Comment/warningComment/'.$comment->getId() ?>'>Signaler</a>
-        <?php endif; ?>
+            <?php endif;endif; ?>
         
     </div>
 <?php endforeach; ?>
