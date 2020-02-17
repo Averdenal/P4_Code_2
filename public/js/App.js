@@ -19,7 +19,8 @@ class App{
                         info.innerHTML =HttpRequest.responseText;
                     }
                 }
-                HttpRequest.open('DELETE',evt.target.pathname,false);
+                console.log(evt.target.pathname);
+                HttpRequest.open('DELETE',evt.target.pathname,true);
                 HttpRequest.send();
             }
         }, false);
