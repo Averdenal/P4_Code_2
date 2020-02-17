@@ -36,8 +36,11 @@ class App{
             let HttpRequest = new XMLHttpRequest();
             HttpRequest.onreadystatechange = function(){
                 if(HttpRequest.readyState === 4){
-                    let info = document.querySelector('#info');
-
+                    let info = document.getElementById('container_Comment');
+                    let infomsg = document.querySelector('#info');
+                    let textarea = document.getElementById('textComs');
+                    textarea.value = "";
+                    infomsg.innerHTML = 'Commentaire Ajouté '
                     info.innerHTML =HttpRequest.responseText;
                 }
             }
@@ -45,9 +48,6 @@ class App{
             HttpRequest.open('POST','/P4_Code_2/Comment/addComment',false);
             HttpRequest.send(data);
             e.preventDefault();
-            console.log(location.pathname);
-            setInterval( $('#container_Comment').load('LE_NOM_DE_LA_PAGE_AVEC_LE_CONTENU_DU_DIV.php').fadeIn("slow") , 1000);
-            //location.reload();
         });
     }
 

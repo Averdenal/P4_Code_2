@@ -7,25 +7,30 @@ class ControllerComment extends BaseController
     {
         parent::__construct();
     }
-
+    public function getCommentByArticle($id)
+    {
+        ob_start();
+        $comments = $this->_commentManager->getCommentsByArticle($id);
+        include('views/viewListComs.php');
+        $content = ob_get_clean();
+        return $content;
+    }
     public function addComment($content,$article)
     {
         $this->_commentManager->addComment($content,$article);
-        echo '<div class="alert">Commentaire bien ajouté</div>';
+        echo $this->getCommentByArticle($article);
     }
 
-    public function deleteComment($info)
+    public function deleteComment($id)
     {
-        $this->_commentManager->dellComment((int) $info['id']);
-        $_SESSION['msg_info'] = "Commentaire est supprimé";
-        header("location:".$_SESSION['lastPage']);
+        $this->_commentManager->dellComment((int) $id);
+        //echo $this->getCommentByArticle($article);
     }
     
-    public function warningComment($info)
+    public function warningComment($id)
     {
-        $this->_warningManager->addWarning($info['idComment']);
-        $_SESSION['msg_info'] = "Commentaire signalé";
-        header("location:".$_SESSION['lastPage']);
+        $this->_warningManager->addWarning($id);
+        //echo $this->getCommentByArticle($article);
     }
 
 }

@@ -22,7 +22,6 @@ class BaseController
         include($view);
         extract($tab);
         $content = ob_get_clean();
-        unset($_SESSION['msg_info']);
         require_once('views/template.php');
         
     }
@@ -34,7 +33,7 @@ class BaseController
         include($view);
         extract($tab);
         $content = ob_get_clean();
-        unset($_SESSION['msg_info']);
         require_once('views/template-admin.php');
     }
+
 }

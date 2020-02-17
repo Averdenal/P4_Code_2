@@ -6,16 +6,16 @@
         <div class="autorArticle"><?= $tab['article']->getFirstName().' '.$tab['article']->getLastName(); ?></div>
     </div>
 </article>
-<div class="Comment" id="container_Comment">
-    <div class="alert" id="info"></div>
+<div class="alert" id="info"></div>
     <?php if($tab['isConnect']): ?>
     <form id="form_Comment" action="" method="POST">
         <input type="hidden" name="article" value="<?= $tab['article']->getId(); ?>">
-        <textarea type="text" rows="2" name="content"></textarea>
+        <textarea type="text" rows="2" name="content" id="textComs"></textarea>
         <input type="submit" value="Envoyer">
     </form>
-<?php endif;
-foreach($tab['comments'] as $comment): ?>
+<?php endif; ?>
+<div class="Comment" id="container_Comment">
+<?php foreach($tab['comments'] as $comment): ?>
     <div class="item_Comment">
         <p><?= $comment->getContent(); ?></p>
         <div>

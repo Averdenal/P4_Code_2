@@ -74,6 +74,14 @@
         "controller":"ControllerComment",
         "action":"warningComment",
         "param":"idArticle,idComment"
+    },
+    {
+        "method":"GET",
+        "name":"reload",
+        "route":"/Comment/getCommentByArticle/(.*)",
+        "controller":"ControllerComment",
+        "action":"getCommentByArticle",
+        "param":"slug"
     }
 ]
     
