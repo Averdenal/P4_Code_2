@@ -39,8 +39,8 @@ class ControllerAdministration extends BaseController
 
     public function newArticle($title = null, $content = null)
     {
-            $title = 'Nouveau Article';
-            $this->templateAdmin('views/viewNewArticle.php',null,$title);        
+        $title = 'Nouveau Article';
+        $this->templateAdmin('views/viewNewArticle.php',null,$title);        
     }
     public function createArticle($title, $content)
     {
@@ -52,5 +52,16 @@ class ControllerAdministration extends BaseController
         $article = $this->_articleManager->getArticleById($id);
         $title = 'edition';
         $this->templateAdmin('views/viewEditArticle.php',$article,$title);
+    }
+
+    public function majArticle($title,$content,$id)
+    {
+        $this->_articleManager->editArticle($title,$content,$id);
+    }
+
+    public function deleteArticle($id)
+    {
+        var_dump($id);
+        $this->_articleManager->dellArticle($id);
     }
 }

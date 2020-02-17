@@ -18,8 +18,8 @@
     {
         "method":"DELETE",
         "name":"article",
-        "route":"/Article/(.*)",
-        "controller":"ControllerArticles",
+        "route":"/Administration/deleteArticle/(.*)",
+        "controller":"ControllerAdministration",
         "action":"deleteArticle",
         "param":"id"
     },

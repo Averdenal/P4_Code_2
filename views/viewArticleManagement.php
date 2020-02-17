@@ -4,6 +4,7 @@
     <?= $_SESSION['msg_info']; ?>
     </div>
 <?php endif; ?>
+<p id="info"></p>
 <table>
     <thead>
         <tr>
@@ -24,8 +25,8 @@
         <td><?= $article->getLitleContent() ?></td>
         <td><?= $article->getFirstName().' '.$article->getLastName() ?></td>
         <td>
-            <a class="btn btn_Edit" href="<?= ROOT.'/Administration/editArticle/'.$article->getId() ?>">Editer</a>
-            <a class="btn btn_Delete" href="<?= ROOT.'/Administration/deleteArticle/'.$article->getId() ?>">Supprimer</a>
+            <a class="btn btn_Edit_Article" href="<?= ROOT.'/Administration/editArticle/'.$article->getId() ?>">Editer</a>
+            <a class="btn btn_Delete_Article" href="<?= ROOT.'/Administration/deleteArticle/'.$article->getId() ?>">Supprimer</a>
         </td>
 
 

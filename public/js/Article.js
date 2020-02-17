@@ -2,6 +2,7 @@ class Article
 {
     constructor(){
         this.newArticle();
+        this.deleteArticle();
     }
     newArticle(){
         var formAddArticle = document.getElementById('add_Article');
@@ -22,7 +23,25 @@ class Article
                 
             });
         }
-       
-    
+    }
+
+    deleteArticle()
+    {
+        document.body.addEventListener('click', function (evt) {
+            console.log(evt.target.className)
+            if (evt.target.className === 'btn btn_Delete_Article') {
+                evt.preventDefault();
+                let HttpRequest = new XMLHttpRequest();
+                let infomsg = document.querySelector('#info');
+                HttpRequest.onreadystatechange = function(){
+                    if(HttpRequest.readyState === 4){
+                        infomsg.innerHTML = 'Article Supprimé'
+                    }
+                }
+                console.log(evt.target.pathname);
+                HttpRequest.open('DELETE',evt.target.pathname,true);
+                HttpRequest.send();
+            }
+        });
     }
 }

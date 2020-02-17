@@ -14,9 +14,9 @@ class BaseController
         $this->_warningManager = new WarningManager();
         $this->_userManager = new UserManager();
     }
+
     public function template($view,$tab = null,$titlePage = null)
     {
-        //$_SESSION['lastPage'] = $_SERVER['REDIRECT_URL'];
         $titlePage = TITLESITE.' - '.$titlePage;
         ob_start();
         include($view);
@@ -25,9 +25,9 @@ class BaseController
         require_once('views/template.php');
         
     }
+    
     public function templateAdmin($view,$tab = null,$titlePage = null)
     {
-        //$_SESSION['lastPage'] = $_SERVER['REDIRECT_URL'];
         $titlePage = TITLESITE.' - '.$titlePage;
         ob_start();
         include($view);
