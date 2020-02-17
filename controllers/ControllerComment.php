@@ -24,13 +24,13 @@ class ControllerComment extends BaseController
     public function deleteComment($id)
     {
         $this->_commentManager->dellComment((int) $id);
-        //echo $this->getCommentByArticle($article);
+        echo $this->getCommentByArticle($id);
     }
     
     public function warningComment($id)
     {
         $this->_warningManager->addWarning($id);
-        //echo $this->getCommentByArticle($article);
+        echo $this->getCommentByArticle($id);
     }
 
 }

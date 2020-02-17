@@ -45,7 +45,8 @@
     <footer>
 
     </footer>
-    <script src="<?= JS ?>app.js"></script>
+    <script src="<?= JS ?>App.js"></script>
+    <script src="<?= JS ?>Comments.js"></script>
     <script>
         new App();
     </script>
