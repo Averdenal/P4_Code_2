@@ -3,20 +3,12 @@ class Comments
     
     constructor()
     {
-        this.btn_Delete = document.getElementsByClassName('btn_Delete');  
-        this.gestionDeleteComments(); 
-    }
 
-    gestionDeleteComments(){
-        for (var i = 0; i < this.btn_Delete.length; i++) {
-            var info = this.btn_Delete[i].pathname;
-            console.log(info)
-            this.btn_Delete[i].addEventListener('click',(e)=>{
-                e.preventDefault();
-                console.log("Clicked " + this.btn_Delete[i].pathname);
-            });
-           
-        }
+    }
+    gestionDeleteComments(e)
+    {
+        e.preventDefault();
+        console.log("Clicked " + info);
     }
 
     deleteComment(pathname)

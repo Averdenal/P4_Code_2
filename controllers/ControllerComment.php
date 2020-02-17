@@ -21,10 +21,10 @@ class ControllerComment extends BaseController
         echo $this->getCommentByArticle($article);
     }
 
-    public function deleteComment($id)
+    public function deleteComment($id,$idArticle)
     {
         $this->_commentManager->dellComment((int) $id);
-        echo $this->getCommentByArticle($id);
+        echo $this->getCommentByArticle($idArticle);
     }
     
     public function warningComment($id)

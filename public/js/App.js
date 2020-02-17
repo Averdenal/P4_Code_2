@@ -2,9 +2,28 @@ class App{
     constructor(){
         this.init();
         //this.tiny();
-        //this.btn_Delete = new Comments();
+        this.delete_com();
     }
-
+    delete_com()
+    {
+        document.body.addEventListener('click', function (evt) {
+            console.log(evt.target.className)
+            if (evt.target.className === 'btn btn_Delete') {
+                evt.preventDefault();
+                let HttpRequest = new XMLHttpRequest();
+                HttpRequest.onreadystatechange = function(){
+                if(HttpRequest.readyState === 4){
+                    let info = document.getElementById('container_Comment');
+                    let infomsg = document.querySelector('#info');
+                    infomsg.innerHTML = 'Commentaire Supprimé'
+                    info.innerHTML =HttpRequest.responseText;
+                }
+            }
+            HttpRequest.open('DELETE',evt.target.pathname,false);
+            HttpRequest.send();
+            }
+        }, false);
+    }
     init(){
         let form_Connection = document.getElementById('form_Connection');
         let form_Register = document.getElementById('form_Register');
