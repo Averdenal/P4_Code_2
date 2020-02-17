@@ -11,16 +11,16 @@ class App{
             if (evt.target.className === 'btn btn_Delete') {
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
+                let info = document.getElementById('container_Comment');
+                let infomsg = document.querySelector('#info');
                 HttpRequest.onreadystatechange = function(){
-                if(HttpRequest.readyState === 4){
-                    let info = document.getElementById('container_Comment');
-                    let infomsg = document.querySelector('#info');
-                    infomsg.innerHTML = 'Commentaire Supprimé'
-                    info.innerHTML =HttpRequest.responseText;
+                    if(HttpRequest.readyState === 4){
+                        infomsg.innerHTML = 'Commentaire Supprimé'
+                        info.innerHTML =HttpRequest.responseText;
+                    }
                 }
-            }
-            HttpRequest.open('DELETE',evt.target.pathname,false);
-            HttpRequest.send();
+                HttpRequest.open('DELETE',evt.target.pathname,false);
+                HttpRequest.send();
             }
         }, false);
     }
