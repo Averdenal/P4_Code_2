@@ -15,19 +15,16 @@ class ControllerAdministration extends BaseController
         $nbWarning = $this->_warningManager->countWarning();
         $info = ['articleNb' => $nbArticles,'commentNb' =>$nbComments,'warningNb' => $nbWarning,'commentWarning'=>$warnings];
         $title ='Administration';
-        $_SESSION['lastPage'] = ROOT.'/Administration/administrationAccueil';
         $this->templateAdmin('views/viewAdministration.php',$info,$title);
     }
     public function articleManagement()
     {
-        $_SESSION['lastPage'] = ROOT.'/Administration/articleManagement';
         $title = 'Gestion articles';
         $articles = $this->_articleManager->getAllArticles();
         $this->templateAdmin('views/viewArticleManagement.php',$articles,$title);
     }
     public function userManagement()
     {
-        $_SESSION['lastPage'] = ROOT.'/Administration/userManagement';
         $title = 'Gestion utilisateurs';
         $users = $this->_userManager->getAllUsers();
         $this->templateAdmin('views/viewUserManagement.php',$users,$title);
@@ -35,21 +32,24 @@ class ControllerAdministration extends BaseController
 
     public function commentManagement()
     {
-        $_SESSION['lastPage'] = ROOT.'/Administration/commentManagement';
         $title = 'Gestion commentaires';
         $comment = $this->_commentManager->getAllComments();
         $this->templateAdmin('views/viewcommentManagement.php',$comment,$title);
     }
 
-    public function newArticle()
+    public function newArticle($title = null, $content = null)
     {
-        $title = 'Nouveau Article';
-        $this->templateAdmin('views/viewNewArticle.php',null,$title);
+            $title = 'Nouveau Article';
+            $this->templateAdmin('views/viewNewArticle.php',null,$title);        
     }
-
-    public function editArticle($info)
+    public function createArticle($title, $content)
     {
-        $article = $this->_articleManager->getArticleById($info['id']);
+        $this->_articleManager->addArticle($title,$content);
+        echo 'l\'article est bien créé';
+    }
+    public function editArticle($id)
+    {
+        $article = $this->_articleManager->getArticleById($id);
         $title = 'edition';
         $this->templateAdmin('views/viewEditArticle.php',$article,$title);
     }

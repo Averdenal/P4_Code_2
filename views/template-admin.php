@@ -7,11 +7,11 @@
     <title><?= $titlePage ?></title>
     <script src='https://cdn.tiny.cloud/1/0xmawf3lubyyx5fmj1ha9jwvfll5r4pk1r2srn5kttm6yviv/tinymce/5/tinymce.min.js' referrerpolicy="origin">
     </script>
-    <script>
+    <!--<script>
         tinymce.init({
         selector: 'textarea'
         });
-    </script>
+    </script>-->
     <link rel="stylesheet" href="<?= CSS ?>style.css">
 </head>
 <body>
@@ -36,6 +36,7 @@
         <p>Tous droits réservés © Amaury VERDENAL 2019 - <?= date('Y') ?> - Formation Openclassrooms - Développeur Web Junior - Projet n°4 : Créez un blog pour un écrivain</p>
     </footer>
     <script src="<?= JS ?>app.js"></script>
+    <script src="<?= JS ?>Article.js"></script>
     <script>
         new App();
     </script>

@@ -31,7 +31,7 @@ class BaseController
         $titlePage = TITLESITE.' - '.$titlePage;
         ob_start();
         include($view);
-        extract($tab);
+        $tab;
         $content = ob_get_clean();
         require_once('views/template-admin.php');
     }

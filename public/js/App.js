@@ -3,6 +3,7 @@ class App{
         this.init();
         //this.tiny();
         this.delete_com();
+        new Article();
     }
     delete_com()
     {
@@ -37,39 +38,46 @@ class App{
                 zoneConnexion.style.display = 'block';
             });
         }
-        closeConnexionBtn.addEventListener('click',function(){
-            zoneConnexion.style.display = 'none';
-        });
+        if(closeConnexionBtn !== null){
+            closeConnexionBtn.addEventListener('click',function(){
+                zoneConnexion.style.display = 'none';
+            });
+        }
 
         let btActionRegister = document.getElementById('action_Register');
-        btActionRegister.addEventListener('click',function(){
-            form_Connection.style.display = 'none';
-            form_Register.style.display = 'block'
-        });
+        if(btActionRegister !== null){
+            btActionRegister.addEventListener('click',function(){
+                form_Connection.style.display = 'none';
+                form_Register.style.display = 'block'
+            });
+        }
         let btActionConnection = document.getElementById('action_Connection');
-        btActionConnection.addEventListener('click',function(){
-            form_Connection.style.display = 'block';
-            form_Register.style.display = 'none'
-        });
+        if(btActionConnection !== null){
+            btActionConnection.addEventListener('click',function(){
+                form_Connection.style.display = 'block';
+                form_Register.style.display = 'none'
+            });
+        }
         var formv = document.getElementById('form_Comment');
-        formv.addEventListener('submit',function(e){
-            
-            let HttpRequest = new XMLHttpRequest();
-            HttpRequest.onreadystatechange = function(){
-                if(HttpRequest.readyState === 4){
-                    let info = document.getElementById('container_Comment');
-                    let infomsg = document.querySelector('#info');
-                    let textarea = document.getElementById('textComs');
-                    textarea.value = "";
-                    infomsg.innerHTML = 'Commentaire Ajouté '
-                    info.innerHTML =HttpRequest.responseText;
+        if(formv !== null){
+            formv.addEventListener('submit',function(e){
+                let HttpRequest = new XMLHttpRequest();
+                HttpRequest.onreadystatechange = function(){
+                    if(HttpRequest.readyState === 4){
+                        let info = document.getElementById('container_Comment');
+                        let infomsg = document.querySelector('#info');
+                        let textarea = document.getElementById('textComs');
+                        textarea.value = "";
+                        infomsg.innerHTML = 'Commentaire Ajouté '
+                        info.innerHTML =HttpRequest.responseText;
+                    }
                 }
-            }
-            let data = new FormData(formv)
-            HttpRequest.open('POST','/P4_Code_2/Comment/addComment',false);
-            HttpRequest.send(data);
-            e.preventDefault();
-        });
+                let data = new FormData(formv)
+                HttpRequest.open('POST','/P4_Code_2/Comment/addComment',false);
+                HttpRequest.send(data);
+                e.preventDefault();
+            });
+        }
     }
 
     tiny() {

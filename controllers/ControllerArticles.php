@@ -26,9 +26,8 @@ class ControllerArticles extends BaseController
     {
         $info = $_POST;
         $this->_articleManager->addArticle($info['title'],$info['content']);
-        $_SESSION['msg_info'] = "l'article '".$info['title']."' est bien créé";
-        header('location: '.$_SESSION['lastPage']);
     }
+    
     public function editArticle()
     {
         $info = $_POST;

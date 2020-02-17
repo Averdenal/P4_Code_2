@@ -10,6 +10,5 @@ class ControllerWarning extends BaseController
     public function deleteWarning($info)
     {
         $this->_warningManager->deleteWarningByComment($info['id']);
-        header('location: '.$_SESSION['lastPage']);
     }
 }

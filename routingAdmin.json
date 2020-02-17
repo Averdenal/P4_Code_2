@@ -138,9 +138,9 @@
     {
         "method":"POST",
         "name":"saveArticle",
-        "route":"/Articles/newArticle",
-        "controller":"ControllerArticles",
-        "action":"newArticle",
+        "route":"/Administration/createArticle",
+        "controller":"ControllerAdministration",
+        "action":"createArticle",
         "param":"title,content"
     },
     {
