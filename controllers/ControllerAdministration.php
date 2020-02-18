@@ -61,7 +61,7 @@ class ControllerAdministration extends BaseController
 
     public function deleteArticle($id)
     {
-        var_dump($id);
         $this->_articleManager->dellArticle($id);
+        // echo liste article
     }
 }

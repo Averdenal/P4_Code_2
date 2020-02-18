@@ -16,14 +16,6 @@
         "param":"slug"
     },
     {
-        "method":"DELETE",
-        "name":"article",
-        "route":"/Administration/deleteArticle/(.*)",
-        "controller":"ControllerAdministration",
-        "action":"deleteArticle",
-        "param":"id"
-    },
-    {
         "method":"GET",
         "name":"auth",
         "route":"/Authentification/login",
@@ -144,10 +136,10 @@
         "param":"title,content"
     },
     {
-        "method":"GET",
+        "method":"DELETE",
         "name":"newArticle",
         "route":"/Administration/deleteArticle/(.*)",
-        "controller":"ControllerArticles",
+        "controller":"ControllerAdministration",
         "action":"deleteArticle",
         "param":"id"
     },
