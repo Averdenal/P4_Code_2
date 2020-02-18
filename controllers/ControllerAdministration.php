@@ -23,6 +23,12 @@ class ControllerAdministration extends BaseController
         $articles = $this->_articleManager->getAllArticles();
         $this->templateAdmin('views/viewArticleManagement.php',$articles,$title);
     }
+    public function viewArticleManager()
+    {
+        $title = 'Gestion articles';
+        $articles = $this->_articleManager->getAllArticles();
+        echo $this->viewConstruct('views/viewArticleManagement.php',$articles,$title);
+    }
     public function userManagement()
     {
         $title = 'Gestion utilisateurs';
@@ -62,6 +68,6 @@ class ControllerAdministration extends BaseController
     public function deleteArticle($id)
     {
         $this->_articleManager->dellArticle($id);
-        // echo liste article
+        echo $this->viewArticleManager();
     }
 }

@@ -28,7 +28,10 @@
                 </nav>
             </div>
             <div class="flex-5">
-            <?= $content ?>
+                <p id="msg"></p>
+                <div id="info">
+                <?= $content ?>
+                </div>
             </div>
         </div>
     </main>

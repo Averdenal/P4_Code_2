@@ -32,10 +32,13 @@ class Article
             if (evt.target.className === 'btn btn_Delete_Article') {
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
-                let infomsg = document.querySelector('#info');
+                let infomsg = document.querySelector('#msg');
+                let infoArticle = document.querySelector('#info')
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
                         infomsg.innerHTML = 'Article Supprimé'
+                        infoArticle.innerHTML = HttpRequest.responseText;
+
                     }
                 }
                 console.log(evt.target.pathname);

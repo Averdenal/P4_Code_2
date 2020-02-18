@@ -14,6 +14,14 @@ class BaseController
         $this->_warningManager = new WarningManager();
         $this->_userManager = new UserManager();
     }
+    public function viewConstruct($view,$tab = null,$titlePage = null)
+    {
+        $titlePage = TITLESITE.' - '.$titlePage;
+        ob_start();
+        include($view);
+        extract($tab);
+        return $content = ob_get_clean();
+    }
 
     public function template($view,$tab = null,$titlePage = null)
     {
