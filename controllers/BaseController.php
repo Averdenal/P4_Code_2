@@ -19,7 +19,6 @@ class BaseController
         $titlePage = TITLESITE.' - '.$titlePage;
         ob_start();
         include($view);
-        extract($tab);
         return $content = ob_get_clean();
     }
 

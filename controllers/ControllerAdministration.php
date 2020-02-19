@@ -50,8 +50,9 @@ class ControllerAdministration extends BaseController
     }
     public function createArticle($title, $content)
     {
-        $this->_articleManager->addArticle($title,$content);
-        echo 'l\'article est bien créé';
+        $title = 'edition';
+        $article = $this->_articleManager->addArticle($title,$content);
+        echo $this->viewConstruct('views/viewEditArticle.php',$article,$title);
     }
     public function editArticle($id)
     {

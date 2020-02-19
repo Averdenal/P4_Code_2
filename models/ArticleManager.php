@@ -79,6 +79,7 @@ class ArticleManager extends Model
         $req->bindParam(':content',$content,PDO::PARAM_STR);
         $req->bindParam(':slug',$slug,PDO::PARAM_STR);
         $req->execute();
+        
     }
 
     function addArticle(string $title, string $content){
@@ -97,6 +98,8 @@ class ArticleManager extends Model
         $req->bindParam(':onligne',$onligne,PDO::PARAM_INT);
         $req->bindParam(':autor',$autor,PDO::PARAM_INT);
         $req->execute();
+        return $this->getArticleBySlug($slug);
+        
     }
     
     function createSlug($title){
