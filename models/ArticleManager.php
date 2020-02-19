@@ -41,8 +41,9 @@ class ArticleManager extends Model
         return $req->fetchObject('Article');
     }
 
-    function getArticleById(int $id)
+    function getArticleById($id)
     {
+        $id = (int) $id;
         $bdd = $this->getBdd();
         $req = $bdd->prepare('SELECT articles.id, articles.title, articles.content, articles.date, articles.onligne, articles.slug, articles.autor, users.lastname, users.firstname
         FROM articles

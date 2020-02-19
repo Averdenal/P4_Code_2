@@ -57,7 +57,6 @@ class CommentManager extends Model
         //recherche des warning par commentaire
         foreach($this->getCommentsByArticle($idArticle) as $comment){
             //delete des warning
-            var_dump($comment->getId());
             $this->_warningManager->deleteWarningByComment($comment->getId());
         }
         $bdd = $this->getBdd();

@@ -23,7 +23,6 @@ class Article
                 let data = new FormData(formAddArticle)
                 HttpRequest.open('POST','/P4_Code_2/Administration/createArticle',true);
                 HttpRequest.send(data);
-                
             });
         }
     }
@@ -31,7 +30,6 @@ class Article
     deleteArticle()
     {
         document.body.addEventListener('click', function (evt) {
-            console.log(evt.target.className)
             if (evt.target.className === 'btn btn_Delete_Article') {
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
@@ -62,13 +60,16 @@ class Article
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
-                        msg.innerHTML = 'Article est bien créé'
+                        msg.innerHTML = 'maj OK'
                         info.innerHTML =HttpRequest.responseText;
                     }
                 }
                 let data = new FormData(formEditArticle)
                 HttpRequest.open('POST','/P4_Code_2/Administration/majArticle',true);
                 HttpRequest.send(data);
+                setInterval(function(){
+                    location.reload();
+                },1000)
                 
             });
         }

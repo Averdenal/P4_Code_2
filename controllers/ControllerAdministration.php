@@ -61,9 +61,12 @@ class ControllerAdministration extends BaseController
         $this->templateAdmin('views/viewEditArticle.php',$article,$title);
     }
 
-    public function majArticle($title,$content,$id)
+    public function majArticle($id, $title,$content)
     {
-        $this->_articleManager->editArticle($title,$content,$id);
+        $this->_articleManager->editArticle($id,$title,$content);
+        $article = $this->_articleManager->getArticleById($id);
+        $title = 'edition';
+        echo $this->viewConstruct('views/viewEditArticle.php',$article,$title);
     }
 
     public function deleteArticle($id)
