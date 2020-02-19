@@ -66,9 +66,10 @@ class ArticleManager extends Model
         
     }
 
-    function editArticle(string $title, string $content, int $id){
+    function editArticle($id,$title,$content){
         $slug = $this->createSlug($title);
         $bdd = $this->getBdd();
+        $id = (int) $id;
         $req = $bdd->prepare('UPDATE articles
         set title = :title ,
         content = :content ,

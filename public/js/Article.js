@@ -3,6 +3,7 @@ class Article
     constructor(){
         this.newArticle();
         this.deleteArticle();
+        this.editArticle();
     }
     newArticle(){
         var formAddArticle = document.getElementById('add_Article');
@@ -48,5 +49,28 @@ class Article
                 HttpRequest.send();
             }
         });
+    }
+
+    editArticle()
+    {
+        var formEditArticle = document.getElementById('edit_Article');
+        var info = document.getElementById('info');
+        var msg = document.querySelector('#msg');
+        if(formEditArticle !== null){
+            formEditArticle.addEventListener('submit',function(e){
+                e.preventDefault();
+                let HttpRequest = new XMLHttpRequest();
+                HttpRequest.onreadystatechange = function(){
+                    if(HttpRequest.readyState === 4){
+                        msg.innerHTML = 'Article est bien créé'
+                        info.innerHTML =HttpRequest.responseText;
+                    }
+                }
+                let data = new FormData(formEditArticle)
+                HttpRequest.open('POST','/P4_Code_2/Administration/majArticle',true);
+                HttpRequest.send(data);
+                
+            });
+        }
     }
 }
