@@ -6,7 +6,8 @@ class Article
     }
     newArticle(){
         var formAddArticle = document.getElementById('add_Article');
-        var info = document.getElementById('infoAddArticle');
+        var info = document.getElementById('info');
+        var msg = document.querySelector('#msg');
         console.log(formAddArticle);
         if(formAddArticle !== null){
             formAddArticle.addEventListener('submit',function(e){
@@ -14,6 +15,7 @@ class Article
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
+                        msg.innerHTML = 'Article est bien créé'
                         info.innerHTML =HttpRequest.responseText;
                     }
                 }
