@@ -50,9 +50,9 @@ class ControllerAdministration extends BaseController
     }
     public function createArticle($title, $content)
     {
-        $title = 'edition';
+        $titlePage = 'edition';
         $article = $this->_articleManager->addArticle($title,$content);
-        echo $this->viewConstruct('views/viewEditArticle.php',$article,$title);
+        echo $this->viewConstruct('views/viewEditArticle.php',$article,$titlePage);
     }
     public function editArticle($id)
     {
@@ -65,8 +65,8 @@ class ControllerAdministration extends BaseController
     {
         $this->_articleManager->editArticle($id,$title,$content);
         $article = $this->_articleManager->getArticleById($id);
-        $title = 'edition';
-        echo $this->viewConstruct('views/viewEditArticle.php',$article,$title);
+        $titlePage = 'edition';
+        echo $this->viewConstruct('views/viewEditArticle.php',$article,$titlePage);
     }
 
     public function deleteArticle($id)
