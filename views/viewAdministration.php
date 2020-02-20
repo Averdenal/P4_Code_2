@@ -43,7 +43,7 @@
                     <th><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></th>
                     <th><?= $comment->getNbWarning() ?></th>
                     <th>
-                        <a class="btn btn_Delete" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>">Supprimer</a>
+                        <a class="btn btn_Delete_Admin" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>">Supprimer</a>
                         <a class="btn btn_Warning_Valide" href="<?= ROOT.'/Administration/deleteWarning/'. $comment->getId() ?>">Valider</a>
                     </th>
                 </tr>
