@@ -49,11 +49,19 @@
     },
     {
         "method":"DELETE",
-        "name":"addComment",
+        "name":"deleteComment",
         "route":"/Comment/deleteComment/(.*)/(.*)",
         "controller":"ControllerComment",
         "action":"deleteComment",
         "param":"id,idArticle"
+    },
+    {
+        "method":"DELETE",
+        "name":"adminDeleteComment",
+        "route":"/Administration/deleteComment/(.*)",
+        "controller":"ControllerAdministration",
+        "action":"deleteComment",
+        "param":"id"
     },
     {
         "method":"GET",

@@ -7,8 +7,8 @@ class Article
     }
     newArticle(){
         var formAddArticle = document.getElementById('add_Article');
-        var info = document.getElementById('info');
-        var msg = document.querySelector('#msg');
+        var info = document.querySelector('container_Article');
+        var msg = document.querySelector('#info');
         console.log(formAddArticle);
         if(formAddArticle !== null){
             formAddArticle.addEventListener('submit',function(e){
@@ -33,8 +33,8 @@ class Article
             if (evt.target.className === 'btn btn_Delete_Article') {
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
-                let infomsg = document.querySelector('#msg');
-                let infoArticle = document.querySelector('#info')
+                let infomsg  = document.querySelector('#info');
+                let infoArticle = document.querySelector('#container_Article')
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
                         infomsg.innerHTML = 'Article Supprimé'
@@ -42,7 +42,6 @@ class Article
 
                     }
                 }
-                console.log(evt.target.pathname);
                 HttpRequest.open('DELETE',evt.target.pathname,true);
                 HttpRequest.send();
             }
@@ -52,7 +51,7 @@ class Article
     editArticle()
     {
         var formEditArticle = document.getElementById('edit_Article');
-        var info = document.getElementById('info');
+        let infoArticle = document.querySelector('#container_Article')
         var msg = document.querySelector('#msg');
         if(formEditArticle !== null){
             formEditArticle.addEventListener('submit',function(e){
@@ -61,7 +60,7 @@ class Article
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
                         msg.innerHTML = 'maj OK'
-                        info.innerHTML =HttpRequest.responseText;
+                        infoArticle.innerHTML =HttpRequest.responseText;
                     }
                 }
                 let data = new FormData(formEditArticle)

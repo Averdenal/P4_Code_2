@@ -24,16 +24,16 @@
             </div>
             <div class="flex-5">
                 <p id="msg"></p>
-                <div id="info">
+                <div id="info"></div>
                 <?= $content ?>
-                </div>
             </div>
         </div>
     </main>
     <footer>
         <p>Tous droits réservés © Amaury VERDENAL 2019 - <?= date('Y') ?> - Formation Openclassrooms - Développeur Web Junior - Projet n°4 : Créez un blog pour un écrivain</p>
     </footer>
-    <script src="<?= JS ?>app.js"></script>
+    <script src="<?= JS ?>App.js"></script>
+    <script src="<?= JS ?>Comments.js"></script>
     <script src="<?= JS ?>Article.js"></script>
     <script>
         new App();
