@@ -3,7 +3,6 @@ RewriteEngine on
 RewriteCond ${REQUEST_FILENAME} !-f
 RewriteCond ${REQUEST_FILENAME} !-d
 
-# [L] pour stoper le traitement des règles
 RewriteRule ^(public)/ - [L]
 
 RewriteRule ^(.*)$ index.php
