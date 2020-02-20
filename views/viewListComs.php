@@ -1,4 +1,6 @@
-<?php foreach($comments as $comment): ?>
+<?php
+var_dump($tab);
+foreach($tab as $comment): ?>
     <div class="item_Comment">
         <p><?= $comment->getContent(); ?></p>
         <div>
@@ -10,7 +12,7 @@
             <a class="btn btn_Delete" href="<?= ROOT.'/Comment/deleteComment/'. $comment->getId().'/'.$comment->getArticle(); ?>">Supprimer</a>
             <?php endif; 
             if ($_SESSION['auth'] != $comment->getAutor()[0]):?>
-            <a style='color:black' href='<?= ROOT .'/Comment/warningComment/'.$comment->getId() ?>'>Signaler</a>
+            <a class="btn btn_Warning" href='<?= ROOT .'/Warning/warningComment/'.$comment->getId().'/'.$comment->getArticle(); ?>'>Signaler</a>
             <?php endif;endif; ?>
         
     </div>

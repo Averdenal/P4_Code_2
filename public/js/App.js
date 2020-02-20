@@ -4,6 +4,7 @@ class App{
         //this.tiny();
         new Comments();
         new Article();
+        new Warning();
     }
 
     init(){

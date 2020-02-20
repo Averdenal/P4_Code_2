@@ -70,10 +70,10 @@
     {
         "method":"GET",
         "name":"addWarning",
-        "route":"/Comment/warningComment/(.*)",
-        "controller":"ControllerComment",
+        "route":"/Warning/warningComment/(.*)/(.*)",
+        "controller":"ControllerWarning",
         "action":"warningComment",
-        "param":"idArticle,idComment"
+        "param":"id,idArticle"
     },
     {
         "method":"GET",

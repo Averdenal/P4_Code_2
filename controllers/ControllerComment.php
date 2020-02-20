@@ -9,11 +9,8 @@ class ControllerComment extends BaseController
     }
     public function getCommentByArticle($id)
     {
-        ob_start();
         $comments = $this->_commentManager->getCommentsByArticle($id);
-        include('views/viewListComs.php');
-        $content = ob_get_clean();
-        return $content;
+        return $this->viewConstruct('views/viewListComs.php',$comments,null);
     }
     public function addComment($content,$article)
     {
@@ -26,11 +23,4 @@ class ControllerComment extends BaseController
         $this->_commentManager->dellComment((int) $id);
         echo $this->getCommentByArticle($idArticle);
     }
-    
-    public function warningComment($id)
-    {
-        $this->_warningManager->addWarning($id);
-        echo $this->getCommentByArticle($id);
-    }
-
 }
