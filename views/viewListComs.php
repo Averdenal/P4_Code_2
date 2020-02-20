@@ -1,6 +1,4 @@
-<?php
-var_dump($tab);
-foreach($tab as $comment): ?>
+<?php foreach($tab as $comment): ?>
     <div class="item_Comment">
         <p><?= $comment->getContent(); ?></p>
         <div>

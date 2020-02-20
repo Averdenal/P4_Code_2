@@ -25,7 +25,10 @@
             <div class="flex-5">
                 <p id="msg"></p>
                 <div id="info"></div>
+                <div id="content">
                 <?= $content ?>
+                </div>
+                
             </div>
         </div>
     </main>

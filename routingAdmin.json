@@ -154,12 +154,9 @@
     {
         "method":"GET",
         "name":"deleteWarning",
-        "route":"/Warning/deleteWarning/(.*)",
-        "controller":"ControllerWarning",
+        "route":"/Administration/deleteWarning/(.*)",
+        "controller":"ControllerAdministration",
         "action":"deleteWarning",
         "param":"id"
-    }
-    
-    
-    
+    } 
 ]

@@ -15,8 +15,4 @@ class ControllerWarning extends BaseController
         echo $this->_commentController->getCommentByArticle($idArticle);
     }
 
-    public function deleteWarning($id)
-    {
-        $this->_warningManager->deleteWarningByComment($id);
-    }
 }

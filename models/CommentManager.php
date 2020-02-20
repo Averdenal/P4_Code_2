@@ -44,8 +44,10 @@ class CommentManager extends Model
         return $req->fetchAll(PDO::FETCH_CLASS,'Comment');
     }
 
-    function dellComment(int $id)
+    function dellComment($id)
     {
+        $this->_warningManager->deleteWarningByComment($id);
+        
         $bdd = $this->getBdd();
         $req = $bdd->prepare('DELETE FROM commentaires WHERE id = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);

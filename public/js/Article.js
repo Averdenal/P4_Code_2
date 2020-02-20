@@ -7,8 +7,8 @@ class Article
     }
     newArticle(){
         var formAddArticle = document.getElementById('add_Article');
-        var info = document.querySelector('container_Article');
-        var msg = document.querySelector('#info');
+        var info = document.getElementById('container_Article');
+        var msg = document.getElementById('info');
         console.log(formAddArticle);
         if(formAddArticle !== null){
             formAddArticle.addEventListener('submit',function(e){
@@ -16,8 +16,8 @@ class Article
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
-                        msg.innerHTML = 'Article est bien créé'
-                        info.innerHTML =HttpRequest.responseText;
+                        msg.innerHTML = 'Article est bien créé';
+                        info.innerHTML = HttpRequest.responseText;
                     }
                 }
                 let data = new FormData(formAddArticle)
