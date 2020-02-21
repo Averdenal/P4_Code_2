@@ -9,7 +9,6 @@ class Article
         var formAddArticle = document.getElementById('add_Article');
         var info = document.getElementById('container_Article');
         var msg = document.getElementById('info');
-        console.log(formAddArticle);
         if(formAddArticle !== null){
             formAddArticle.addEventListener('submit',function(e){
                 e.preventDefault();
@@ -20,7 +19,8 @@ class Article
                         info.innerHTML = HttpRequest.responseText;
                     }
                 }
-                let data = new FormData(formAddArticle)
+                let data = new FormData(formAddArticle);
+                data.append('content',tinyMCE.get('content').getContent());
                 HttpRequest.open('POST','/P4_Code_2/Administration/createArticle',true);
                 HttpRequest.send(data);
             });

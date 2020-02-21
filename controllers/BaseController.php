@@ -6,6 +6,7 @@ class BaseController
     protected $_articleManager;
     protected $_warningManager;
     protected $_userManager;
+    private $_param;
 
     public function __construct()
     {
@@ -13,11 +14,18 @@ class BaseController
         $this->_articleManager = new ArticleManager();
         $this->_warningManager = new WarningManager();
         $this->_userManager = new UserManager();
+        $this->_param = array();
     }
+    public function addParam($key,$value)
+    {
+        $this->_param[$key] = $value;
+    }
+
     public function viewConstruct($view,$tab = null,$titlePage = null)
     {
         $titlePage = TITLESITE.' - '.$titlePage;
         ob_start();
+        extract($this->_param);
         include($view);
         return $content = ob_get_clean();
     }
@@ -26,8 +34,8 @@ class BaseController
     {
         $titlePage = TITLESITE.' - '.$titlePage;
         ob_start();
+        extract($this->_param);
         include($view);
-        extract($tab);
         $content = ob_get_clean();
         require_once('views/template.php');
         

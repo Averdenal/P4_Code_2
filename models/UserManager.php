@@ -80,13 +80,6 @@ class UserManager extends Model{
         }
     }
 
-    function isAutorArticle($autor, $article){
-        
-    }
-
-    function isAutorComment($autor, $comment){
-
-    }
     function pwdOK($pwd,$confirme){
         return ($pwd === $confirme) ? true : false;
     }

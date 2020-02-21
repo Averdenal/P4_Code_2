@@ -1,7 +1,7 @@
 class App{
     constructor(){
         this.init();
-        //this.tiny();
+        this.tiny();
         new Comments();
         new Article();
         new Warning();
@@ -62,7 +62,7 @@ class App{
     }
 
     tiny() {
-        tinymce.init({
+        return tinymce.init({
             selector: 'textarea',
             height: 200,
             menubar: false,

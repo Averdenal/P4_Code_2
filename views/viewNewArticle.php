@@ -4,7 +4,7 @@
     <p id='infoAddArticle'></p>
     <form method="POST" action="" id="add_Article">
         <input type="text" name="title" placeholder="Titre de l'article">
-        <textarea name="content" type="text"></textarea>
+        <textarea name="content" type="text" id='content'></textarea>
         <input type="submit" value="Créer">
     </form>
 </section>

@@ -1,6 +1,6 @@
 <div class="list_Article_Accueil">
     <?php 
-    foreach($tab as $article):
+    foreach($listArticle as $article):
     ?>
     <article>
         <div class='zone_Title'>
