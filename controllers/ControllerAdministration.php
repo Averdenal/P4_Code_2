@@ -2,9 +2,16 @@
 
 class ControllerAdministration extends BaseController
 {
+    private $_commentManager;
+    private $_articleManager;
+    private $_warningManager;
+    private $_userManager;
     public function __construct()
     {
-        parent::__construct();
+        $this->_articleManager = new ArticleManager();
+        $this->_commentManager = new CommentManager();
+        $this->_warningManager = new WarningManager();
+        $this->_userManager = new UserManager();
     }
 
     public function administrationAccueil()

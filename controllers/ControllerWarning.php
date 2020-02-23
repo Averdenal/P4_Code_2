@@ -2,17 +2,15 @@
 
 class ControllerWarning extends BaseController
 {
-    protected $_commentController;
+    private $_warningManager;
     public function __construct()
     {
-        parent::__construct();
-        $this->_commentController = new ControllerComment();
-        
+        $this->_warningManager = new WarningManager();
     }
+    
     public function warningComment($id,$idArticle)
     {
         $this->_warningManager->addWarning($id);
-        echo $this->_commentController->getCommentByArticle($idArticle);
     }
 
 }

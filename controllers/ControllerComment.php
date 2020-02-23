@@ -2,10 +2,11 @@
 
 class ControllerComment extends BaseController
 {
+    private $_commentManager;
 
-    function __construct()
+    public function __construct()
     {
-        parent::__construct();
+        $this->_commentManager = new CommentManager();
     }
     public function getCommentByArticle($id)
     {
