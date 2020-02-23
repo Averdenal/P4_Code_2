@@ -21,6 +21,14 @@ class WarningManager extends Model
         $req->execute();
         return $req->fetchAll(PDO::FETCH_CLASS,'warning');
     }
+    public function getWarningByComment($id)
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('SELECT * FROM warning WHERE commentaire = :id');
+        $req->bindParam(':id',$id,PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchObject('warning');
+    }
     public function addWarning($id)
     {
         $date = date('Y-m-d H:i:s');
@@ -43,8 +51,15 @@ class WarningManager extends Model
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->execute();
     }
-    public function isWarningBy($id)
+    public function isWarningByUserConnect($idCommentaire, $idUserConnect)
     {
-        
+        foreach($this->getWarningByComment($idCommentaire) as $warning){
+            if($warning->getUser() == $idUserConnect){
+                return true;
+                exit;
+            }else{
+                return false;
+            }
+        }
     }
 }

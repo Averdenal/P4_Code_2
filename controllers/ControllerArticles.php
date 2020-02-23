@@ -11,7 +11,7 @@ class ControllerArticles extends BaseController
         $this->_articleManager = new ArticleManager();
         $this->_userManager = new UserManager();
         $this->_commentManager = new CommentManager();
-        $this->_commentManager = new WarningManager();
+        $this->_warningManager = new WarningManager();
     }
 
     public function getArticleBySlug($slug)
@@ -28,6 +28,24 @@ class ControllerArticles extends BaseController
 
     public function getCommentByArticle($id,$idUserConnect = null)
     {
-        //créer un tableau de commentaire.
+        $user = $this->_userManager->verifConnecte();
+        $comments = $this->_commentManager->getCommentsByArticle($id);
+        for($i=0;$i< sizeof($comments);$i++)
+        {
+            $tabComment[$i]['comment'] = $comments[$i];
+            if($comments[$i]->getNbWarning()>0 && $user[0] === true)
+            {
+                if($this->_warningManager->isWarningByUserConnect($comments[$i]->getId(),$user[1]))
+                {
+                    $tabComment[$i]['warningByConnect'] = 1;
+                }else{
+                    $tabComment[$i]['warningByConnect'] = 0;
+                }
+            }else{
+                $tabComment[$i]['warningByConnect'] = 0;
+            }
+        }
+        var_dump($tabComment);
+
     }
 }
