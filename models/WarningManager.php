@@ -34,7 +34,6 @@ class WarningManager extends Model
         $date = date('Y-m-d H:i:s');
         $autor = $this->_userManager->getUserConnecte();
         $bdd = $this->getBdd();
-        var_dump($autor);
         $req = $bdd->prepare("INSERT INTO `warning` (`id`, `message`, `commentaire`, `user`, `date`) 
         VALUES (NULL, 'warning', :id, :autor, :newDate)");
         $req->bindParam(':id',$id,PDO::PARAM_INT);
@@ -54,13 +53,13 @@ class WarningManager extends Model
     }
     public function isWarningByUserConnect($idCommentaire, $idUserConnect)
     {
-        foreach($this->getWarningByComment($idCommentaire) as $warning){
+        $warnings = $this->getWarningByComment($idCommentaire);
+        $verif = false;
+        foreach($warnings as $warning){
             if($warning->getUser() == $idUserConnect){
-                return true;
-                exit;
-            }else{
-                return false;
-            }
+                $verif = true;   
+            }            
         }
+        return $verif;
     }
 }
