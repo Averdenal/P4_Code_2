@@ -1,4 +1,5 @@
 <?php 
+
 class Rang
 {
     private $id;

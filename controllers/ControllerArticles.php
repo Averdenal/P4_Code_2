@@ -2,23 +2,32 @@
 
 class ControllerArticles extends BaseController
 {
-    private $_controllerComments;
+    private $_articleManager;
+    private $_userManager;
+    private $_commentManager;
+    private $_warningManager;
     function __construct()
     {
-        parent::__construct();
-        $this->_controllerComments = new ControllerComment();
-
+        $this->_articleManager = new ArticleManager();
+        $this->_userManager = new UserManager();
+        $this->_commentManager = new CommentManager();
+        $this->_commentManager = new WarningManager();
     }
 
     public function getArticleBySlug($slug)
     {
-        $tab = [];
-        $tab['article'] = $this->_articleManager->getArticleBySlug($slug);
-        $tab['comments'] = $this->_controllerComments->getCommentByArticle($tab['article']->getId()); //html
-        $tab['isConnect'] = $this->_userManager->isConnect();
+        $article = $this->_articleManager->getArticleBySlug($slug);
+        $this->addParam('article', $article);
+        $this->addParam('comments', $this->getCommentByArticle($article->getId(),$this->_userManager->isConnect()));
 
-        $titlePage = $tab['article']->getTitle();
+
+        $titlePage = $article->getTitle();
         
-        $this->template('views/viewArticle.php',$tab,$titlePage);
+        $this->template('views/viewArticle.php',$titlePage);
+    }
+
+    public function getCommentByArticle($id,$idUserConnect = null)
+    {
+        //créer un tableau de commentaire.
     }
 }

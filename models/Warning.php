@@ -1,4 +1,5 @@
 <?php
+
 class Warning
 {
     private $id;

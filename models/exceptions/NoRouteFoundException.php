@@ -1,4 +1,5 @@
 <?php 
+
 class NoRouteFoundException extends Exception
 {
     public function __construct(Exception $previous = null)

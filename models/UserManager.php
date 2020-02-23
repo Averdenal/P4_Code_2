@@ -1,5 +1,6 @@
 <?php
 
+
 class UserManager extends Model{
 
     function searchUserByLogin($login)

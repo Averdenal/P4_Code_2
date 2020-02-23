@@ -2,18 +2,11 @@
 
 class BaseController
 {
-    protected $_commentManager;
-    protected $_articleManager;
-    protected $_warningManager;
-    protected $_userManager;
+
     private $_param;
 
     public function __construct()
     {
-        $this->_commentManager = new CommentManager();
-        $this->_articleManager = new ArticleManager();
-        $this->_warningManager = new WarningManager();
-        $this->_userManager = new UserManager();
         $this->_param = array();
     }
     public function addParam($key,$value)
@@ -21,22 +14,18 @@ class BaseController
         $this->_param[$key] = $value;
     }
 
-    public function viewConstruct($view,$tab = null,$titlePage = null)
-    {
-        $titlePage = TITLESITE.' - '.$titlePage;
+    public function viewConstruct($view)
+    {   
         ob_start();
         extract($this->_param);
         include($view);
-        return $content = ob_get_clean();
+        return ob_get_clean();
     }
 
-    public function template($view,$tab = null,$titlePage = null)
+    public function template($view,$titlePage)
     {
         $titlePage = TITLESITE.' - '.$titlePage;
-        ob_start();
-        extract($this->_param);
-        include($view);
-        $content = ob_get_clean();
+        $content = $this->viewConstruct($view,$titlePage);
         require_once('views/template.php');
         
     }

@@ -1,6 +1,5 @@
 <?php
 
-
 class CommentManager extends Model
 {
     private $userManager;
