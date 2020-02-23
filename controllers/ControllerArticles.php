@@ -17,18 +17,18 @@ class ControllerArticles extends BaseController
     public function getArticleBySlug($slug)
     {
         $article = $this->_articleManager->getArticleBySlug($slug);
+        $user = $this->_userManager->verifConnecte();
         $this->addParam('article', $article);
-        $this->addParam('comments', $this->getCommentByArticle($article->getId(),$this->_userManager->isConnect()));
-
+        $this->addParam('comments', $this->getCommentByArticle($article->getId(),$user));
+        $this->addParam('userIsConnect',$user[0]);
 
         $titlePage = $article->getTitle();
         
         $this->template('views/viewArticle.php',$titlePage);
     }
 
-    public function getCommentByArticle($id,$idUserConnect = null)
+    public function getCommentByArticle($id,$user)
     {
-        $user = $this->_userManager->verifConnecte();
         $comments = $this->_commentManager->getCommentsByArticle($id);
         for($i=0;$i< sizeof($comments);$i++)
         {
@@ -45,7 +45,7 @@ class ControllerArticles extends BaseController
                 $tabComment[$i]['warningByConnect'] = 0;
             }
         }
-        var_dump($tabComment);
+        return $tabComment;
 
     }
 }

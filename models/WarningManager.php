@@ -27,7 +27,7 @@ class WarningManager extends Model
         $req = $bdd->prepare('SELECT * FROM warning WHERE commentaire = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->execute();
-        return $req->fetchObject('warning');
+        return $req->fetchAll(PDO::FETCH_CLASS,'warning');
     }
     public function addWarning($id)
     {
