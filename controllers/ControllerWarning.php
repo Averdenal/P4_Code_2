@@ -8,9 +8,10 @@ class ControllerWarning extends BaseController
         $this->_warningManager = new WarningManager();
     }
     
-    public function warningComment($id,$idArticle)
+    public function warningComment($id)
     {
         $this->_warningManager->addWarning($id);
+        var_dump('ok');
     }
 
 }

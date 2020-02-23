@@ -26,7 +26,7 @@
                 if ($_SESSION['auth'] == $comment['comment']->getAutor()[0] || $_SESSION['rang'] == 'admin'):?>
                     <a class="btn btn_Delete" href="<?= ROOT.'/Comment/deleteComment/'. $comment['comment']->getId().'/'.$comment['comment']->getArticle(); ?>">Supprimer</a>
                 <?php endif; 
-                if ($_SESSION['auth'] != $comment['comment']->getAutor()[0]):?>
+                if ($_SESSION['auth'] != $comment['comment']->getAutor()[0] && $comment['warningByConnect'] == 0):?>
                     <a class="btn btn_Warning" href='<?= ROOT .'/Warning/warningComment/'.$comment['comment']->getId().'/'.$comment['comment']->getArticle(); ?>'>Signaler</a>
                 <?php elseif($comment['warningByConnect'] == 1): ?>
                     <p>Warning OK</p>
