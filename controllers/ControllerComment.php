@@ -11,8 +11,8 @@ class ControllerComment extends BaseController
     public function getCommentByArticle($id)
     {
         $comments = $this->_commentManager->getCommentsByArticle($id);
-        return $this->viewConstruct('views/viewListComs.php',$comments,null);
     }
+    
     public function addComment($content,$article)
     {
         $this->_commentManager->addComment($content,$article);

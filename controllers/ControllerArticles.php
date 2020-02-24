@@ -48,4 +48,14 @@ class ControllerArticles extends BaseController
         return $tabComment;
 
     }
+
+    public function addComment($content,$article)
+    {
+        $this->_commentManager->addComment($content,$article);
+    }
+
+    public function deleteComment($id)
+    {
+        $this->_commentManager->dellComment($id);
+    }
 }
