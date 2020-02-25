@@ -50,8 +50,8 @@
     {
         "method":"DELETE",
         "name":"deleteComment",
-        "route":"/Comment/deleteComment/(.*)/(.*)",
-        "controller":"ControllerComment",
+        "route":"/Articles/deleteComment/(.*)/(.*)",
+        "controller":"ControllerArticles",
         "action":"deleteComment",
         "param":"id,idArticle"
     },

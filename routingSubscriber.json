@@ -52,9 +52,9 @@
     },
     {
         "method":"DELETE",
-        "name":"addComment",
-        "route":"/Comment/deleteComment/(.*)/(.*)",
-        "controller":"ControllerComment",
+        "name":"deleteComment",
+        "route":"/Articles/deleteComment/(.*)/(.*)",
+        "controller":"ControllerArticles",
         "action":"deleteComment",
         "param":"id,idArticle"
     },

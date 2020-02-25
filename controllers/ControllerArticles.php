@@ -19,23 +19,25 @@ class ControllerArticles extends BaseController
         $article = $this->_articleManager->getArticleBySlug($slug);
         $user = $this->_userManager->verifConnecte();
         $this->addParam('article', $article);
-        $this->addParam('comments', $this->getCommentByArticle($article->getId(),$user));
-        $this->addParam('userIsConnect',$user[0]);
+        $this->addParam('comments', $this->getCommentByArticle($article->getId()));
+        $this->addParam('userIsConnect',$user['isConnect']);
 
         $titlePage = $article->getTitle();
         
         $this->template('views/viewArticle.php',$titlePage);
     }
 
-    public function getCommentByArticle($id,$user)
+    public function getCommentByArticle($id)
     {
+        $user = $this->_userManager->verifConnecte();
+
         $comments = $this->_commentManager->getCommentsByArticle($id);
         for($i=0;$i< sizeof($comments);$i++)
         {
             $tabComment[$i]['comment'] = $comments[$i];
-            if($comments[$i]->getNbWarning()>0 && $user[0] === true)
+            if($comments[$i]->getNbWarning()>0 && $user['isConnect'] === true)
             {
-                if($this->_warningManager->isWarningByUserConnect($comments[$i]->getId(),$user[1]))
+                if($this->_warningManager->isWarningByUserConnect($comments[$i]->getId(),$user['id']))
                 {
                     $tabComment[$i]['warningByConnect'] = 1;
                 }else{
@@ -49,13 +51,20 @@ class ControllerArticles extends BaseController
 
     }
 
-    public function addComment($content,$article)
+    public function addComment($content,$idArticle)
     {
-        $this->_commentManager->addComment($content,$article);
+        $this->_commentManager->addComment($content,$idArticle);
+        echo json_encode($this->getCommentByArticle($idArticle));
     }
 
-    public function deleteComment($id)
+    public function deleteComment($id,$idArticle)
     {
-        $this->_commentManager->dellComment($id);
+        $comment = $this->_commentManager->getCommentById($id);
+        if( $this->userManager->verifConnecte()['rang']==='admin' ||
+            $this->userManager->verifConnecte()['id'] == $comment->getAutor()['id']){
+                $this->_commentManager->dellComment($id);
+                echo json_encode($this->getCommentByArticle($idArticle));
+            }
+            
     }
 }

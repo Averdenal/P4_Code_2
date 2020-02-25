@@ -58,14 +58,10 @@ class UserManager extends Model{
         if(isset($_SESSION['auth'])&&isset($_SESSION['rang'])){
             $auth = (int) $_SESSION['auth'];
             $rang = (int) $_SESSION['rang'];
-            return [true,$auth,$rang];
+            return ['isConnect' => true, 'id' => $auth, 'rang' => $rang];
         }else{
-            return [false];
+            return ['isConnect' => false];
         }
-    }
-
-    function isConnect(){
-        return (isset($_SESSION['auth'])) ? true : false ;
     }
 
     function gestionComment($userAutor){
