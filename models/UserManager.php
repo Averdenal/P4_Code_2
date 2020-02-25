@@ -28,12 +28,13 @@ class UserManager extends Model{
     function checkLoginPassword($login,$password)
     {
         $user = $this->searchUserByLogin($login);
+        var_dump($user);
         if(!$user){
             return [false];
         }else {
             if($user->getPwd() === md5($password)){
                 $_SESSION['auth'] = $user->getId();
-                $_SESSION['rang'] = $this->getRang($user->getRang());
+                $_SESSION['rang'] = $this->getRang($user->getRang())->getName();
                 return [true,$user];
             }else{
                 return [false];
@@ -47,10 +48,10 @@ class UserManager extends Model{
 
     function getRang($id){
             $bdd = $this->getBdd();
-            $req = $bdd->prepare('SELECT name FROM rangs WHERE id = :id');
+            $req = $bdd->prepare('SELECT id, name FROM rangs WHERE id = :id');
             $req->bindParam(':id',$id,PDO::PARAM_INT);
             $req->execute();
-            return $req->fetch()['name'];
+            return $req->fetchObject('rang');
         
     }
 
