@@ -35,15 +35,6 @@
     },
     {
         "method":"POST",
-        "name":"logout",
-        "route":"/Authentification/logout",
-        "controller":"ControllerAuthentification",
-        "action":"logout",
-        "param":""
-
-    },
-    {
-        "method":"POST",
         "name":"addComment",
         "route":"/Comment/addComment",
         "controller":"ControllerComment",
@@ -60,12 +51,11 @@
     },
     {
         "method":"GET",
-        "name":"logout",
+        "name":"auth",
         "route":"/Authentification/logout",
         "controller":"ControllerAuthentification",
         "action":"logout",
         "param":""
-
     },
     {
         "method":"GET",

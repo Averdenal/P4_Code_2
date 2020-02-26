@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="<?= CSS ?>style.css">
 </head>
 <body>
-    <!--<header>
+    <header>
         <?php include('template/menuNavigation.php'); ?>
-    </header>-->
+    </header>
     <main class="body">
         <?= $content ?>
     </main>

@@ -28,7 +28,6 @@ class UserManager extends Model{
     function checkLoginPassword($login,$password)
     {
         $user = $this->searchUserByLogin($login);
-        var_dump($user);
         if(!$user){
             return [false];
         }else {

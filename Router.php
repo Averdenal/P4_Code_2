@@ -27,7 +27,7 @@ class Router
     }
     private function selectDataRoute(){
         if($this->_userManager->verifConnecte()['isConnect']){
-            switch($this->_userManager->getRang((int) $_SESSION['auth'])){
+            switch($this->_userManager->getRang((int) $_SESSION['auth'])->getName()){
                 case 'admin':
                     $routeInfo = 'routingAdmin.json';
                 break;
