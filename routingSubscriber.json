@@ -36,8 +36,8 @@
     {
         "method":"POST",
         "name":"addComment",
-        "route":"/Comment/addComment",
-        "controller":"ControllerComment",
+        "route":"/Articles/addComment",
+        "controller":"ControllerArticles",
         "action":"addComment",
         "param":"content,article"
     },

@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 global $env;
 require_once('models/Environement.php');
 $env = Environement::get();

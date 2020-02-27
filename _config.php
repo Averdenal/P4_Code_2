@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 define('TITLESITE','Book');
 define('ROOT','/P4_Code_2');

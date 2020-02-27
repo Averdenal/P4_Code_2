@@ -30,7 +30,7 @@ class ControllerArticles extends BaseController
     public function getCommentByArticle($id)
     {
         $user = $this->_userManager->verifConnecte();
-
+        $tabComment = [];
         $comments = $this->_commentManager->getCommentsByArticle($id);
         for($i=0;$i< sizeof($comments);$i++)
         {
@@ -48,7 +48,7 @@ class ControllerArticles extends BaseController
             }
         }
         return $tabComment;
-
+        
     }
 
     public function addComment($content,$idArticle)
@@ -60,8 +60,7 @@ class ControllerArticles extends BaseController
     public function deleteComment($id,$idArticle)
     {
         $comment = $this->_commentManager->getCommentById($id);
-        var_dump($this->_userManager->verifConnecte());
-        if( $this->_userManager->verifConnecte()['rang'] ==='admin' || $this->_userManager->verifConnecte()['id'] == $comment->getAutor()['id']){
+        if( $this->_userManager->verifConnecte()['rang'] == 'admin' || $this->_userManager->verifConnecte()['id'] == $comment->getAutor()['id']){
                 $this->_commentManager->dellComment($id);
                 echo json_encode($this->getCommentByArticle($idArticle));
             }
