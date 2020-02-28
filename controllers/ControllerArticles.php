@@ -54,6 +54,7 @@ class ControllerArticles extends BaseController
     public function addComment($content,$idArticle)
     {
         $this->_commentManager->addComment($content,$idArticle);
+        //var_dump($this->getCommentByArticle($idArticle));
         echo json_encode($this->getCommentByArticle($idArticle));
     }
 

@@ -2,13 +2,13 @@
 
 class Comment
 {
-    private $id;
-    private $content;
-    private $date;
-    private $user;
-    private $article;
-    private $lastname;
-    private $firstname;
+    public $id;
+    public $content;
+    public $date;
+    public $user;
+    public $article;
+    public $lastname;
+    public $firstname;
     private $nbWarning;
 
     public function getId(){

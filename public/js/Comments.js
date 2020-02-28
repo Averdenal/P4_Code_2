@@ -53,7 +53,8 @@ class Comments
                         let textarea = document.getElementById('textComs');
                         textarea.value = "";
                         infomsg.innerHTML = 'Commentaire Ajouté '
-                        info.innerHTML =HttpRequest.responseText;
+                        info.innerHTML = HttpRequest.responseText;
+                        console.log(JSON.parse(HttpRequest.responseText))
                     }
                 }
                 let data = new FormData(formv)
