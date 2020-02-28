@@ -56,22 +56,6 @@
         "controller":"ControllerAuthentification",
         "action":"logout",
         "param":""
-    },
-    {
-        "method":"GET",
-        "name":"addWarning",
-        "route":"/Warning/warningComment/(.*)/(.*)",
-        "controller":"ControllerWarning",
-        "action":"warningComment",
-        "param":"id,idArticle"
-    },
-    {
-        "method":"GET",
-        "name":"reload",
-        "route":"/Comment/getCommentByArticle/(.*)",
-        "controller":"ControllerComment",
-        "action":"getCommentByArticle",
-        "param":"slug"
     }
 ]
     
