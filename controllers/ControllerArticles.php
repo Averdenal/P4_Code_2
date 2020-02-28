@@ -68,4 +68,10 @@ class ControllerArticles extends BaseController
         }
             
     }
+
+    public function addWarning($id)
+    {
+        $this->_warningManager->addWarning($id);
+        echo 'OK '.$id;
+    }
 }

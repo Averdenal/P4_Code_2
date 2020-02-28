@@ -56,6 +56,14 @@
         "controller":"ControllerAuthentification",
         "action":"logout",
         "param":""
+    },
+    {
+        "method":"GET",
+        "name":"addWarning",
+        "route":"/Articles/addWarning/(.*)/(.*)",
+        "controller":"ControllerArticles",
+        "action":"addWarning",
+        "param":"id,article"
     }
 ]
     
