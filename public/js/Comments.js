@@ -10,16 +10,20 @@ class Comments
 
     delete_com()
     {
-        document.body.addEventListener('click', function (evt) {
+        document.body.addEventListener('click', (evt) => {
             if (evt.target.className === 'btn btn_Delete') {
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
                 let info = document.getElementById('container_Comment');
                 let infomsg = document.querySelector('#info');
-                HttpRequest.onreadystatechange = function(){
+                HttpRequest.onreadystatechange = () => {
                     if(HttpRequest.readyState === 4){
                         infomsg.innerHTML = 'Commentaire Supprimé'
                         let comments = JSON.parse(HttpRequest.responseText);
+                        info.innerHTML ="";
+                        comments.forEach(element => {
+                            info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                        });
                     }
                 }
                 HttpRequest.open('DELETE',evt.target.pathname,true);
@@ -43,9 +47,9 @@ class Comments
         
         var formv = document.getElementById('form_Comment');
         if(formv !== null){
-            formv.addEventListener('submit',function(e){
+            formv.addEventListener('submit',(e) =>{
                 let HttpRequest = new XMLHttpRequest();
-                HttpRequest.onreadystatechange = function(){
+                HttpRequest.onreadystatechange = ()=>{
                     if(HttpRequest.readyState === 4){
                         let info = document.getElementById('container_Comment');
                         let infomsg = document.querySelector('#info');
@@ -53,8 +57,9 @@ class Comments
                         textarea.value = "";
                         infomsg.innerHTML = 'Commentaire Ajouté '
                         let comments = JSON.parse(HttpRequest.responseText);
+                        info.innerHTML ="";
                         comments.forEach(element => {
-                            create_Comment(element.comment,element.autorIsConnect,element,warningByConnnect);
+                            info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });
                     }
                 }
@@ -68,7 +73,7 @@ class Comments
     }
     create_Comment(comment,autor,warning){
         let item_Comment = document.createElement('div');
-        item_Comment.item_Comment.classList.add("item_Comment");
+        item_Comment.classList.add("item_Comment");
 
             let comment_Content = document.createElement('p');
             comment_Content.innerHTML = comment.content;
@@ -90,6 +95,7 @@ class Comments
                 action_A_Delete.classList.add('btn');
                 action_A_Delete.classList.add('btn_Delete');
                 action_A_Delete.href = this.basepath+'/Articles/deleteComment/'+comment.id+'/'+comment.article;
+                action_A_Delete.innerHTML = "Supprimer";
                 action.appendChild(action_A_Delete);
             }
             if(warning != 1){
@@ -97,6 +103,7 @@ class Comments
                 action_A_Warning.classList.add('btn');
                 action_A_Warning.classList.add('btn_Warning');
                 action_A_Warning.href = this.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article;
+                action_A_Warning.innerHTML ="Signaler"
                 action.appendChild(action_A_Warning);
             }
                 
