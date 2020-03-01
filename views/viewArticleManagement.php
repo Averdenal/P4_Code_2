@@ -11,7 +11,7 @@
                 <th><a class="btn btn_New" href="<?= ROOT.'/Administration/newArticle' ?>">Nouveau</a></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="list_Articles">
     <?php foreach($tab as $article): ?>
         <tr>
             <td><?= $article->getId() ?></td>
