@@ -18,10 +18,9 @@ class Comments
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
                         infomsg.innerHTML = 'Commentaire Supprimé'
-                        info.innerHTML =HttpRequest.responseText;
+                        let comments = JSON.parse(HttpRequest.responseText);
                     }
                 }
-                console.log(evt.target.pathname);
                 HttpRequest.open('DELETE',evt.target.pathname,true);
                 HttpRequest.send();
             }else if(evt.target.className === 'btn btn_Delete_Admin'){
@@ -33,7 +32,6 @@ class Comments
                         alert('Commentaire Supprimé')
                     }
                 }
-                console.log(evt.target.pathname);
                 HttpRequest.open('DELETE',evt.target.pathname,true);
                 HttpRequest.send();
                 location.reload();
@@ -53,16 +51,20 @@ class Comments
                         let textarea = document.getElementById('textComs');
                         textarea.value = "";
                         infomsg.innerHTML = 'Commentaire Ajouté '
-                        info.innerHTML = HttpRequest.responseText;
-                        console.log(JSON.parse(HttpRequest.responseText))
+                        let comments = JSON.parse(HttpRequest.responseText);
+                        console.log(comments);
                     }
                 }
                 let data = new FormData(formv)
                 HttpRequest.open('POST','/P4_Code_2/Articles/addComment',false);
                 HttpRequest.send(data);
                 e.preventDefault();
+                //location.reload();
             });
         }
+    }
+    create_Comment(){
+
     }
     
 }

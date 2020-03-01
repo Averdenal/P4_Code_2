@@ -58,7 +58,7 @@ class ControllerAdministration extends BaseController
         echo $this->viewConstruct('views/viewcommentManagement.php',$comment,$title);
     }
 
-    public function newArticle($title = null, $content = null)
+    public function newArticle()
     {
         $title = 'Nouveau Article';
         $this->templateAdmin('views/viewNewArticle.php',null,$title);        
@@ -80,8 +80,8 @@ class ControllerAdministration extends BaseController
     {
         $this->_articleManager->editArticle($id,$title,$content);
         $article = $this->_articleManager->getArticleById($id);
-        $titlePage = 'edition';
-        echo $this->viewConstruct('views/viewEditArticle.php',$article,$titlePage);
+        echo json_encode($article);
+
     }
 
     public function deleteArticle($id)
