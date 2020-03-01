@@ -25,7 +25,7 @@
             <div class="flex-5">
                 <p id="msg"></p>
                 <div id="info"></div>
-                <div id="content">
+                <div id="zone-content">
                 <?= $content ?>
                 </div>
                 

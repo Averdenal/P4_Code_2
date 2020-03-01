@@ -20,7 +20,7 @@ class Article
                     }
                 }
                 let data = new FormData(formAddArticle);
-                data.append('content',tinyMCE.get('content').getContent());
+                data.append('content',tinyMCE.get('Form_content').getContent());
                 HttpRequest.open('POST','/P4_Code_2/Administration/createArticle',true);
                 HttpRequest.send(data);
             });
@@ -34,11 +34,14 @@ class Article
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
                 let infomsg  = document.querySelector('#info');
-                let infoArticle = document.querySelector('#container_Article')
+                let infoArticle = document.querySelector('tbody')
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
                         infomsg.innerHTML = 'Article Supprimé'
-                        infoArticle.innerHTML = HttpRequest.responseText;
+                        let articles = JSON.parse(HttpRequest.responseText);
+                        articles.forEach(article => {
+                            console.log(article.id);
+                        });
 
                     }
                 }
@@ -72,5 +75,9 @@ class Article
                 
             });
         }
+    }
+
+    createListArticle(json,elementHtml){
+
     }
 }

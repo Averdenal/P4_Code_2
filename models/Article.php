@@ -1,15 +1,15 @@
 <?php 
 
 class Article{
-    private $id;
-    private $title;
-    private $content;
-    private $date;
+    public $id;
+    public $title;
+    public $content;
+    public $date;
     private $onligne;
-    private $slug;
+    public $slug;
     private $autor;
-    private $lastname;
-    private $firstname;
+    public $lastname;
+    public $firstname;
 
     public function getTitle(){
         return $this->title;

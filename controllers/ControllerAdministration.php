@@ -67,7 +67,7 @@ class ControllerAdministration extends BaseController
     {
         $titlePage = 'resumé';
         $article = $this->_articleManager->addArticle($title,$content);
-        echo $this->viewConstruct('views/viewAfterEdit.php',$article,$titlePage);
+        echo "<a href=''>Retour aux articles</a><a href=''>Editer l'article</a>";
     }
     public function editArticle($id)
     {
@@ -87,7 +87,8 @@ class ControllerAdministration extends BaseController
     public function deleteArticle($id)
     {
         $this->_articleManager->dellArticle($id);
-        echo $this->viewArticleManager();
+        $articles = $this->_articleManager->getAllArticles();
+        echo json_encode($articles);
     }
 
     public function deleteWarning($id)
