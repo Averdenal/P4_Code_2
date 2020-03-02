@@ -7,7 +7,6 @@ class Warning
 
     addWarning(){
         document.body.addEventListener('click', function (evt) {
-            console.log(evt.target.className)
             if (evt.target.className === 'btn btn_Warning') {
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();

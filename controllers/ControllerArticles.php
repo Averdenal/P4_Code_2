@@ -36,20 +36,13 @@ class ControllerArticles extends BaseController
         {
             $tabComment[$i]['comment'] = $comments[$i];
             if($user['isConnect'] == true){
-
-                if($comments[$i]->getAutor()[0] == $user['id']){
-                        
-                    $tabComment[$i]['autorIsConnect'] = 1;
-                }else{
-                    $tabComment[$i]['autorIsConnect'] = 0;
-                }
-
+                $tabComment[$i]['autorIsConnect'] = $user;
                 if($comments[$i]->getNbWarning()>0)
                 {
                     if($this->_warningManager->isWarningByUserConnect($comments[$i]->getId(),$user['id']))
                     {
                         $tabComment[$i]['warningByConnect'] = 1;
-                    }else{
+                    } else{
                         $tabComment[$i]['warningByConnect'] = 0;
                     }
                 }else{

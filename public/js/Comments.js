@@ -58,6 +58,7 @@ class Comments
                         infomsg.innerHTML = 'Commentaire Ajouté '
                         let comments = JSON.parse(HttpRequest.responseText);
                         info.innerHTML ="";
+                        console.log(comments);
                         comments.forEach(element => {
                             info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });
@@ -71,7 +72,7 @@ class Comments
             });
         }
     }
-    create_Comment(comment,autor,warning){
+    create_Comment(comment,user,warning){
         let item_Comment = document.createElement('div');
         item_Comment.classList.add("item_Comment");
 
@@ -90,7 +91,7 @@ class Comments
         item_Comment.appendChild(comment_Info);
 
             let action = document.createElement('div');
-            if(autor == 1){
+            if(user.id == comment.user || user.rang == 'admin'){
                 let action_A_Delete = document.createElement('a');
                 action_A_Delete.classList.add('btn');
                 action_A_Delete.classList.add('btn_Delete');
@@ -98,7 +99,7 @@ class Comments
                 action_A_Delete.innerHTML = "Supprimer";
                 action.appendChild(action_A_Delete);
             }
-            if(warning != 1){
+            if(warning != 1 && comment.user != user.id && user.rang != 'admin'){
                 let action_A_Warning = document.createElement('a');
                 action_A_Warning.classList.add('btn');
                 action_A_Warning.classList.add('btn_Warning');

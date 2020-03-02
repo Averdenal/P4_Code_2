@@ -57,8 +57,8 @@ class UserManager extends Model{
 
     function verifConnecte(){
         if(isset($_SESSION['auth'])&&isset($_SESSION['rang'])){
-            $auth = (int) $_SESSION['auth'];
-            $rang = (int) $_SESSION['rang'];
+            $auth = $_SESSION['auth'];
+            $rang = $_SESSION['rang'];
             return ['isConnect' => true, 'id' => $auth, 'rang' => $rang];
         }else{
             return ['isConnect' => false];
