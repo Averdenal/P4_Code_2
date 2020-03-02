@@ -52,6 +52,7 @@ class Comments
         var formv = document.getElementById('form_Comment');
         if(formv !== null){
             formv.addEventListener('submit',(e) =>{
+                e.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = ()=>{
                     if(HttpRequest.readyState === 4){
@@ -68,9 +69,9 @@ class Comments
                     }
                 }
                 let data = new FormData(formv)
-                HttpRequest.open('POST','/P4_Code_2/Articles/addComment',true);
+                HttpRequest.open('POST','/P4_Code_2/Articles/addComment',false);
                 HttpRequest.send(data);
-                e.preventDefault();
+                
             });
         }
     }
@@ -136,19 +137,20 @@ class Comments
         td_Content.innerHTML = comment.content;
         tr.appendChild(td_Content);
 
+        let td_Autor = document.createElement('td');
+        td_Autor.innerHTML = comment.firstname+' '+comment.lastname;
+        tr.appendChild(td_Autor);
+
+        let td_Action = document.createElement('td');
+            let a_Action = document.createElement('a');
+            a_Action.href = this.basepath+'/Administration/deleteComment/'+comment.id;
+            a_Action.innerHTML = "Supprimer";
+            a_Action.classList.add('btn');
+            a_Action.classList.add('btn_Delete_Admin')
+            td_Action.appendChild(a_Action);
+        tr.appendChild(td_Action);
+
         return tr;
-
-        /*<tr>
-        <td><?= $comment->getId() ?></td>
-        <td><?= $comment->getDate() ?></td>
-        <td><?= $comment->getContent() ?></td>
-        <td><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></td>
-        <td>
-            <a class="btn btn_Delete" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>">Supprimer</a>
-        </td>
-
-
-    </tr>*/
     }
     
 }
