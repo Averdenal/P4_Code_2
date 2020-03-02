@@ -2,7 +2,8 @@ class Warning
 {
     constructor(){
         this.addWarning();
-        this.valideWarning();
+        this.delete_Warning();
+        this.valide_warning();
         this.coms = new Comments();
     }
 
@@ -32,11 +33,28 @@ class Warning
             }
         }, false);
     }
-
-    valideWarning()
+    valide_warning()
     {
         document.body.addEventListener('click', function (evt) {
-            if (evt.target.className === 'btn btn_Warning_Valide') {
+            if (evt.target.className === 'btn btn_Valide_Warning') {
+                evt.preventDefault();
+                let HttpRequest = new XMLHttpRequest();
+                let infomsg = document.querySelector('#info_msg');
+                HttpRequest.onreadystatechange = function(){
+                    if(HttpRequest.readyState === 4){
+                        infomsg.innerHTML = 'Commentaire Supprimé'
+                    }
+                }
+                HttpRequest.open('DELETE',evt.target.pathname,true);
+                HttpRequest.send();
+                location.reload();
+            }
+        });
+    }
+    delete_Warning()
+    {
+        document.body.addEventListener('click', function (evt) {
+            if (evt.target.className === 'btn btn_Delete_Warning') {
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
                 let infomsg = document.querySelector('#info_msg');
@@ -47,10 +65,8 @@ class Warning
                 }
                 HttpRequest.open('GET',evt.target.pathname,true);
                 HttpRequest.send();
-                setInterval(() => {
-                    location.reload();
-                }, 2000);
+                location.reload();
             }
-        }, false);
+        });
     }
 }

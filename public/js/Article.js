@@ -16,14 +16,15 @@ class Article
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
+                        location.replace('/P4_Code_2/Administration/editArticle/'+ HttpRequest.responseText);
                         msg.innerHTML = 'Article est bien créé';
-                        info.innerHTML = HttpRequest.responseText;
                     }
                 }
                 let data = new FormData(formAddArticle);
                 data.append('content',tinyMCE.get('Form_content').getContent());
                 HttpRequest.open('POST','/P4_Code_2/Administration/createArticle',true);
                 HttpRequest.send(data);
+                
             });
         }
     }

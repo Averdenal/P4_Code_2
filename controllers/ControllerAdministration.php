@@ -62,9 +62,8 @@ class ControllerAdministration extends BaseController
     }
     public function createArticle($title, $content)
     {
-        $titlePage = 'resumé';
         $article = $this->_articleManager->addArticle($title,$content);
-        echo "<a href=''>Retour aux articles</a><a href=''>Editer l'article</a>";
+        echo $article->getId();
     }
     public function editArticle($id)
     {
