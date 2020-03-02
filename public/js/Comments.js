@@ -31,15 +31,19 @@ class Comments
             }else if(evt.target.className === 'btn btn_Delete_Admin'){
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
+                let zone_Comments = document.getElementById('zone_Comments');
 
-                HttpRequest.onreadystatechange = function(){
+                HttpRequest.onreadystatechange = () => {
                     if(HttpRequest.readyState === 4){
-                        alert('Commentaire Supprimé')
+                        zone_Comments.innerHTML ="";
+                        let comments = JSON.parse(HttpRequest.responseText);
+                        comments.forEach(element => {
+                            zone_Comments.appendChild(this.create_Admin_Liste_Comment(element));
+                        });
                     }
                 }
                 HttpRequest.open('DELETE',evt.target.pathname,true);
                 HttpRequest.send();
-                location.reload();
             }
         }, false);
     }
@@ -55,7 +59,7 @@ class Comments
                         let infomsg = document.querySelector('#info');
                         let textarea = document.getElementById('textComs');
                         textarea.value = "";
-                        infomsg.innerHTML = 'Commentaire Ajouté '
+                        infomsg.innerHTML = 'Commentaire Ajouté'
                         let comments = JSON.parse(HttpRequest.responseText);
                         info.innerHTML ="";
                         comments.forEach(element => {
@@ -64,7 +68,7 @@ class Comments
                     }
                 }
                 let data = new FormData(formv)
-                HttpRequest.open('POST','/P4_Code_2/Articles/addComment',false);
+                HttpRequest.open('POST','/P4_Code_2/Articles/addComment',true);
                 HttpRequest.send(data);
                 e.preventDefault();
             });
@@ -113,6 +117,38 @@ class Comments
                 
         item_Comment.appendChild(action);
         return item_Comment;
+    }
+
+    create_Admin_Liste_Comment(comment){
+
+        console.log(comment);
+        let tr = document.createElement('tr');
+
+        let td_Id = document.createElement('td');
+        td_Id.innerHTML = comment.id;
+        tr.appendChild(td_Id);
+
+        let td_Date = document.createElement('td');
+        td_Date.innerHTML = comment.date;
+        tr.appendChild(td_Date);
+
+        let td_Content = document.createElement('td');
+        td_Content.innerHTML = comment.content;
+        tr.appendChild(td_Content);
+
+        return tr;
+
+        /*<tr>
+        <td><?= $comment->getId() ?></td>
+        <td><?= $comment->getDate() ?></td>
+        <td><?= $comment->getContent() ?></td>
+        <td><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></td>
+        <td>
+            <a class="btn btn_Delete" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>">Supprimer</a>
+        </td>
+
+
+    </tr>*/
     }
     
 }

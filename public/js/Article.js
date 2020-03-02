@@ -72,7 +72,6 @@ class Article
                 data.append('content',tinyMCE.get('Form_content').getContent());
                 HttpRequest.open('POST','/P4_Code_2/Administration/majArticle',true);
                 HttpRequest.send(data);
-                
             });
         }
     }

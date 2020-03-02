@@ -97,6 +97,10 @@ a{
 .btn_Delete:hover{
     background-color: rgba(255, 99, 71, 1);
 }
+.btn_Delete_Admin{
+    background-color: rgba(255, 99, 71, 0.3);
+    border: 2px solid rgb(255, 99, 71);
+}
 .btn_Warning{
     background-color: rgba(255, 99, 71, 0.3);
     border: 2px solid rgb(255, 99, 71);

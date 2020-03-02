@@ -52,10 +52,7 @@ class ControllerAdministration extends BaseController
     public function deleteComment($id)
     {
         $this->_commentManager->dellComment((int) $id);
-
-        $title = 'Gestion commentaires';
-        $comment = $this->_commentManager->getAllComments();
-        echo $this->viewConstruct('views/viewcommentManagement.php',$comment,$title);
+        echo json_encode($this->_commentManager->getAllComments());
     }
 
     public function newArticle()

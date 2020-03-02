@@ -13,7 +13,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="zone_Comments">
     <?php foreach($tab as $comment): ?>
         <tr>
             <td><?= $comment->getId() ?></td>
@@ -21,7 +21,7 @@
             <td><?= $comment->getContent() ?></td>
             <td><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></td>
             <td>
-                <a class="btn btn_Delete" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>">Supprimer</a>
+                <a class="btn btn_Delete_Admin" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>">Supprimer</a>
             </td>
 
 
