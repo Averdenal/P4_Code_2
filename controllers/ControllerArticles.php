@@ -73,9 +73,9 @@ class ControllerArticles extends BaseController
             
     }
 
-    public function addWarning($id)
+    public function addWarning($id,$idarticle)
     {
         $this->_warningManager->addWarning($id);
-        echo 'OK '.$id;
+        echo json_encode($this->getCommentByArticle($idarticle));
     }
 }

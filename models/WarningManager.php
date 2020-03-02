@@ -29,6 +29,9 @@ class WarningManager extends Model
         $req->execute();
         return $req->fetchAll(PDO::FETCH_CLASS,'warning');
     }
+    /**
+     * @param {int} id du commentaire
+     */
     public function addWarning($id)
     {
         $date = date('Y-m-d H:i:s');
@@ -41,6 +44,7 @@ class WarningManager extends Model
         $req->bindParam(':newDate',$date);
         $req->execute();
     }
+    
     /**
      * @param {int} id du commentaire.
      */

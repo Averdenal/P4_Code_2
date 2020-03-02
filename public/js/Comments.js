@@ -58,7 +58,6 @@ class Comments
                         infomsg.innerHTML = 'Commentaire Ajouté '
                         let comments = JSON.parse(HttpRequest.responseText);
                         info.innerHTML ="";
-                        console.log(comments);
                         comments.forEach(element => {
                             info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });
@@ -68,7 +67,6 @@ class Comments
                 HttpRequest.open('POST','/P4_Code_2/Articles/addComment',false);
                 HttpRequest.send(data);
                 e.preventDefault();
-                //location.reload();
             });
         }
     }
@@ -99,12 +97,17 @@ class Comments
                 action_A_Delete.innerHTML = "Supprimer";
                 action.appendChild(action_A_Delete);
             }
-            if(warning != 1 && comment.user != user.id && user.rang != 'admin'){
-                let action_A_Warning = document.createElement('a');
-                action_A_Warning.classList.add('btn');
+            let action_A_Warning = document.createElement('a');
+            action_A_Warning.classList.add('btn');
+            if(warning != 1 && comment.user != user.id /*&& user.rang != 'admin'*/){
                 action_A_Warning.classList.add('btn_Warning');
                 action_A_Warning.href = this.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article;
-                action_A_Warning.innerHTML ="Signaler"
+                action_A_Warning.innerHTML ="Signaler";
+                action.appendChild(action_A_Warning);
+                
+            }else if(warning == 1){
+                action_A_Warning.classList.add('btn_Warning_Ok');
+                action_A_Warning.innerHTML ="Déjà Signalé"
                 action.appendChild(action_A_Warning);
             }
                 

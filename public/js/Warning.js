@@ -3,19 +3,27 @@ class Warning
     constructor(){
         this.addWarning();
         this.valideWarning();
+        this.coms = new Comments();
     }
 
     addWarning(){
-        document.body.addEventListener('click', function (evt) {
+        document.body.addEventListener('click', (evt) => {
             if (evt.target.className === 'btn btn_Warning') {
                 evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
                 let info = document.getElementById('container_Comment');
                 let infomsg = document.querySelector('#info');
-                HttpRequest.onreadystatechange = function(){
+                HttpRequest.onreadystatechange = () => {
                     if(HttpRequest.readyState === 4){
-                        infomsg.innerHTML = 'Commentaire signalé'
-                        info.innerHTML = HttpRequest.responseText;
+                        infomsg.innerHTML = 'Commentaire signalé';
+                        console.log(HttpRequest.responseText);
+                        let comments = JSON.parse(HttpRequest.responseText);
+                        console.log(HttpRequest.responseText);
+                        info.innerHTML ="";
+                        comments.forEach(element => {
+                            info.appendChild(this.coms.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                        });
+
                     }
                 }
                 console.log(evt.target.pathname);
