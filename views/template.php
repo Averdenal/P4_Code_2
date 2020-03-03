@@ -29,7 +29,8 @@
             <p>Tu n'as pas de compte? <button id="action_Register" class="btn_None">S'enregistrer</button></p>
         </div>
         <div id="form_Register">
-            <form method="POST" action="<?= ROOT ?>/Authentification/register" class="flex flex-col">
+            <p id="info_Register"></p>
+            <form id="register" method="POST" action="" class="flex flex-col">
                 <h3>S'enregister</h3>
                 <input type="text" name="firstName" placeholder="Prénom" required> 
                 <input type="text" name="lastName" placeholder="Nom" required>

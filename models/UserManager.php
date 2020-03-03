@@ -11,6 +11,14 @@ class UserManager extends Model{
         $req->execute();
         return $req->fetchObject('User');
     }
+    function searchUserByEMail($email)
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare("SELECT * FROM users WHERE email = :email");
+        $req->bindParam(':email',$email,PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchObject('User');
+    }
 
     function bddAddUser($firstname,$lastname,$login,$email,$pwd,$rang){
         $bdd = $this->getBdd();

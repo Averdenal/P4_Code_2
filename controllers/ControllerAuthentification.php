@@ -20,7 +20,17 @@ class ControllerAuthentification extends BaseController
     }
     public function register($firstname,$lastname,$login,$email,$pwd)
     {
-        $rang = 2;
-        $this->_userManager->bddAddUser($firstname,$lastname,$login,$email,$pwd,$rang);
+        if(!$this->_userManager->searchUserByLogin($login)){
+            if(!$this->_userManager->searchUserByEMail($email)){
+                $rang = 2;
+                $this->_userManager->bddAddUser($firstname,$lastname,$login,$email,$pwd,$rang);
+                echo "Compte créé";
+            }else {
+                echo "Email existe déjà";
+            }
+        } else {
+            echo "login existe déjà";
+        }
+        
     }
 }
