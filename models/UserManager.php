@@ -100,4 +100,12 @@ class UserManager extends Model{
         $req->execute();
         return $req->fetchAll(PDO::FETCH_CLASS,'User');
     }
+
+    public function deleteUser($id)
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('DELETE FROM users WHERE id = :id');
+        $req->bindParam(':id',$id,PDO::PARAM_INT);
+        $req->execute();
+    }
 }

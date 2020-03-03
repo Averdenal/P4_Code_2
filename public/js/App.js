@@ -6,6 +6,7 @@ class App{
         new Comments();
         new Article();
         new Warning();
+        new User();
         this.basepath = "/P4_Code_2";
     }
 

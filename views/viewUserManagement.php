@@ -6,7 +6,7 @@
             <th>Prenom/Nom</th>
             <th>Login</th>
             <th>Email</th>
-            <th><button>Nouveau</button></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -17,8 +17,7 @@
         <td><?= $user->getLogin() ?></td>
         <td><?= $user->getEmail() ?></td>
         <td>
-            <button>Editer</button>
-            <button>Supprimer</button>
+            <a class="btn btn_User_Delete" href="<?= ROOT.'/Administration/deleteUser/'.$user->getId() ?>">Supprimer</a>
         </td>
 
 

@@ -150,5 +150,13 @@
         "controller":"ControllerArticles",
         "action":"addWarning",
         "param":"id,article"
+    },
+    {
+        "method":"DELETE",
+        "name":"deleteUser",
+        "route":"/Administration/deleteUser/(.*)",
+        "controller":"ControllerAdministration",
+        "action":"deleteUser",
+        "param":"id"
     }
 ]

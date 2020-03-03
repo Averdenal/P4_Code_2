@@ -91,4 +91,9 @@ class ControllerAdministration extends BaseController
     {
         $this->_warningManager->deleteWarningByComment($id);
     }
+    public function deleteUser($id)
+    {
+        $this->_userManager->deleteUser($id);
+        echo "utilisateur delete";
+    }
 }
