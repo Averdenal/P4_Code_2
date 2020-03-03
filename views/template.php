@@ -50,6 +50,7 @@
     <script src="<?= JS ?>Comments.js"></script>
     <script src="<?= JS ?>Article.js"></script>
     <script src="<?= JS ?>Warning.js"></script>
+    <script src="<?= JS ?>User.js"></script>
     <script>
         new App();
     </script>

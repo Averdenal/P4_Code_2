@@ -68,6 +68,7 @@ class App{
         var formv = document.getElementById('register');
         if(formv !== null){
             formv.addEventListener('submit',(e) =>{
+                debugger
                 e.preventDefault();
                 let info_Register = document.getElementById('info_Register');
                 let HttpRequest = new XMLHttpRequest();
@@ -77,7 +78,7 @@ class App{
                     }
                 }
                 let data = new FormData(formv)
-                HttpRequest.open('POST',this.basepath+'/Authentification/register',false);
+                HttpRequest.open('POST',this.basepath+'/Authentification/register',true);
                 HttpRequest.send(data);
             });
         }
