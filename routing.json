@@ -38,6 +38,6 @@
         "route":"/Authentification/register",
         "controller":"ControllerAuthentification",
         "action":"register",
-        "param":"firstname,lastname,login,email,pwd"
+        "param":"firstName,lastName,login,email,pwd"
     }
 ]
