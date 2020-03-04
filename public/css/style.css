@@ -2,6 +2,9 @@ body,html{
     margin: 0;
     padding: 0;
 }
+article{
+    margin: 0 2rem;
+}
 ul{
     list-style: none;
     padding: 0;
@@ -15,6 +18,9 @@ a{
     border-radius: 0 0 8px 8px;
     border-bottom: 2px solid black;
     height: 30px;
+    align-items: center;
+    padding: 0 1rem;
+    color: rgba(255, 255, 255, 0.74);
 }
 tbody tr:hover{
     background-color: rgb(90, 188, 253);
@@ -170,6 +176,10 @@ table {
     border-radius: 8px 8px 0 0;
     border-bottom: 2px solid black;
     height: 30px;
+}
+.list_Article_Accueil .zone_Title h3{
+    margin: 5px 1em;
+    color: white;
 }
 .list_Article_Accueil article{
     border-radius: 10px;
