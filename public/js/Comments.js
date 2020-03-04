@@ -19,11 +19,14 @@ class Comments
                 HttpRequest.onreadystatechange = () => {
                     if(HttpRequest.readyState === 4){
                         infomsg.innerHTML = 'Commentaire Supprimé'
-                        let comments = JSON.parse(HttpRequest.responseText);
-                        info.innerHTML ="";
-                        comments.forEach(element => {
-                            info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                        });
+                        
+                            let comments = JSON.parse(HttpRequest.responseText);
+                            info.innerHTML ="";
+                            comments.forEach(element => {
+                                info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                            });
+                        
+                        
                     }
                 }
                 HttpRequest.open('DELETE',evt.target.pathname,true);
@@ -51,11 +54,14 @@ class Comments
         
         var formv = document.getElementById('form_Comment');
         if(formv !== null){
-            formv.addEventListener('submit',(e) =>{
-                e.preventDefault();
+            formv.addEventListener('submit',(evt)=>{
+                debugger
+                console.log('info');
+                evt.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = ()=>{
                     if(HttpRequest.readyState === 4){
+                        console.log('demo');
                         let info = document.getElementById('container_Comment');
                         let infomsg = document.querySelector('#info');
                         let textarea = document.getElementById('textComs');
@@ -68,6 +74,7 @@ class Comments
                         });
                     }
                 }
+                
                 let data = new FormData(formv)
                 HttpRequest.open('POST','/P4_Code_2/Articles/addComment',false);
                 HttpRequest.send(data);

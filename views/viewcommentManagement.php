@@ -19,7 +19,7 @@
             <td><?= $comment->getId() ?></td>
             <td><?= $comment->getDate() ?></td>
             <td><?= $comment->getContent() ?></td>
-            <td><?= $comment->getAutor()[1].' '.$comment->getAutor()[2] ?></td>
+            <td><?= $comment->getAutor()['lastname'].' '.$comment->getAutor()['firstname'] ?></td>
             <td>
                 <a class="btn btn_Delete_Admin" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>">Supprimer</a>
             </td>

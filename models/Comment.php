@@ -19,7 +19,7 @@ class Comment
     }
 
     public function getAutor(){
-        return [(int)$this->user,(string)$this->lastname,(string)$this->firstname];
+        return ['id'=>(int)$this->user,'lastname'=>(string)$this->lastname,'firstname'=>(string)$this->firstname];
     }
     public function getArticle(){
         return $this->article;

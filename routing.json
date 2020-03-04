@@ -16,15 +16,6 @@
         "param":"slug"
     },
     {
-        "method":"GET",
-        "name":"auth",
-        "route":"/Authentification/login",
-        "controller":"ControllerAuthentification",
-        "action":"login",
-        "param":""
-
-    },
-    {
         "method":"POST",
         "name":"auth",
         "route":"/Authentification/login",

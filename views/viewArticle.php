@@ -8,7 +8,7 @@
 </article>
 <div class="alert" id="info"></div>
     <?php if($userIsConnect): ?>
-    <form id="form_Comment" action="" method="POST">
+    <form id="form_Comment">
         <input type="hidden" name="article" value="<?= $article->getId(); ?>">
         <textarea type="text" rows="2" name="content" id="textComs"></textarea>
         <input type="submit" value="Envoyer">
@@ -20,13 +20,13 @@
             <p><?= $comment['comment']->getContent(); ?></p>
             <div>
                 <p><?= $comment['comment']->getDate() ?></p>
-                <p><?= $comment['comment']->getAutor()[1].' '.$comment['comment']->getAutor()[2] ?></p>
+                <p><?= $comment['comment']->getAutor()['firstname'].' '.$comment['comment']->getAutor()['lastname'] ?></p>
             </div>
             <?php if(!empty($_SESSION['auth'])): 
-                if ($_SESSION['auth'] == $comment['comment']->getAutor()[0] || $_SESSION['rang'] == 'admin'):?>
+                if ($_SESSION['auth'] == $comment['comment']->getAutor()['id'] || $_SESSION['rang'] == 'admin'):?>
                     <a class="btn btn_Delete" href="<?= ROOT.'/Articles/deleteComment/'. $comment['comment']->getId().'/'.$comment['comment']->getArticle(); ?>">Supprimer</a>
                 <?php endif; 
-                if ($_SESSION['auth'] != $comment['comment']->getAutor()[0] && $comment['warningByConnect'] == 0):?>
+                if ($_SESSION['auth'] != $comment['comment']->getAutor()['id'] && $comment['warningByConnect'] == 0):?>
                     <a class="btn btn_Warning" href='<?= ROOT .'/Articles/addWarning/'.$comment['comment']->getId().'/'.$comment['comment']->getArticle(); ?>'>Signaler</a>
                 <?php elseif($comment['warningByConnect'] == 1): ?>
                     <p>Warning OK</p>

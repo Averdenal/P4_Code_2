@@ -57,13 +57,13 @@ class ControllerArticles extends BaseController
     public function addComment($content,$idArticle)
     {
         $this->_commentManager->addComment($content,$idArticle);
-        //var_dump($this->getCommentByArticle($idArticle));
         echo json_encode($this->getCommentByArticle($idArticle));
     }
 
     public function deleteComment($id,$idArticle)
     {
         $comment = $this->_commentManager->getCommentById($id);
+        //var_dump($comment->getAutor());
         if( $this->_userManager->verifConnecte()['rang'] == 'admin' 
         || $this->_userManager->verifConnecte()['id'] == $comment->getAutor()['id'])
         {

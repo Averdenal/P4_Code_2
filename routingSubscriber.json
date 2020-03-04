@@ -17,24 +17,6 @@
     },
     {
         "method":"POST",
-        "name":"connexion",
-        "route":"/Authentification/login",
-        "controller":"ControllerAuthentification",
-        "action":"loginVerif",
-        "param":"login,pwd"
-
-    },
-    {
-        "method":"POST",
-        "name":"register",
-        "route":"/Authentification/register",
-        "controller":"ControllerAuthentification",
-        "action":"register",
-        "param":"firstname,lastname,email,login,pwd"
-
-    },
-    {
-        "method":"POST",
         "name":"addComment",
         "route":"/Articles/addComment",
         "controller":"ControllerArticles",
@@ -51,7 +33,7 @@
     },
     {
         "method":"GET",
-        "name":"auth",
+        "name":"logout",
         "route":"/Authentification/logout",
         "controller":"ControllerAuthentification",
         "action":"logout",
