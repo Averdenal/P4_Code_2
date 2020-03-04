@@ -25,6 +25,7 @@ class Comments
                             comments.forEach(element => {
                                 info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                             });
+                            debugger
                         
                         
                     }
@@ -57,7 +58,7 @@ class Comments
             formv.addEventListener('submit',(evt)=>{
                 debugger
                 console.log('info');
-                evt.preventDefault();
+                
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = ()=>{
                     if(HttpRequest.readyState === 4){
@@ -76,8 +77,9 @@ class Comments
                 }
                 
                 let data = new FormData(formv)
-                HttpRequest.open('POST','/P4_Code_2/Articles/addComment',false);
+                HttpRequest.open('POST','/P4_Code_2/Articles/addComment',true);
                 HttpRequest.send(data);
+                evt.preventDefault();
                 
             });
         }
