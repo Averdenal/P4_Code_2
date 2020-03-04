@@ -5,6 +5,9 @@
         </li>
     </ul>
 </nav>
+<div class="flex-3" id="logo">
+    <a href="<?= ROOT ?>"><h1>Billet simple pour l'Alaska</h1></a>
+</div>
 <nav class='flex-3'>
     <ul class='flex flex-right'>
         <?php if(isset($_SESSION['auth'])){ 
