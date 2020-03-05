@@ -48,116 +48,69 @@ class Comments
             }
         }, false);
     }
-   
+
     add_Comment(){
-    var formv = document.getElementById('form_Comment');
-        if(formv !== null){
-            formv.addEventListener('submit',(evt)=>{
-                console.log('info');
-                let HttpRequest = new XMLHttpRequest();
-                HttpRequest.onreadystatechange = ()=>{
-                    if(HttpRequest.readyState === 4){
-                        let info = document.getElementById('container_Comment');
-                        let infomsg = document.querySelector('#info');
-                        let textarea = document.getElementById('textComs');
-                        textarea.value = "";
-                        infomsg.innerHTML = 'Commentaire Ajouté'
-                        let comments = JSON.parse(HttpRequest.responseText);
-                        info.innerHTML ="";
-                        comments.forEach(element => {
-                            info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                        });
-                        return false;
-                    }
-                }
-                
-                let data = new FormData(formv)
-                HttpRequest.open('POST','/P4_Code_2/Articles/addComment',true);
-                HttpRequest.send(data);
-                evt.preventDefault();
-                
+        var add_Comment_Form = $('#form_Comment');
+        add_Comment_Form.submit( (e) =>{ 
+            e.preventDefault();
+            let info = document.getElementById('container_Comment');
+            $.ajax({
+                url : add_Comment_Form.attr("action"),
+                type: add_Comment_Form.attr("method"),
+                data : add_Comment_Form.serialize()
+            }).done((response)=>{ 
+                var zone_Comments = ''
+                var comments = JSON.parse(response);
+                comments.forEach(element => {
+                    zone_Comments += this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect);
+                });
+                info.innerHTML = zone_Comments;
             });
-        }
+        });
     }
     create_Comment(comment,user,warning){
 
-        //var commentt = $('<div class></div>'+ '')
+        
+        var btn_Delete = "<a class='btn btn_Delete' href='"+this.basepath+'/Articles/deleteComment/'+comment.id+'/'+comment.article+"'>Supprimer</a>";
+        var btn_Warning = "<a class='btn btn_Warning' href='"+this.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article+"'>Signaler</a>";
+        var warning_Ok ="<p class='btn btn_Warning_Ok'>Déjà Signalé</p>";
 
-        let item_Comment = document.createElement('div');
-        item_Comment.classList.add("item_Comment");
+        var action ='';
+        if(user.id == comment.user || user.rang == 'admin'){
+            action += btn_Delete;
+        }
 
-            let comment_Content = document.createElement('p');
-            comment_Content.innerHTML = comment.content;
-        item_Comment.appendChild(comment_Content);
+        if(warning != 1 && comment.user != user.id && user.rang != 'admin')
+        {
+            action += btn_Warning;
+        } 
+        else if(warning == 1)
+        {
+            action += warning_Ok ;
+        }
 
-        let comment_Info = document.createElement('div');
-            let comment_Date = document.createElement('p');
-            comment_Date.innerHTML = comment.date;
-            comment_Info.appendChild(comment_Date);
-
-            let comment_Autor = document.createElement('p');
-            comment_Autor.innerHTML = comment.firstname+' '+comment.lastname;
-            comment_Info.appendChild(comment_Autor);
-        item_Comment.appendChild(comment_Info);
-
-            let action = document.createElement('div');
-            if(user.id == comment.user || user.rang == 'admin'){
-                let action_A_Delete = document.createElement('a');
-                action_A_Delete.classList.add('btn');
-                action_A_Delete.classList.add('btn_Delete');
-                action_A_Delete.href = this.basepath+'/Articles/deleteComment/'+comment.id+'/'+comment.article;
-                action_A_Delete.innerHTML = "Supprimer";
-                action.appendChild(action_A_Delete);
-            }
-            let action_A_Warning = document.createElement('a');
-            action_A_Warning.classList.add('btn');
-            if(warning != 1 && comment.user != user.id /*&& user.rang != 'admin'*/){
-                action_A_Warning.classList.add('btn_Warning');
-                action_A_Warning.href = this.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article;
-                action_A_Warning.innerHTML ="Signaler";
-                action.appendChild(action_A_Warning);
-                
-            }else if(warning == 1){
-                action_A_Warning.classList.add('btn_Warning_Ok');
-                action_A_Warning.innerHTML ="Déjà Signalé"
-                action.appendChild(action_A_Warning);
-            }
-                
-        item_Comment.appendChild(action);
-        return item_Comment;
+        var comment = "<div class='item_Comment'>"+
+        "<p>"+comment.content+"</p>"+
+        "<div>"+
+        "<p>"+comment.date+"</p>"+
+        "<p>"+comment.firstname+" "+comment.lastname+"</p>"+
+        "</div>"+
+        "<div>"+action+"</div>"+
+        "</div>";
+        return comment;
     }
 
     create_Admin_Liste_Comment(comment){
-
-        console.log(comment);
-        let tr = document.createElement('tr');
-
-        let td_Id = document.createElement('td');
-        td_Id.innerHTML = comment.id;
-        tr.appendChild(td_Id);
-
-        let td_Date = document.createElement('td');
-        td_Date.innerHTML = comment.date;
-        tr.appendChild(td_Date);
-
-        let td_Content = document.createElement('td');
-        td_Content.innerHTML = comment.content;
-        tr.appendChild(td_Content);
-
-        let td_Autor = document.createElement('td');
-        td_Autor.innerHTML = comment.firstname+' '+comment.lastname;
-        tr.appendChild(td_Autor);
-
-        let td_Action = document.createElement('td');
-            let a_Action = document.createElement('a');
-            a_Action.href = this.basepath+'/Administration/deleteComment/'+comment.id;
-            a_Action.innerHTML = "Supprimer";
-            a_Action.classList.add('btn');
-            a_Action.classList.add('btn_Delete_Admin')
-            td_Action.appendChild(a_Action);
-        tr.appendChild(td_Action);
-
-        return tr;
+        return create_Admin_Comment = 
+            "<tr>"+
+                "<td>"+comment.id+"</td>"+
+                "<td>"+comment.date+"</td>"+
+                "<td>"+comment.content+"</td>"+
+                "<td>"+comment.firstname+" "+comment.lastname+"</td>"+
+                "<td>"+
+                    "<a class='btn btn_Delete_Admin' href='"+this.basepath+"/Administration/deleteComment/"+comment.id+"'></a>"+
+                "</td>"+
+            "</tr>";
     }
     
 }

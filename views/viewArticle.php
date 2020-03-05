@@ -8,7 +8,7 @@
 </article>
 <div class="alert" id="info"></div>
     <?php if($userIsConnect): ?>
-    <form id="form_Comment" action="/P4_Code_2/Articles/addComment">
+    <form id="form_Comment" action="/P4_Code_2/Articles/addComment" method="POST">
         <input type="hidden" name="article" value="<?= $article->getId(); ?>">
         <textarea type="text" rows="2" name="content" id="textComs"></textarea>
         <input type="submit" value="Envoyer" id='btn_Add_comment_form'>
