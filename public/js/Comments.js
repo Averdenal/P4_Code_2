@@ -24,10 +24,7 @@ class Comments
                             info.innerHTML ="";
                             comments.forEach(element => {
                                 info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                            });
-                            debugger
-                        
-                        
+                            });                  
                     }
                 }
                 HttpRequest.open('DELETE',evt.target.pathname,true);
@@ -51,18 +48,16 @@ class Comments
             }
         }, false);
     }
+   
     add_Comment(){
-        
-        var formv = document.getElementById('form_Comment');
+
+    var formv = document.getElementById('form_Comment');
         if(formv !== null){
             formv.addEventListener('submit',(evt)=>{
-                debugger
                 console.log('info');
-                
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = ()=>{
                     if(HttpRequest.readyState === 4){
-                        console.log('demo');
                         let info = document.getElementById('container_Comment');
                         let infomsg = document.querySelector('#info');
                         let textarea = document.getElementById('textComs');
@@ -73,6 +68,7 @@ class Comments
                         comments.forEach(element => {
                             info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });
+                        return false;
                     }
                 }
                 

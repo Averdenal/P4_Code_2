@@ -43,16 +43,6 @@
             <p>Tu as un compte? <button class="btn_None" id="action_Connection">Se connecter</button></p>
         </div>
     </div>
-    <footer>
-
-    </footer>
-    <script src="<?= JS ?>App.js"></script>
-    <script src="<?= JS ?>Comments.js"></script>
-    <script src="<?= JS ?>Article.js"></script>
-    <script src="<?= JS ?>Warning.js"></script>
-    <script src="<?= JS ?>User.js"></script>
-    <script>
-        new App();
-    </script>
+    <?php include('template/footer.php'); ?>
 </body>
 </html>
