@@ -4,7 +4,6 @@ class Warning
         this.addWarning();
         this.delete_Warning();
         this.valide_warning();
-        this.coms = new Comments();
     }
 
     addWarning(){
@@ -22,7 +21,7 @@ class Warning
                         console.log(HttpRequest.responseText);
                         info.innerHTML ="";
                         comments.forEach(element => {
-                            info.appendChild(this.coms.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                            info.appendChild(app.coms.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });
 
                     }

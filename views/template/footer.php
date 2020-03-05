@@ -7,5 +7,5 @@
     <script src="<?= JS ?>Warning.js"></script>
     <script src="<?= JS ?>User.js"></script>
     <script>
-        new App();
+        var app = new App();
     </script>

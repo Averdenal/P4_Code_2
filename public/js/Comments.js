@@ -50,7 +50,6 @@ class Comments
     }
    
     add_Comment(){
-
     var formv = document.getElementById('form_Comment');
         if(formv !== null){
             formv.addEventListener('submit',(evt)=>{
@@ -81,6 +80,9 @@ class Comments
         }
     }
     create_Comment(comment,user,warning){
+
+        //var commentt = $('<div class></div>'+ '')
+
         let item_Comment = document.createElement('div');
         item_Comment.classList.add("item_Comment");
 

@@ -1,9 +1,15 @@
+/**
+ * jquery
+ * bootstrap
+ * dellcomment vérif user
+ */
+
 class App{
     constructor(){
         this.init();
         this.tiny();
         this.register();
-        new Comments();
+        this.coms = new Comments();
         new Article();
         new Warning();
         new User();
@@ -68,7 +74,6 @@ class App{
         var formv = document.getElementById('register');
         if(formv !== null){
             formv.addEventListener('submit',(e) =>{
-                debugger
                 e.preventDefault();
                 let info_Register = document.getElementById('info_Register');
                 let HttpRequest = new XMLHttpRequest();

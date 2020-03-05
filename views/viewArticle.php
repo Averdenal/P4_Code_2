@@ -11,7 +11,7 @@
     <form id="form_Comment" action="/P4_Code_2/Articles/addComment">
         <input type="hidden" name="article" value="<?= $article->getId(); ?>">
         <textarea type="text" rows="2" name="content" id="textComs"></textarea>
-        <input type="submit" value="Envoyer">
+        <input type="submit" value="Envoyer" id='btn_Add_comment_form'>
     </form>
 <?php endif; ?>
 <div class="Comment" id="container_Comment">
