@@ -59,12 +59,12 @@ class Comments
                 type: add_Comment_Form.attr("method"),
                 data : add_Comment_Form.serialize()
             }).done((response)=>{ 
-                var zone_Comments = ''
+                info.innerHTML = ''
                 var comments = JSON.parse(response);
                 comments.forEach(element => {
-                    zone_Comments += this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect);
+                    
+                    info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                 });
-                info.innerHTML = zone_Comments;
             });
         });
     }
@@ -89,20 +89,19 @@ class Comments
             action += warning_Ok ;
         }
 
-        var comment = "<div class='item_Comment'>"+
+        var comment = $("<div class='item_Comment'>"+
         "<p>"+comment.content+"</p>"+
         "<div>"+
         "<p>"+comment.date+"</p>"+
         "<p>"+comment.firstname+" "+comment.lastname+"</p>"+
         "</div>"+
         "<div>"+action+"</div>"+
-        "</div>";
-        return comment;
+        "</div>");
+        return comment[0];
     }
 
     create_Admin_Liste_Comment(comment){
-        return create_Admin_Comment = 
-            "<tr>"+
+        return $("<tr>"+
                 "<td>"+comment.id+"</td>"+
                 "<td>"+comment.date+"</td>"+
                 "<td>"+comment.content+"</td>"+
@@ -110,7 +109,7 @@ class Comments
                 "<td>"+
                     "<a class='btn btn_Delete_Admin' href='"+this.basepath+"/Administration/deleteComment/"+comment.id+"'></a>"+
                 "</td>"+
-            "</tr>";
+            "</tr>");
     }
     
 }
