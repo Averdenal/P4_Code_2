@@ -13,40 +13,34 @@ class Comments
         document.body.addEventListener('click', (evt) => {
             if (evt.target.className === 'btn btn_Delete') {
                 evt.preventDefault();
-                let HttpRequest = new XMLHttpRequest();
                 let info = document.getElementById('container_Comment');
                 let infomsg = document.querySelector('#info');
-                HttpRequest.onreadystatechange = () => {
-                    if(HttpRequest.readyState === 4){
-                        infomsg.innerHTML = 'Commentaire Supprimé'
-                        
-                            let comments = JSON.parse(HttpRequest.responseText);
-                            info.innerHTML ="";
-                            comments.forEach(element => {
-                                info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                            });                  
-                    }
-                }
-                HttpRequest.open('DELETE',evt.target.pathname,true);
-                HttpRequest.send();
+                $.ajax({
+                    url:evt.target.pathname,
+                    type:"DELETE"
+                }).done((reponse) => {
+                    infomsg.innerHTML = 'Commentaire Supprimé';
+                    let comments = JSON.parse(reponse);
+                        info.innerHTML ="";
+                        comments.forEach(element => {
+                            info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                        });  
+                })                            
             }else if(evt.target.className === 'btn btn_Delete_Admin'){
                 evt.preventDefault();
-                let HttpRequest = new XMLHttpRequest();
                 let zone_Comments = document.getElementById('zone_Comments');
-
-                HttpRequest.onreadystatechange = () => {
-                    if(HttpRequest.readyState === 4){
-                        zone_Comments.innerHTML ="";
-                        let comments = JSON.parse(HttpRequest.responseText);
-                        comments.forEach(element => {
-                            zone_Comments.appendChild(this.create_Admin_Liste_Comment(element));
-                        });
-                    }
-                }
-                HttpRequest.open('DELETE',evt.target.pathname,true);
-                HttpRequest.send();
+                $.ajax({
+                    url:evt.target.pathname,
+                    type:"DELETE"
+                }).done((response)=>{
+                    zone_Comments.innerHTML ="";
+                    let comments = JSON.parse(response);
+                    comments.forEach(element => {
+                        zone_Comments.appendChild(this.create_Admin_Liste_Comment(element));
+                    });
+                })
             }
-        }, false);
+        });
     }
 
     add_Comment(){
@@ -101,15 +95,16 @@ class Comments
     }
 
     create_Admin_Liste_Comment(comment){
-        return $("<tr>"+
+        var comment = $("<tr>"+
                 "<td>"+comment.id+"</td>"+
                 "<td>"+comment.date+"</td>"+
                 "<td>"+comment.content+"</td>"+
                 "<td>"+comment.firstname+" "+comment.lastname+"</td>"+
                 "<td>"+
-                    "<a class='btn btn_Delete_Admin' href='"+this.basepath+"/Administration/deleteComment/"+comment.id+"'></a>"+
+                    "<a class='btn btn_Delete_Admin' href='"+this.basepath+"/Administration/deleteComment/"+comment.id+"'>Supprimer</a>"+
                 "</td>"+
             "</tr>");
+        return comment[0];
     }
     
 }
