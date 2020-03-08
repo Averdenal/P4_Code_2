@@ -7,11 +7,26 @@ class Article
         this.basepath = "/P4_Code_2";
     }
     newArticle(){
-        var formAddArticle = document.getElementById('add_Article');
+        var formAddArticle = $('#add_Article');
         //var info = document.getElementById('container_Article');
         var msg = document.getElementById('info');
         if(formAddArticle !== null){
-            formAddArticle.addEventListener('submit',function(e){
+            formAddArticle.submit( (e) => { 
+                e.preventDefault();
+                console.log(formAddArticle.serialize());
+                $.ajax({
+                    type: "POST",
+                    url: this.basepath+"/Administration/createArticle",
+                    data: formAddArticle.serialize(),
+                    success: function (response) {
+                        console.log(response);
+                        location.replace('/Administration/editArticle/'+ response);
+                    }
+                });
+            })
+            
+            
+            /*formAddArticle.addEventListener('submit',function(e){
                 e.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = function(){
@@ -24,7 +39,7 @@ class Article
                 data.append('content',tinyMCE.get('Form_content').getContent());
                 HttpRequest.open('POST','/P4_Code_2/Administration/createArticle',true);
                 HttpRequest.send(data);
-            });
+            });*/
         }
     }
 

@@ -6,6 +6,7 @@
 
 class App{
     constructor(){
+        
         this.init();
         this.tiny();
         this.register();
