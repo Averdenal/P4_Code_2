@@ -8,38 +8,20 @@ class Article
     }
     newArticle(){
         var formAddArticle = $('#add_Article');
-        //var info = document.getElementById('container_Article');
-        var msg = document.getElementById('info');
         if(formAddArticle !== null){
-            formAddArticle.submit( (e) => { 
-                e.preventDefault();
-                console.log(formAddArticle.serialize());
-                $.ajax({
-                    type: "POST",
-                    url: this.basepath+"/Administration/createArticle",
-                    data: formAddArticle.serialize(),
-                    success: function (response) {
-                        console.log(response);
-                        location.replace('/Administration/editArticle/'+ response);
-                    }
-                });
-            })
-            
-            
-            /*formAddArticle.addEventListener('submit',function(e){
+            formAddArticle.addEventListener('submit',function(e){
                 e.preventDefault();
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
                         location.replace('/P4_Code_2/Administration/editArticle/'+ HttpRequest.responseText);
-                        msg.innerHTML = 'Article est bien créé';
                     }
                 }
                 let data = new FormData(formAddArticle);
                 data.append('content',tinyMCE.get('Form_content').getContent());
                 HttpRequest.open('POST','/P4_Code_2/Administration/createArticle',true);
                 HttpRequest.send(data);
-            });*/
+            });
         }
     }
 
@@ -82,7 +64,7 @@ class Article
                 }
                 let data = new FormData(formEditArticle)
                 data.append('content',tinyMCE.get('Form_content').getContent());
-                HttpRequest.open('POST','/P4_Code_2/Administration/majArticle',true);
+                HttpRequest.open('PUT','/P4_Code_2/Administration/majArticle',true);
                 HttpRequest.send(data);
             });
         }

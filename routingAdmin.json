@@ -112,7 +112,7 @@
         "param":"id"
     },
     {
-        "method":"POST",
+        "method":"PUT",
         "name":"editArticlePost",
         "route":"/Administration/majArticle",
         "controller":"ControllerAdministration",
