@@ -17,8 +17,15 @@ class User{
             }
         });
     }
+    
     create_Admin_Liste_User(users){
-        
+        var user = $("<tr>"+
+        "<td>"+users.id+"</td>"+
+        "<td>"+users.firstname+" "+users.lastname+"</td>"+
+        "<td>"+users.login+"</td>"+
+        "<td>"+users.email+"</td>"+
+        "<td><a class='btn btn_User_Delete' href='"+info+"'>Supprimer</a></td></tr>");
+        return user;
     }
 
 
