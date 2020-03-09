@@ -2,20 +2,19 @@
     <?php 
     foreach($listArticle as $article):
     ?>
-    <article>
-        <div class='zone_Title'>
-            <h3><?= $article->getTitle(); ?></h3>
+    <div class="card text-center">
+        <div class="card-header card-title">
+            <h2><?= $article->getTitle(); ?></h2>
         </div>
-        <div class='zone_Content'>
-            <p><?= $article->getLitleContent(); ?>
-                <a href="Article/<?= $article->getSlug() ?>">En lire plus.</a>
-            </p>
+        <div class="card-body">
+            <p class="card-text"><?= $article->getLitleContent(); ?></p>
+            <a href="Article/<?= $article->getSlug() ?>" class="btn btn-primary">En lire plus.</a>
         </div>
-        <div class='infoArticle flex'>
-            <div class="dateArticle"><?= $article->getDate(); ?></div>
-            <div class="autorArticle"><?= $article->getFirstName().' '.$article->getLastName(); ?></div>
+        <div class="card-footer text-muted justify-content-between flex">
+            <div><?= $article->getDate(); ?></div>
+            <div><?= $article->getFirstName().' '.$article->getLastName(); ?></div>
         </div>
-    </article>
+    </div>
     <?php 
     endforeach;
     ?>

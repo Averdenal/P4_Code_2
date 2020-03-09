@@ -8,6 +8,10 @@ body,html{
     margin: 0 5px;
 }
 
+.flex{
+    display: flex;
+}
+
 
 article{
     margin: 0 2rem;
