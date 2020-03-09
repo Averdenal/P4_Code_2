@@ -1,29 +1,23 @@
-<nav class="flex-3">
-    <ul class='flex'>
-        <li>
-            <a href="<?= ROOT ?>">Accueil</a>
-        </li>
-    </ul>
-</nav>
-<div class="flex-3" id="logo">
-    <a href="<?= ROOT ?>"><h1>Billet simple pour l'Alaska</h1></a>
-</div>
-<nav class='flex-3'>
-    <ul class='flex flex-right'>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="<?= ROOT ?>">Accueil</a>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse justify-content-center">
+        <a class="navbar-brand" href="<?= ROOT ?>">Billet simple pour l'Alaska</a>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end margin-menu">
         <?php if(isset($_SESSION['auth'])){ 
-            if($_SESSION['rang'] === 'admin'):
-            ?>
-            <li>
-                <a href="<?= ROOT ?>/Administration/administrationAccueil" >Administration</a>
-            </li>
+            if($_SESSION['rang'] === 'admin'): ?>
+                <a href="<?= ROOT ?>/Administration/administrationAccueil" class="btn btn-dark"><i class="fas fa-user-shield"></i></a>
             <?php endif; ?>
-            <li>
-                <a href="<?= ROOT ?>/Authentification/logout" >Déconnnexion</a>
-            </li>
-        <?php }else{?>
-            <li>
-                <button id="connexionBtn">Connexion</button>
-            </li>
+                <a href="<?= ROOT ?>/Authentification/logout" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> </a>
+            <?php }else{?>
+                <button class="btn btn-info" id="connexionBtn">Connexion</button>
         <?php } ?>
-    </ul>
+    </div>
 </nav>

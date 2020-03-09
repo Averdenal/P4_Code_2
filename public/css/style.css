@@ -2,6 +2,13 @@ body,html{
     margin: 0;
     padding: 0;
 }
+
+
+.margin-menu a{
+    margin: 0 5px;
+}
+
+
 article{
     margin: 0 2rem;
 }
@@ -25,54 +32,7 @@ a{
 tbody tr:hover{
     background-color: rgb(90, 188, 253);
 }
-/***********************************************************************************/
-.flex{
-    display: flex;
-}
-.flex-right{
-    justify-content: flex-end;
-    padding: 0 20px;
-}
-.flex-3{
-    flex: 3;
-}
-.flex-1{
-    flex: 1;
-}
-.flex-5{
-    flex: 5;
-}
-.flex-wrap{
-    flex-wrap: wrap;
 
-}
-.flex-col{
-    flex-direction: column;
-}
-main{
-    position: absolute;
-    top: 50px;
-    width: 100%;
-}
-header{
-    display: flex;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 50px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    color: white;
-    background-color: #0191C8;
-    z-index: 100;
-}
-header ul li {
-    margin: 0 10px;
-}
-#logo{
-    text-align: center;
-}
 /**************************************** ADMIN **********************************/
 .btn_Admin{
     flex:2;

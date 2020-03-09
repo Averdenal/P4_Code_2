@@ -7,7 +7,7 @@ class Article
         this.basepath = "/P4_Code_2";
     }
     newArticle(){
-        var formAddArticle = $('#add_Article');
+        var formAddArticle = document.querySelector('#add_Article');
         if(formAddArticle !== null){
             formAddArticle.addEventListener('submit',function(e){
                 e.preventDefault();
