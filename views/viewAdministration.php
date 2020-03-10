@@ -1,20 +1,20 @@
 <h2>Administration</h2>
-<div class="flex flex-wrap">
-    <div class="cart flex-1">
+<div class="d-flex justify-content-around">
+    <div class="card-admin text-center">
     <p>Nombre d'articles</p>
         <div class="cercle cercle-green">
             <h3><?= $tab['articleNb']; ?></h3> 
         </div>
         
     </div>
-    <div class="cart flex-1">
+    <div class="card-admin text-center">
     <p>Nombre de commentaires</p>
-        <div class="cercle cercle-orange">
+        <div class="cercle cercle-orange align-middle">
             <h3><?= $tab['commentNb']; ?></h3> 
         </div>
         
     </div>
-    <div class="cart flex-1">
+    <div class="card-admin text-center">
     <p>Nombre de warnings</p>
         <div class="cercle cercle-red">
             <h3><?= $tab['warningNb']; ?></h3> 

@@ -28,7 +28,7 @@ class Article
     deleteArticle()
     {
         document.body.addEventListener('click', (evt) => {
-            if (evt.target.className === 'btn btn_Delete_Article') {
+            if (evt.target.className === 'btn btn_Delete_Article btn-danger') {
                 evt.preventDefault();
                 let infomsg  = document.querySelector('#info');
                 let infoArticle = document.querySelector('#list_Articles')
@@ -77,8 +77,8 @@ class Article
         "<td>"+article.title+"</td>"+
         "<td>"+article.content+"</td>"+
         "<td>"+article.lastname+" "+article.firstname+"</td>"+
-        "<td><a class='btn btn_Edit_Article' href='"+this.basepath+"/Administration/editArticle/"+article.id+"'>Edit</a>"+
-        "<a class='btn btn_Delete_Article' href='"+this.basepath+"/Administration/deleteArticle/"+article.id+"'>Supprimer</a></td>"+
+        "<td><a class='btn btn_Edit_Article btn-warning' href='"+this.basepath+"/Administration/editArticle/"+article.id+"'></a>"+
+        "<a class='btn btn_Delete_Article btn-danger' href='"+this.basepath+"/Administration/deleteArticle/"+article.id+"'></a></td>"+
         "</tr>")
         return articleHtml[0];    
     }

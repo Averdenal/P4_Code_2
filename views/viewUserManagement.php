@@ -17,7 +17,7 @@
         <td><?= $user->getLogin() ?></td>
         <td><?= $user->getEmail() ?></td>
         <td>
-            <a class="btn btn_User_Delete" href="<?= ROOT.'/Administration/deleteUser/'.$user->getId() ?>">Supprimer</a>
+            <a class="btn btn_Delete_User btn-danger" href="<?= ROOT.'/Administration/deleteUser/'.$user->getId() ?>"></a>
         </td>
 
 

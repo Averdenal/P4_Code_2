@@ -1,8 +1,5 @@
 <section id="container_Comment">
     <h2>Gestion des commentaires</h2>
-        <div class="alert alert_OK">
-        <p id='msg'></p>
-        </div>
     <table>
         <thead>
             <tr>
@@ -21,7 +18,7 @@
             <td><?= $comment->getContent() ?></td>
             <td><?= $comment->getAutor()['lastname'].' '.$comment->getAutor()['firstname'] ?></td>
             <td>
-                <a class="btn btn_Delete_Admin" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>">Supprimer</a>
+                <a class="btn btn_Delete_Admin btn-danger" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>"></a>
             </td>
 
 

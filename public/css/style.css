@@ -61,6 +61,16 @@ tbody tr:hover{
 .btn_Admin:hover{
     background-color: #1F618D;
 }
+.btn_Delete_Admin::before, .btn_Delete_Article::before, .btn_Delete_User::before {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f2ed";
+}
+.btn_Edit_Article::before{
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f044";
+}
 .btn{
     padding: 5px;
     border-radius: 5px;
@@ -68,45 +78,7 @@ tbody tr:hover{
 a{
     color: white;
 }
-.btn_Delete{
-    background-color: rgba(255, 99, 71, 0.3);
-    border: 2px solid rgb(255, 99, 71);
-}
-.btn_Delete:hover{
-    background-color: rgba(255, 99, 71, 1);
-}
-.btn_Delete_Admin{
-    background-color: rgba(255, 99, 71, 0.3);
-    border: 2px solid rgb(255, 99, 71);
-}
-.btn_Warning{
-    background-color: rgba(255, 99, 71, 0.3);
-    border: 2px solid rgb(255, 99, 71);
-}
-.btn_Warning:hover{
-    background-color: rgba(255, 99, 71, 1);
-}
-.btn_Warning_Valide{
-    background-color: rgba(0, 128, 0, 0.3);
-    border: 2px solid rgba(0, 128, 0);
-}
-.btn_Warning_Valide:hover{
-    background-color: rgba(0, 128, 0, 1);
-}
-.btn_Edit{
-    background-color: rgba(0, 128, 0, 0.3);
-    border: 2px solid rgba(0, 128, 0);
-}
-.btn_Edit:hover{
-    background-color: rgba(0, 128, 0, 1);
-}
-.btn_New{
-    background-color: rgba(0, 81, 255, 0.3);
-    border: 2px solid rgba(0, 81, 255);
-}
-.btn_New:hover{
-    background-color: rgba(0, 81, 255, 1);
-}
+
 
 table{
     width: 100%;
@@ -245,7 +217,7 @@ table {
     color: white;
     font-weight: 600;
 }
-.cart{
+.card-admin{
     box-shadow: 10px 10px 5px 0px #656565;
     display: flex;
     flex-direction: column;
@@ -253,12 +225,16 @@ table {
     border-radius: 30px;
     margin:0 4em;
     padding: 2em 0;
+    width: 300px;
 }
-.cart:hover{
+.card-admin h3{
+    font-size: 5em;
+}
+.card-admin:hover{
     background-color: rgb(184, 184, 184);
     transition: .5s;
 }
-.cart p {
+.card-admin p {
     text-align: left;
     font-size: 1.2em;
 }

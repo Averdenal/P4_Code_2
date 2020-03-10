@@ -11,7 +11,7 @@ class Comments
     delete_com()
     {
         document.body.addEventListener('click', (evt) => {
-            if (evt.target.className === 'btn btn_Delete') {
+            if (evt.target.className === 'btn btn_Delete btn-danger') {
                 evt.preventDefault();
                 let info = document.getElementById('container_Comment');
                 let infomsg = document.querySelector('#info');
@@ -19,14 +19,15 @@ class Comments
                     url:evt.target.pathname,
                     type:"DELETE"
                 }).done((reponse) => {
-                    infomsg.innerHTML = 'Commentaire Supprimé';
+                    console.log(this.create_Alert("Commentaire supprimé"));
+                    infomsg.appendChild(this.create_Alert("Commentaire supprimé"));
                     let comments = JSON.parse(reponse);
                         info.innerHTML ="";
                         comments.forEach(element => {
                             info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });  
-                })                            
-            }else if(evt.target.className === 'btn btn_Delete_Admin'){
+                })                           
+            }else if(evt.target.className === 'btn btn_Delete_Admin btn-danger'){
                 evt.preventDefault();
                 let zone_Comments = document.getElementById('zone_Comments');
                 $.ajax({
@@ -64,8 +65,8 @@ class Comments
     create_Comment(comment,user,warning){
 
         
-        var btn_Delete = "<a class='btn btn_Delete' href='"+this.basepath+'/Articles/deleteComment/'+comment.id+'/'+comment.article+"'>Supprimer</a>";
-        var btn_Warning = "<a class='btn btn_Warning' href='"+this.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article+"'>Signaler</a>";
+        var btn_Delete = "<a class='btn btn_Delete btn-danger' href='"+this.basepath+'/Articles/deleteComment/'+comment.id+'/'+comment.article+"'>Supprimer</a>";
+        var btn_Warning = "<a class='btn btn_Warning btn-warning' href='"+this.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article+"'>Signaler</a>";
         var warning_Ok ="<p class='btn btn_Warning_Ok'>Déjà Signalé</p>";
 
         var action ='';
@@ -81,15 +82,10 @@ class Comments
         {
             action += warning_Ok ;
         }
-
-        var comment = $("<div class='item_Comment'>"+
-        "<p>"+comment.content+"</p>"+
-        "<div>"+
-        "<p>"+comment.date+"</p>"+
-        "<p>"+comment.firstname+" "+comment.lastname+"</p>"+
-        "</div>"+
+        var comment = $("<article class='card'><div class='card-body'><p class='card-text'>"+comment.content+"</p>"+
+        "</div><div class='card-footer text-muted justify-content-between flex'><div><p>"+comment.date+"</p></div>"+
         "<div>"+action+"</div>"+
-        "</div>");
+        "<div>"+comment.firstname+" "+comment.lastname+"</div>")
         return comment[0];
     }
 
@@ -104,6 +100,15 @@ class Comments
                 "</td>"+
             "</tr>");
         return comment[0];
+    }
+
+    create_Alert(msg){
+        return $("<div class='alert alert-warning alert-dismissible fade show' role='alert'>"+
+        "<strong>"+msg+"</strong>"+
+        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"+
+          "<span aria-hidden='true'>&times;</span>"+
+        "</button>"+
+      "</div>")[0];
     }
     
 }

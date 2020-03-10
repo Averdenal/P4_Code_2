@@ -6,7 +6,7 @@ class User{
 
     deleteUser(){
         document.body.addEventListener('click', (evt) => {
-            if (evt.target.className === 'btn btn_User_Delete') {
+            if (evt.target.className === 'btn btn_Delete_User btn-danger') {
                 $.ajax({
                     type: "DELETE",
                     url: evt.target.pathname,
@@ -24,7 +24,7 @@ class User{
         "<td>"+users.firstname+" "+users.lastname+"</td>"+
         "<td>"+users.login+"</td>"+
         "<td>"+users.email+"</td>"+
-        "<td><a class='btn btn_User_Delete' href='"+info+"'>Supprimer</a></td></tr>");
+        "<td><a class='btn btn_Delete_User btn-danger' href='"+info+"'>Supprimer</a></td></tr>");
         return user;
     }
 
