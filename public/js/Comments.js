@@ -45,7 +45,7 @@ class Comments
 
     add_Comment(){
         var add_Comment_Form = $('#form_Comment');
-        add_Comment_Form.submit( (e) =>{ 
+        add_Comment_Form.submit((e) =>{ 
             e.preventDefault();
             let info = document.getElementById('container_Comment');
             $.ajax({
@@ -56,7 +56,6 @@ class Comments
                 info.innerHTML = ''
                 var comments = JSON.parse(response);
                 comments.forEach(element => {
-                    
                     info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                 });
             });

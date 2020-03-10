@@ -1,12 +1,17 @@
-<article>
-    <h3><?= $article->getTitle(); ?></h3>
-    <p><?= $article->getContent(); ?></p>
-    <div class='infoArticle flex'>
-        <div class="dateArticle"><?= $article->getDate(); ?></div>
-        <div class="autorArticle"><?= $article->getFirstName().' '.$article->getLastName(); ?></div>
+<article class="card">
+    <div class="card-header card-title text-center">
+        <h2><?= $article->getTitle(); ?></h2>
+    </div>
+    <div class="card-body">
+        <div class="card-text"><?= $article->getLitleContent(); ?></div>
+    </div>
+    <div class="card-footer text-muted justify-content-between flex">
+        <div><?= $article->getDate(); ?></div>
+        <div><?= $article->getFirstName().' '.$article->getLastName(); ?></div>
     </div>
 </article>
 <div class="alert" id="info"></div>
+<p>Les commentaires</p>
     <?php if($userIsConnect): ?>
     <form id="form_Comment" action="/P4_Code_2/Articles/addComment" method="POST">
         <input type="hidden" name="article" value="<?= $article->getId(); ?>">
@@ -16,12 +21,13 @@
 <?php endif; ?>
 <div class="Comment" id="container_Comment">
     <?php foreach($comments as $comment): ?>
-        <div class="item_Comment">
-            <p><?= $comment['comment']->getContent(); ?></p>
+    <article class="card">
+        <div class="card-body">
+            <p class="card-text"><?= $comment['comment']->getContent(); ?></p>
+        </div>
+        <div class="card-footer text-muted justify-content-between flex">
+            <div><?= $comment['comment']->getDate() ?></div>
             <div>
-                <p><?= $comment['comment']->getDate() ?></p>
-                <p><?= $comment['comment']->getAutor()['firstname'].' '.$comment['comment']->getAutor()['lastname'] ?></p>
-            </div>
             <?php if(!empty($_SESSION['auth'])): 
                 if ($_SESSION['auth'] == $comment['comment']->getAutor()['id'] || $_SESSION['rang'] == 'admin'):?>
                     <a class="btn btn_Delete" href="<?= ROOT.'/Articles/deleteComment/'. $comment['comment']->getId().'/'.$comment['comment']->getArticle(); ?>">Supprimer</a>
@@ -32,7 +38,11 @@
                     <p>Warning OK</p>
                 <?php endif;
             endif; ?>
+            </div>
+            <div><?= $comment['comment']->getAutor()['firstname'].' '.$comment['comment']->getAutor()['lastname'] ?></div>
+
             
         </div>
+    </article>
     <?php endforeach; ?>
 </div>

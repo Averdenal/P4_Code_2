@@ -2,8 +2,15 @@ body,html{
     margin: 0;
     padding: 0;
 }
-
-
+main,.footer-site{
+    padding: 0!important;
+}
+.footer-site{
+    background-color: black;
+    height: 30px;
+    color: white;
+    margin: 0;
+}
 .margin-menu a{
     margin: 0 5px;
 }
@@ -12,9 +19,8 @@ body,html{
     display: flex;
 }
 
-
-article{
-    margin: 0 2rem;
+main{
+    padding: 0;
 }
 ul{
     list-style: none;
@@ -229,9 +235,7 @@ table {
 
 .menu_admin{
     background-color: black;
-    height: 100vh;
-    position: fixed;
-    width: 250px;
+    height: 100%;
 }
 .menu_admin a{
     display: block;
