@@ -21,6 +21,8 @@ class UserManager extends Model{
     }
 
     function bddAddUser($firstname,$lastname,$login,$email,$pwd,$rang){
+        
+        $pwd = $this->convPwd($pwd);
         $bdd = $this->getBdd();
         $req = $bdd->prepare("INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `password`, `email`, `rang`) 
         VALUES (NULL, :firstname, :lastname, :login, :password, :email, :rang)");
@@ -31,6 +33,7 @@ class UserManager extends Model{
         $req->bindParam(':email',$email,PDO::PARAM_STR);
         $req->bindParam(':rang',$rang,PDO::PARAM_INT);
         $req->execute();
+        var_dump($req);
     }
     
     function checkLoginPassword($login,$password)
@@ -39,7 +42,7 @@ class UserManager extends Model{
         if(!$user){
             return [false];
         }else {
-            if($user->getPwd() === md5($password)){
+            if(password_verify($password,$user->getPwd())){
                 $_SESSION['auth'] = $user->getId();
                 $rang = $this->getRang($user->getRang());
                 $_SESSION['rang'] = $rang->getName();
@@ -107,5 +110,8 @@ class UserManager extends Model{
         $req = $bdd->prepare('DELETE FROM users WHERE id = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->execute();
+    }
+    public function convPwd($pwd){
+        return password_hash($pwd,PASSWORD_BCRYPT);
     }
 }

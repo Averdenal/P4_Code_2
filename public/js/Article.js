@@ -4,7 +4,6 @@ class Article
         this.newArticle();
         this.deleteArticle();
         this.editArticle();
-        this.basepath = "/P4_Code_2";
     }
     newArticle(){
         var formAddArticle = document.querySelector('#add_Article');
@@ -36,7 +35,7 @@ class Article
                     type: "DELETE",
                     url: evt.target.pathname,
                 }).done((reponse) => {
-                    infomsg.innerHTML = 'Article Supprimé';
+                    infomsg.appendChild(this.create_Alert('Article Supprimé'));
                     infoArticle.innerHTML =" ";
                     let articles = JSON.parse(reponse);
                     articles.forEach(article => {
@@ -77,9 +76,18 @@ class Article
         "<td>"+article.title+"</td>"+
         "<td>"+article.content+"</td>"+
         "<td>"+article.lastname+" "+article.firstname+"</td>"+
-        "<td><a class='btn btn_Edit_Article btn-warning' href='"+this.basepath+"/Administration/editArticle/"+article.id+"'></a>"+
-        "<a class='btn btn_Delete_Article btn-danger' href='"+this.basepath+"/Administration/deleteArticle/"+article.id+"'></a></td>"+
+        "<td><a class='btn btn_Edit_Article btn-warning' href='"+app.basepath+"/Administration/editArticle/"+article.id+"'></a>"+
+        "<a class='btn btn_Delete_Article btn-danger' href='"+app.basepath+"/Administration/deleteArticle/"+article.id+"'></a></td>"+
         "</tr>")
         return articleHtml[0];    
+    }
+
+    create_Alert(msg){
+        return $("<div class='alert alert-warning alert-dismissible fade show' role='alert'>"+
+        "<strong>"+msg+"</strong>"+
+        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"+
+          "<span aria-hidden='true'>&times;</span>"+
+        "</button>"+
+      "</div>")[0];
     }
 }

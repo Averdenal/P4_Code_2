@@ -5,7 +5,6 @@ class Comments
     {
         this.delete_com();
         this.add_Comment();
-        this.basepath = "/P4_Code_2";
     }
 
     delete_com()
@@ -65,8 +64,8 @@ class Comments
     create_Comment(comment,user,warning){
 
         
-        var btn_Delete = "<a class='btn btn_Delete btn-danger' href='"+this.basepath+'/Articles/deleteComment/'+comment.id+'/'+comment.article+"'>Supprimer</a>";
-        var btn_Warning = "<a class='btn btn_Warning btn-warning' href='"+this.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article+"'>Signaler</a>";
+        var btn_Delete = "<a class='btn btn_Delete btn-danger' href='"+app.basepath+'/Articles/deleteComment/'+comment.id+'/'+comment.article+"'>Supprimer</a>";
+        var btn_Warning = "<a class='btn btn_Warning btn-warning' href='"+app.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article+"'>Signaler</a>";
         var warning_Ok ="<p class='btn btn_Warning_Ok'>Déjà Signalé</p>";
 
         var action ='';
@@ -96,7 +95,7 @@ class Comments
                 "<td>"+comment.content+"</td>"+
                 "<td>"+comment.firstname+" "+comment.lastname+"</td>"+
                 "<td>"+
-                    "<a class='btn btn_Delete_Admin' href='"+this.basepath+"/Administration/deleteComment/"+comment.id+"'>Supprimer</a>"+
+                    "<a class='btn btn_Delete_Admin btn-danger' title='Supprimer' href='"+app.basepath+"/Administration/deleteComment/"+comment.id+"'></a>"+
                 "</td>"+
             "</tr>");
         return comment[0];

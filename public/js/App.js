@@ -1,15 +1,9 @@
-/**
- * jquery
- * bootstrap
- * dellcomment vérif user
- */
 
 class App{
     constructor(){
         
         this.init();
         this.tiny();
-        this.register();
         this.coms = new Comments();
         new Article();
         new Warning();
@@ -68,25 +62,5 @@ class App{
             ' removeformat | help'
         });
           
-    }
-
-    register()
-    {
-        var formv = document.getElementById('register');
-        if(formv !== null){
-            formv.addEventListener('submit',(e) =>{
-                e.preventDefault();
-                let info_Register = document.getElementById('info_Register');
-                let HttpRequest = new XMLHttpRequest();
-                HttpRequest.onreadystatechange = ()=>{
-                    if(HttpRequest.readyState === 4){
-                        info_Register.innerHTML = HttpRequest.responseText;
-                    }
-                }
-                let data = new FormData(formv)
-                HttpRequest.open('POST',this.basepath+'/Authentification/register',true);
-                HttpRequest.send(data);
-            });
-        }
     }
 }

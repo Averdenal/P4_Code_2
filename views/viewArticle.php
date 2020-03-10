@@ -3,7 +3,7 @@
         <h2><?= $article->getTitle(); ?></h2>
     </div>
     <div class="card-body">
-        <div class="card-text"><?= $article->getLitleContent(); ?></div>
+        <div class="card-text"><?= $article->getContent(); ?></div>
     </div>
     <div class="card-footer text-muted justify-content-between flex">
         <div><?= $article->getDate(); ?></div>
