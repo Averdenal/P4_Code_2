@@ -14,8 +14,14 @@ class User{
                     type: "DELETE",
                     url: evt.target.pathname
                 }).done((reponse)=>{
-                    console.log("frf")
-                    location.reload();
+                    if(reponse != "impossible"){
+                        JSON.parse(reponse).forEach(user => {
+                            console.log(this.create_Admin_Liste_User(user));
+                        });
+                    }else{
+                        console.log(reponse);
+                    }
+                    
                 });
             }
         });
