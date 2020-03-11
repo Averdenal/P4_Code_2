@@ -10,25 +10,20 @@ class Warning
         document.body.addEventListener('click', (evt) => {
             if (evt.target.className === 'btn btn_Warning') {
                 evt.preventDefault();
-                let HttpRequest = new XMLHttpRequest();
                 let info = document.getElementById('container_Comment');
                 let infomsg = document.querySelector('#info');
-                HttpRequest.onreadystatechange = () => {
-                    if(HttpRequest.readyState === 4){
+                $.ajax({
+                    type: "GET",
+                    url: evt.target.pathname,
+                    success: function (response) {
                         infomsg.innerHTML = 'Commentaire signalé';
-                        console.log(HttpRequest.responseText);
-                        let comments = JSON.parse(HttpRequest.responseText);
-                        console.log(HttpRequest.responseText);
+                        let comments = JSON.parse(response);
                         info.innerHTML ="";
                         comments.forEach(element => {
                             info.appendChild(app.coms.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });
-
                     }
-                }
-                console.log(evt.target.pathname);
-                HttpRequest.open('GET',evt.target.pathname,true);
-                HttpRequest.send();
+                });
             }
         }, false);
     }
@@ -37,16 +32,15 @@ class Warning
         document.body.addEventListener('click', function (evt) {
             if (evt.target.className === 'btn btn_Valide_Warning') {
                 evt.preventDefault();
-                let HttpRequest = new XMLHttpRequest();
                 let infomsg = document.querySelector('#info_msg');
-                HttpRequest.onreadystatechange = function(){
-                    if(HttpRequest.readyState === 4){
+                $.ajax({
+                    type: "DELETE",
+                    url: evt.target.pathname,
+                    success: function (response) {
                         infomsg.innerHTML = 'Commentaire Supprimé'
+                        location.reload();
                     }
-                }
-                HttpRequest.open('DELETE',evt.target.pathname,true);
-                HttpRequest.send();
-                location.reload();
+                });
             }
         });
     }
@@ -55,16 +49,15 @@ class Warning
         document.body.addEventListener('click', function (evt) {
             if (evt.target.className === 'btn btn_Delete_Warning') {
                 evt.preventDefault();
-                let HttpRequest = new XMLHttpRequest();
                 let infomsg = document.querySelector('#info_msg');
-                HttpRequest.onreadystatechange = function(){
-                    if(HttpRequest.readyState === 4){
-                        infomsg.innerHTML = 'Warning Supprimé'
+                $.ajax({
+                    type: "GET",
+                    url: evt.target.pathname,
+                    success: function (response) {
+                        infomsg.innerHTML = 'Warning Supprimé';
+                        location.reload();
                     }
-                }
-                HttpRequest.open('GET',evt.target.pathname,true);
-                HttpRequest.send();
-                location.reload();
+                });                
             }
         });
     }

@@ -9,7 +9,7 @@
             <th>Action</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="container_user">
 <?php foreach($tab as $user): ?>
     <tr>
         <td><?= $user->getId() ?></td>

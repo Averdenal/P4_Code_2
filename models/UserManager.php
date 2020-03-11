@@ -33,7 +33,6 @@ class UserManager extends Model{
         $req->bindParam(':email',$email,PDO::PARAM_STR);
         $req->bindParam(':rang',$rang,PDO::PARAM_INT);
         $req->execute();
-        var_dump($req);
     }
     
     function checkLoginPassword($login,$password)

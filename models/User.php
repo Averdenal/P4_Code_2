@@ -1,13 +1,13 @@
 <?php
 
 class User{
-    private $id;
-    private $firstname;
-    private $lastname;
-    private $login;
-    private $rang;
+    public $id;
+    public $firstname;
+    public $lastname;
+    public $login;
+    public $rang;
     private $password;
-    private $email;
+    public $email;
     
     public function getPwd()
     {
