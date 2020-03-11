@@ -34,16 +34,16 @@ class Article
                 $.ajax({
                     type: "DELETE",
                     url: evt.target.pathname,
-                }).done((reponse) => {
-                    infomsg.appendChild(this.create_Alert('Article Supprimé'));
-                    infoArticle.innerHTML =" ";
-                    let articles = JSON.parse(reponse);
-                    articles.forEach(article => {
-                        infoArticle.appendChild(this.createListArticle(article));
-                    });
-                });
-            }
-        });
+                    success:((reponse) => {
+                        infomsg.appendChild(this.create_Alert('Article Supprimé'));
+                        infoArticle.innerHTML =" ";
+                        let articles = JSON.parse(reponse);
+                        articles.forEach(article => {
+                            infoArticle.appendChild(this.createListArticle(article));
+                        });
+                })
+            });
+        }});
     }
 
     editArticle()

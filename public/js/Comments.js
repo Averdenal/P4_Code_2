@@ -5,39 +5,42 @@ class Comments
     {
         this.delete_com();
         this.add_Comment();
+        this.className = {'admin':'btn btn_Delete_Admin btn-danger','defaut':'btn btn_Delete btn-danger'}
     }
 
     delete_com()
     {
         document.body.addEventListener('click', (evt) => {
-            if (evt.target.className === 'btn btn_Delete btn-danger') {
+            if (evt.target.className === this.className['defaut']) {
                 evt.preventDefault();
                 let info = document.getElementById('container_Comment');
                 let infomsg = document.querySelector('#info');
                 $.ajax({
                     url:evt.target.pathname,
-                    type:"DELETE"
-                }).done((reponse) => {
-                    console.log(this.create_Alert("Commentaire supprimé"));
-                    infomsg.appendChild(this.create_Alert("Commentaire supprimé"));
-                    let comments = JSON.parse(reponse);
+                    type:"DELETE",
+                    success:((reponse) => {
+                        console.log(this.create_Alert("Commentaire supprimé"));
+                        infomsg.appendChild(this.create_Alert("Commentaire supprimé"));
+                        let comments = JSON.parse(reponse);
                         info.innerHTML ="";
                         comments.forEach(element => {
                             info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });  
-                })                           
-            }else if(evt.target.className === 'btn btn_Delete_Admin btn-danger'){
+                    })
+                })                          
+            }else if(evt.target.className === this.className['admin']){
                 evt.preventDefault();
                 let zone_Comments = document.getElementById('zone_Comments');
                 $.ajax({
                     url:evt.target.pathname,
-                    type:"DELETE"
-                }).done((response)=>{
-                    zone_Comments.innerHTML ="";
-                    let comments = JSON.parse(response);
-                    comments.forEach(element => {
-                        zone_Comments.appendChild(this.create_Admin_Liste_Comment(element));
-                    });
+                    type:"DELETE",
+                    success: ((response)=>{
+                        zone_Comments.innerHTML ="";
+                        let comments = JSON.parse(response);
+                        comments.forEach(element => {
+                            zone_Comments.appendChild(this.create_Admin_Liste_Comment(element));
+                        });
+                    })
                 })
             }
         });
@@ -51,14 +54,15 @@ class Comments
             $.ajax({
                 url : add_Comment_Form.attr("action"),
                 type: add_Comment_Form.attr("method"),
-                data : add_Comment_Form.serialize()
-            }).done((response)=>{ 
-                info.innerHTML = ''
-                var comments = JSON.parse(response);
-                comments.forEach(element => {
-                    info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                });
-            });
+                data : add_Comment_Form.serialize(),
+                success:((response)=>{ 
+                    info.innerHTML = ''
+                    var comments = JSON.parse(response);
+                    comments.forEach(element => {
+                        info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                    });
+                })
+            })
         });
     }
     create_Comment(comment,user,warning){

@@ -13,20 +13,19 @@ class User{
                 var container_User = document.querySelector('#container_user')
                 $.ajax({
                     type: "DELETE",
-                    url: evt.target.pathname
-                }).done((reponse)=>{
-                    if(reponse != "impossible"){
-                        container_User.innerHTML ="";
-                        console.log(reponse);
-                        JSON.parse(reponse).forEach(user => {
-                            console.log(this.create_Admin_Liste_User(user));
-                            container_User.appendChild(this.create_Admin_Liste_User(user));
-                        });
-                    }else{
-                        console.log(reponse);
-                    }
-                    
-                });
+                    url: evt.target.pathname,
+                    success:((reponse)=>{
+                        if(reponse != "impossible"){
+                            container_User.innerHTML ="";
+                            console.log(reponse);
+                            JSON.parse(reponse).forEach(user => {
+                                container_User.appendChild(this.create_Admin_Liste_User(user));
+                            });
+                        }else{
+                            console.log(reponse);
+                        }
+                    })
+                })
             }
         });
     }
@@ -43,20 +42,19 @@ class User{
 
     register()
     {
-        var formv = document.getElementById('register');
+        var formv = $('#register');
         if(formv !== null){
-            formv.addEventListener('submit',(e) =>{
+            formv.submit((e) => { 
                 e.preventDefault();
                 let info_Register = document.getElementById('info_Register');
-                let HttpRequest = new XMLHttpRequest();
-                HttpRequest.onreadystatechange = ()=>{
-                    if(HttpRequest.readyState === 4){
-                        info_Register.innerHTML = HttpRequest.responseText;
+                $.ajax({
+                    type: "POST",
+                    url: app.basepath+'/Authentification/register',
+                    data: formv.serialize(),
+                    success: function (response) {
+                        info_Register.innerHTML = response;
                     }
-                }
-                let data = new FormData(formv)
-                HttpRequest.open('POST',app.basepath+'/Authentification/register',true);
-                HttpRequest.send(data);
+                });
             });
         }
     }
