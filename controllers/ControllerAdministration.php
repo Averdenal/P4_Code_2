@@ -6,12 +6,14 @@ class ControllerAdministration extends BaseController
     private $_articleManager;
     private $_warningManager;
     private $_userManager;
+    private $_rangManager;
     public function __construct()
     {
         $this->_articleManager = new ArticleManager();
         $this->_commentManager = new CommentManager();
         $this->_warningManager = new WarningManager();
         $this->_userManager = new UserManager();
+        $this->_rangManager = new RangManager();
     }
 
     public function administrationAccueil()
@@ -96,5 +98,12 @@ class ControllerAdministration extends BaseController
             echo "impossible";
         }
         
+    }
+    public function editUser($id)
+    {
+        $this->addParam('user',$this->_userManager->getUsersById($id));
+        $this->addParam('rang',$this->_rangManager->getAllRang());
+        $title = 'edition';
+        $this->templateAdmin('views/viewEditArticle.php',null,$title);
     }
 }

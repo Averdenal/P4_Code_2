@@ -102,6 +102,18 @@ class UserManager extends Model{
         $req->execute();
         return $req->fetchAll(PDO::FETCH_CLASS,'User');
     }
+    function getUsersById($id)
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare('SELECT users.id, users.lastname, users.firstname, users.login, users.email, rangs.name
+        FROM users
+        JOIN rangs
+        ON users.rang = rangs.id
+        WHERE users.id = :id');
+        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchObject('User');
+    }
 
     public function deleteUser($id)
     {
