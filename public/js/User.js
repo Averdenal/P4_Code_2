@@ -17,6 +17,7 @@ class User{
                 }).done((reponse)=>{
                     if(reponse != "impossible"){
                         container_User.innerHTML ="";
+                        console.log(reponse);
                         JSON.parse(reponse).forEach(user => {
                             console.log(this.create_Admin_Liste_User(user));
                             container_User.appendChild(this.create_Admin_Liste_User(user));
@@ -31,13 +32,12 @@ class User{
     }
     
     create_Admin_Liste_User(users){
-        console.log(users);
         var user = $("<tr>"+
         "<td>"+users.id+"</td>"+
         "<td>"+users.firstname+" "+users.lastname+"</td>"+
         "<td>"+users.login+"</td>"+
         "<td>"+users.email+"</td>"+
-        "<td><a class='btn btn_Delete_User btn-danger' href='"+info+"'></a></td></tr>");
+        "<td><a class='btn btn_Delete_User btn-danger' href='"+app.basepath+"/Administration/deleteUser/"+users.id+"'></a></td></tr>");
         return user[0];
     }
 
