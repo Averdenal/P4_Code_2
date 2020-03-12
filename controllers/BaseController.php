@@ -30,13 +30,10 @@ class BaseController
         
     }
     
-    public function templateAdmin($view,$tab = null,$titlePage = null)
+    public function templateAdmin($view,$titlePage)
     {
         $titlePage = TITLESITE.' - '.$titlePage;
-        ob_start();
-        include($view);
-        $tab;
-        $content = ob_get_clean();
+        $content = $this->viewConstruct($view,$titlePage);
         require_once('views/template-admin.php');
     }
 

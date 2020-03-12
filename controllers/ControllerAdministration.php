@@ -18,33 +18,32 @@ class ControllerAdministration extends BaseController
 
     public function administrationAccueil()
     {
-        $warnings = $this->_commentManager->getCommentWarning();
-        $nbArticles = $this->_articleManager->countArticle();
-        $nbComments = $this->_commentManager->countComment();
-        $nbWarning = $this->_warningManager->countWarning();
-        $info = ['articleNb' => $nbArticles,'commentNb' =>$nbComments,'warningNb' => $nbWarning,'commentWarning'=>$warnings];
+        $this->addParam('warnings',$this->_commentManager->getCommentWarning());
+        $this->addParam('nbArticles',$this->_articleManager->countArticle());
+        $this->addParam('nbComments',$this->_commentManager->countComment());
+        $this->addParam('nbWarning',$this->_warningManager->countWarning());
         $title ='Administration';
-        $this->templateAdmin('views/viewAdministration.php',$info,$title);
+        $this->templateAdmin('views/viewAdministration.php',$title);
     }
     public function articleManagement()
     {
         $title = 'Gestion articles';
-        $articles = $this->_articleManager->getAllArticles();
-        $this->templateAdmin('views/viewArticleManagement.php',$articles,$title);
+        $this->addParam('articles',$this->_articleManager->getAllArticles());
+        $this->templateAdmin('views/viewArticleManagement.php',$title);
     }
 
     public function userManagement()
     {
         $title = 'Gestion utilisateurs';
-        $users = $this->_userManager->getAllUsers();
-        $this->templateAdmin('views/viewUserManagement.php',$users,$title);
+        $this->addParam('users',$this->_userManager->getAllUsers());
+        $this->templateAdmin('views/viewUserManagement.php',$title);
     }
 
     public function commentManagement()
     {
         $title = 'Gestion commentaires';
-        $comment = $this->_commentManager->getAllComments();
-        $this->templateAdmin('views/viewcommentManagement.php',$comment,$title);
+        $this->addParam('comment',$this->_commentManager->getAllComments());
+        $this->templateAdmin('views/viewcommentManagement.php',$title);
     }
     public function deleteComment($id)
     {
@@ -55,7 +54,7 @@ class ControllerAdministration extends BaseController
     public function newArticle()
     {
         $title = 'Nouveau Article';
-        $this->templateAdmin('views/viewNewArticle.php',null,$title);        
+        $this->templateAdmin('views/viewNewArticle.php',$title);        
     }
     public function createArticle($title, $content)
     {
@@ -64,9 +63,9 @@ class ControllerAdministration extends BaseController
     }
     public function editArticle($id)
     {
-        $article = $this->_articleManager->getArticleById($id);
+        $this->addParam('article', $this->_articleManager->getArticleById($id));
         $title = 'edition';
-        $this->templateAdmin('views/viewEditArticle.php',$article,$title);
+        $this->templateAdmin('views/viewEditArticle.php',$title);
     }
 
     public function majArticle($id, $title,$content)
