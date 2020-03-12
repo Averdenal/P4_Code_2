@@ -1,8 +1,8 @@
-<h2>Editer Article# <?= $tab->getId() ?></h2>
+<h2>Editer Article# <?= $article->getId() ?></h2>
 
 <form method="POST" action="" id="edit_Article">
-    <input type="hidden" name="id" value="<?= $tab->getId() ?>">
-    <input type="text" name="title" placeholder="Titre de l'article" value="<?= $tab->getTitle() ?>">
-    <textarea name="content" type="text" id="Form_content"><?= $tab->getContent() ?></textarea>
+    <input type="hidden" name="id" value="<?= $article->getId() ?>">
+    <input type="text" name="title" placeholder="Titre de l'article" value="<?= $article->getTitle() ?>">
+    <textarea name="content" type="text" id="Form_content"><?= $article->getContent() ?></textarea>
     <input type="submit" value="Editer">
 </form>

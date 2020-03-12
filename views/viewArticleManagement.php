@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody id="list_Articles">
-    <?php foreach($tab as $article): ?>
+    <?php foreach($articles as $article): ?>
         <tr>
             <td><?= $article->getId() ?></td>
             <td><?= $article->getDate() ?></td>

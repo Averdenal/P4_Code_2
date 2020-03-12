@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody id="container_user">
-<?php foreach($tab as $user): ?>
+<?php foreach($users as $user): ?>
     <tr>
         <td><?= $user->getId() ?></td>
         <td><?= $user->getFirstName().' '.$user->getLastName() ?></td>

@@ -21,7 +21,7 @@ class ControllerAdministration extends BaseController
         $this->addParam('warnings',$this->_commentManager->getCommentWarning());
         $this->addParam('nbArticles',$this->_articleManager->countArticle());
         $this->addParam('nbComments',$this->_commentManager->countComment());
-        $this->addParam('nbWarning',$this->_warningManager->countWarning());
+        $this->addParam('nbWarnings',$this->_warningManager->countWarning());
         $title ='Administration';
         $this->templateAdmin('views/viewAdministration.php',$title);
     }
@@ -42,7 +42,7 @@ class ControllerAdministration extends BaseController
     public function commentManagement()
     {
         $title = 'Gestion commentaires';
-        $this->addParam('comment',$this->_commentManager->getAllComments());
+        $this->addParam('comments',$this->_commentManager->getAllComments());
         $this->templateAdmin('views/viewcommentManagement.php',$title);
     }
     public function deleteComment($id)
@@ -101,7 +101,7 @@ class ControllerAdministration extends BaseController
     public function editUser($id)
     {
         $this->addParam('user',$this->_userManager->getUsersById($id));
-        $this->addParam('rang',$this->_rangManager->getAllRang());
+        $this->addParam('rangs',$this->_rangManager->getAllRang());
         $title = 'edition';
         $this->templateAdmin('views/viewEditArticle.php',null,$title);
     }

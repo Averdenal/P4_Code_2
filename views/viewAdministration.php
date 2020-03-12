@@ -3,21 +3,21 @@
     <div class="card-admin text-center">
     <p>Nombre d'articles</p>
         <div class="cercle cercle-green">
-            <h3><?= $tab['articleNb']; ?></h3> 
+            <h3><?= $nbArticles; ?></h3> 
         </div>
         
     </div>
     <div class="card-admin text-center">
     <p>Nombre de commentaires</p>
         <div class="cercle cercle-orange align-middle">
-            <h3><?= $tab['commentNb']; ?></h3> 
+            <h3><?= $nbComments; ?></h3> 
         </div>
         
     </div>
     <div class="card-admin text-center">
     <p>Nombre de warnings</p>
         <div class="cercle cercle-red">
-            <h3><?= $tab['warningNb']; ?></h3> 
+            <h3><?= $nbWarnings; ?></h3> 
         </div>
         
     </div>
@@ -36,7 +36,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($tab['commentWarning'] as $comment): ?>
+            <?php foreach($warnings as $comment): ?>
                 <tr>
                     <th># <?= $comment->getId(); ?></th>
                     <th><?= $comment->getContent(); ?></th>

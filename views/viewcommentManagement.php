@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody id="zone_Comments">
-    <?php foreach($tab as $comment): ?>
+    <?php foreach($comments as $comment): ?>
         <tr>
             <td><?= $comment->getId() ?></td>
             <td><?= $comment->getDate() ?></td>
