@@ -17,13 +17,13 @@
         <label for="lastname">Nom</label>
         <input type="text" class="form-control" id="lastname" value="<?= $user->getLastname() ?>">
     </div>
-    <div class="form-row">
+    <div class="form-row" id="modif_rang">
         <div class="form-group col-2" id="change_Rang">
             <label>Rang : <?= $rang->getName() ?><label>
             <input type="hidden" value="<?= $rang->getId() ?>" >
         </div>
         <div class="col-2">
-           <button id="modif_rang" class="btn btn-success">Modifier</button>
+           <button id="btn_modif_rang" class="btn btn-success">Modifier</button>
         </div>
     </div>
     
