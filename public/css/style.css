@@ -66,10 +66,11 @@ tbody tr:hover{
     font-weight: 900;
     content: "\f2ed";
 }
-.btn_Edit_Article::before{
+.btn_Edit_Article::before, .btn_Edit_User::before{
     font-family: "Font Awesome 5 Pro";
     font-weight: 900;
     content: "\f044";
+    color: white;
 }
 .btn{
     padding: 5px;

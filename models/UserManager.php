@@ -105,10 +105,8 @@ class UserManager extends Model{
     function getUsersById($id)
     {
         $bdd = $this->getBdd();
-        $req = $bdd->prepare('SELECT users.id, users.lastname, users.firstname, users.login, users.email, rangs.name
+        $req = $bdd->prepare('SELECT users.id, users.lastname, users.firstname, users.login, users.email,users.rang
         FROM users
-        JOIN rangs
-        ON users.rang = rangs.id
         WHERE users.id = :id');
         $req->bindParam(':id', $id, PDO::PARAM_INT);
         $req->execute();
