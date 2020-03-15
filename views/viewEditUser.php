@@ -17,9 +17,16 @@
         <label for="lastname">Nom</label>
         <input type="text" class="form-control" id="lastname" value="<?= $user->getLastname() ?>">
     </div>
-    <div class="form-group" id="change_Rang">
-        <label>Rang : <?= $rang->getName() ?><label>
+    <div class="form-row">
+        <div class="form-group col-2" id="change_Rang">
+            <label>Rang : <?= $rang->getName() ?><label>
+            <input type="hidden" value="<?= $rang->getId() ?>" >
+        </div>
+        <div class="col-2">
+           <button id="modif_rang" class="btn btn-success">Modifier</button>
+        </div>
     </div>
+    
     <div class="form-group" id="selet_Rang">
         <label for="rangs">Rang</label>
         <select class="form-control" id="rangs">

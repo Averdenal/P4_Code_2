@@ -103,7 +103,6 @@ class ControllerAdministration extends BaseController
         $user = $this->_userManager->getUsersById($id);
         $this->addParam('user', $user);
         $this->addParam('rang',$this->_rangManager->getRangById($user->getRang()));
-        var_dump($this->_userManager->getUsersById($id));
         $this->addParam('rangs',$this->_rangManager->getAllRang());
         $title = 'edition';
         $this->templateAdmin('views/viewEditUser.php',$title);
