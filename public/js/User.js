@@ -4,7 +4,6 @@ class User{
         this.deleteUser();
         this.register();
         this.classDelete = 'btn btn_Delete_User btn-danger';
-        this.btn_Modif_Rang();
         this.modif_user();
     }
 
@@ -62,7 +61,6 @@ class User{
     }
 
     modif_user(){
-        debugger
         var form_modif_user = $('#form_Modif_User')
         if(form_modif_user != null){
             form_modif_user.submit((e) => { 
