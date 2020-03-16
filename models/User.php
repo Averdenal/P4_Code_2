@@ -8,7 +8,8 @@ class User{
     public $rang;
     private $password;
     public $email;
-    
+    public $rangName;
+
     public function getPwd()
     {
         return $this->password;
@@ -23,7 +24,7 @@ class User{
     }
     public function getRang()
     {
-        return $this->rang;
+        return ['id'=>$this->rang,'name'=> $this->rangName];
     }
     public function getLastname()
     {

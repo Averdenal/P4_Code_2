@@ -80,25 +80,4 @@ class User{
             });
         }
     }
-
-    btn_Modif_Rang(){
-        var zone_Rang = $('#modif_rang');
-        var btn_Modif_Rang = $('#btn_modif_rang');
-        var zone_Select_Rang = $('#selet_Rang');
-
-        zone_Rang.css('display', 'flex');
-        zone_Select_Rang.css('display', 'none');
-        btn_Modif_Rang.click( (e) => { 
-            e.preventDefault();
-            this.modif_Rang();
-        });
-    }
-
-    modif_Rang(){
-        var zone_Rang = $('#modif_rang');
-        var zone_Select_Rang = $('#selet_Rang');
-
-        zone_Select_Rang.css('display', 'block');
-        zone_Rang.css('display','none');
-    }
 }

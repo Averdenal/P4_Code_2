@@ -43,7 +43,7 @@ class UserManager extends Model{
         }else {
             if(password_verify($password,$user->getPwd())){
                 $_SESSION['auth'] = $user->getId();
-                $rang = $this->getRang($user->getRang());
+                $rang = $this->getRang($user->getRang()['id']);
                 $_SESSION['rang'] = $rang->getName();
                 return [true,$user];
             }else{
@@ -95,7 +95,8 @@ class UserManager extends Model{
     function getAllUsers()
     {
         $bdd = $this->getBdd();
-        $req = $bdd->prepare('SELECT users.id, users.lastname, users.firstname, users.login, users.email, rangs.name
+        $req = $bdd->prepare('SELECT users.id, users.lastname, users.firstname, users.login, users.email, users.rang,
+        (SELECT name FROM rangs WHERE users.rang = rangs.id) as rangName
         FROM users
         JOIN rangs
         ON users.rang = rangs.id');
