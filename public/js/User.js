@@ -4,6 +4,8 @@ class User{
         this.deleteUser();
         this.register();
         this.classDelete = 'btn btn_Delete_User btn-danger';
+        this.btn_Modif_Rang();
+        this.modif_user();
     }
 
     deleteUser(){
@@ -59,12 +61,44 @@ class User{
         }
     }
 
+    modif_user(){
+        debugger
+        var form_modif_user = $('#form_Modif_User')
+        if(form_modif_user != null){
+            form_modif_user.submit((e) => { 
+                console.log(form_modif_user.serialize());
+                e.preventDefault();
+                $.ajax({
+                    type: "PUT",
+                    url: "url",
+                    data: form_modif_user.serialize(),
+                    success: function (response) {
+                        
+                    }
+                });
+                
+            });
+        }
+    }
+
     btn_Modif_Rang(){
         var zone_Rang = $('#modif_rang');
         var btn_Modif_Rang = $('#btn_modif_rang');
         var zone_Select_Rang = $('#selet_Rang');
 
-        zone_Select_Rang.style
+        zone_Rang.css('display', 'flex');
+        zone_Select_Rang.css('display', 'none');
+        btn_Modif_Rang.click( (e) => { 
+            e.preventDefault();
+            this.modif_Rang();
+        });
     }
 
+    modif_Rang(){
+        var zone_Rang = $('#modif_rang');
+        var zone_Select_Rang = $('#selet_Rang');
+
+        zone_Select_Rang.css('display', 'block');
+        zone_Rang.css('display','none');
+    }
 }
