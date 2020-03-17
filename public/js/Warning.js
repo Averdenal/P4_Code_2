@@ -5,7 +5,6 @@ class Warning
     }
     init(){
         document.body.addEventListener('click', (evt) => {
-            debugger
             console.log(evt.target.className);
                 switch (evt.target.className) {
                     case 'btn btn_Warning btn-warning':

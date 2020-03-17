@@ -19,7 +19,6 @@ class Comments
                     url:evt.target.pathname,
                     type:"DELETE",
                     success:((reponse) => {
-                        console.log(this.create_Alert("Commentaire supprimé"));
                         infomsg.appendChild(this.create_Alert("Commentaire supprimé"));
                         let comments = JSON.parse(reponse);
                         info.innerHTML ="";
@@ -27,7 +26,8 @@ class Comments
                             info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                         });  
                     })
-                })                          
+                })   
+                $(".alert").alert('close')                       
             }else if(evt.target.className === this.className['admin']){
                 evt.preventDefault();
                 let zone_Comments = document.getElementById('zone_Comments');
@@ -106,7 +106,7 @@ class Comments
     }
 
     create_Alert(msg){
-        return $("<div class='alert alert-warning alert-dismissible fade show' role='alert'>"+
+        return $("<div id='alert' class='alert alert-warning alert-dismissible fade show' role='alert'>"+
         "<strong>"+msg+"</strong>"+
         "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"+
           "<span aria-hidden='true'>&times;</span>"+
