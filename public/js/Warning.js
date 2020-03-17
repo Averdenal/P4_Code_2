@@ -1,64 +1,69 @@
 class Warning
 {
     constructor(){
-        this.addWarning();
-        this.delete_Warning();
-        this.valide_warning();
+        this.init();
+    }
+    init(){
+        document.body.addEventListener('click', (evt) => {
+            debugger
+            console.log(evt.target.className);
+                switch (evt.target.className) {
+                    case 'btn btn_Warning btn-warning':
+                        this.addWarning(evt);
+                        break;
+                    case 'btn btn_Valide_Warning btn-danger':
+                        this.valide_warning(evt);
+                        break;
+                    case 'btn btn_Delete_Warning btn-success':
+                        this.delete_Warning(evt);
+                        break;
+                }
+            });
     }
 
-    addWarning(){
-        document.body.addEventListener('click', (evt) => {
-            if (evt.target.className === 'btn btn_Warning') {
-                evt.preventDefault();
-                let info = document.getElementById('container_Comment');
-                let infomsg = document.querySelector('#info');
-                $.ajax({
-                    type: "GET",
-                    url: evt.target.pathname,
-                    success: function (response) {
-                        infomsg.innerHTML = 'Commentaire signalé';
-                        let comments = JSON.parse(response);
-                        info.innerHTML ="";
-                        comments.forEach(element => {
-                            info.appendChild(app.coms.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                        });
-                    }
-                });
-            }
-        }, false);
-    }
-    valide_warning()
-    {
-        document.body.addEventListener('click', function (evt) {
-            if (evt.target.className === 'btn btn_Valide_Warning') {
-                evt.preventDefault();
-                let infomsg = document.querySelector('#info_msg');
-                $.ajax({
-                    type: "DELETE",
-                    url: evt.target.pathname,
-                    success: function (response) {
-                        infomsg.innerHTML = 'Commentaire Supprimé'
-                        location.reload();
-                    }
+    addWarning(evt){
+        evt.preventDefault();
+        let info = document.getElementById('container_Comment');
+        let infomsg = document.querySelector('#info');
+        $.ajax({
+            type: "GET",
+            url: evt.target.pathname,
+            success: function (response) {
+                infomsg.innerHTML = 'Commentaire signalé';
+                let comments = JSON.parse(response);
+                info.innerHTML ="";
+                debugger
+                comments.forEach(element => {
+                    info.appendChild(app.coms.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                 });
             }
         });
     }
-    delete_Warning()
+    valide_warning(evt)
     {
-        document.body.addEventListener('click', function (evt) {
-            if (evt.target.className === 'btn btn_Delete_Warning') {
-                evt.preventDefault();
-                let infomsg = document.querySelector('#info_msg');
-                $.ajax({
-                    type: "GET",
-                    url: evt.target.pathname,
-                    success: function (response) {
-                        infomsg.innerHTML = 'Warning Supprimé';
-                        location.reload();
-                    }
-                });                
+        evt.preventDefault();
+        let infomsg = document.querySelector('#info_msg');
+        $.ajax({
+            type: "DELETE",
+            url: evt.target.pathname,
+            success: function (response) {
+                infomsg.innerHTML = 'Commentaire Supprimé'
+                location.reload();
             }
         });
+    }
+    delete_Warning(evt)
+    {
+        evt.preventDefault();
+        let infomsg = document.querySelector('#info_msg');
+        $.ajax({
+            type: "GET",
+            url: evt.target.pathname,
+            success: function (response) {
+                infomsg.innerHTML = 'Warning Supprimé';
+                location.reload();
+            }
+        });                
+
     }
 }

@@ -17,7 +17,9 @@ class BaseController
     public function viewConstruct($view)
     {   
         ob_start();
-        extract($this->_param);
+        if($this->_param != null){
+            extract($this->_param);
+        }
         include($view);
         return ob_get_clean();
     }
