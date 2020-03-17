@@ -112,7 +112,7 @@
         "param":"id"
     },
     {
-        "method":"PUT",
+        "method":"POST",
         "name":"editArticlePost",
         "route":"/Administration/majArticle",
         "controller":"ControllerAdministration",
@@ -157,14 +157,6 @@
         "route":"/Administration/deleteUser/(.*)",
         "controller":"ControllerAdministration",
         "action":"deleteUser",
-        "param":"id"
-    },
-    {
-        "method":"GET",
-        "name":"editUser",
-        "route":"/Administration/editUser/(.*)",
-        "controller":"ControllerAdministration",
-        "action":"editUser",
         "param":"id"
     }
 ]

@@ -49,7 +49,6 @@ class Article
     editArticle()
     {
         var formEditArticle = document.getElementById('edit_Article');
-        let infoArticle = document.querySelector('#container_Article')
         var msg = document.querySelector('#msg');
         if(formEditArticle !== null){
             formEditArticle.addEventListener('submit',function(e){
@@ -58,12 +57,11 @@ class Article
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
                         msg.innerHTML = 'maj OK'
-                        infoArticle.innerHTML =HttpRequest.responseText;
                     }
                 }
                 let data = new FormData(formEditArticle)
                 data.append('content',tinyMCE.get('Form_content').getContent());
-                HttpRequest.open('PUT','/P4_Code_2/Administration/majArticle',true);
+                HttpRequest.open('POST','/P4_Code_2/Administration/majArticle',true);
                 HttpRequest.send(data);
             });
         }
