@@ -55,6 +55,7 @@ class HttpRequest
                         throw new NoParamFoundException($param);
                     }
                 }
+                die;
             break;
         }
     }

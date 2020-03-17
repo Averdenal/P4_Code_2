@@ -80,8 +80,7 @@ class ArticleManager extends Model
         $req->bindParam(':title',$title,PDO::PARAM_STR);
         $req->bindParam(':content',$content,PDO::PARAM_STR);
         $req->bindParam(':slug',$slug,PDO::PARAM_STR);
-        $req->execute();
-        
+        $req->execute();        
     }
 
     function addArticle(string $title, string $content){

@@ -4,7 +4,6 @@ class User{
         this.deleteUser();
         this.register();
         this.classDelete = 'btn btn_Delete_User btn-danger';
-        this.modif_user();
     }
 
     deleteUser(){
@@ -56,25 +55,6 @@ class User{
                         info_Register.innerHTML = response;
                     }
                 });
-            });
-        }
-    }
-
-    modif_user(){
-        var form_modif_user = $('#form_Modif_User')
-        if(form_modif_user != null){
-            form_modif_user.submit((e) => { 
-                console.log(form_modif_user.serialize());
-                e.preventDefault();
-                $.ajax({
-                    type: "PUT",
-                    url: "url",
-                    data: form_modif_user.serialize(),
-                    success: function (response) {
-                        
-                    }
-                });
-                
             });
         }
     }

@@ -98,11 +98,4 @@ class ControllerAdministration extends BaseController
         }
         
     }
-    public function editUser($id)
-    {
-        $user = $this->_userManager->getUsersById($id);
-        $this->addParam('user', $user);
-        $title = 'edition';
-        $this->templateAdmin('views/viewEditUser.php',$title);
-    }
 }
