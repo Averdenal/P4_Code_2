@@ -8,7 +8,7 @@ abstract class Model{
         self::$bdd = new PDO('mysql:host=localhost;dbname=mydb;charset=utf8', 'root', 'root');
     }
     private static function setBdd(){
-        self::$bdd = new PDO('mysql:host=localhost;dbname=mydb;charset=utf8', 'root', '');
+        self::$bdd = new PDO('mysql:host=localhost;dbname=p4;charset=utf8', 'root', '');
     }
     
     protected function getBdd(){

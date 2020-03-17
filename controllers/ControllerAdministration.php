@@ -59,6 +59,7 @@ class ControllerAdministration extends BaseController
     public function createArticle($title, $content)
     {
         $article = $this->_articleManager->addArticle($title,$content);
+        var_dump($article);
         echo $article->getId();
     }
     public function editArticle($id)
