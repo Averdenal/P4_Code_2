@@ -59,7 +59,6 @@ class ControllerAdministration extends BaseController
     public function createArticle($title, $content)
     {
         $article = $this->_articleManager->addArticle($title,$content);
-        var_dump($article);
         echo $article->getId();
     }
     public function editArticle($id)
@@ -98,5 +97,12 @@ class ControllerAdministration extends BaseController
             echo "impossible";
         }
         
+    }
+    public function editUser($id)
+    {
+        $user = $this->_userManager->getUsersById($id);
+        $this->addParam('user', $user);
+        $title = 'edition';
+        $this->templateAdmin('views/viewEditUser.php',$title);
     }
 }

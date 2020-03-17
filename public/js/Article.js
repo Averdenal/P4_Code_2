@@ -13,8 +13,7 @@ class Article
                 let HttpRequest = new XMLHttpRequest();
                 HttpRequest.onreadystatechange = function(){
                     if(HttpRequest.readyState === 4){
-                        console.log(HttpRequest.responseText);
-                        //location.replace('/P4_Code_2/Administration/editArticle/'+ HttpRequest.responseText);
+                        location.replace('/P4_Code_2/Administration/editArticle/'+ HttpRequest.responseText);
                     }
                 }
                 let data = new FormData(formAddArticle);
