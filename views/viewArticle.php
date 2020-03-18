@@ -13,8 +13,7 @@
 <div id="info"></div>
 <p>Les commentaires</p>
     <?php if($userIsConnect): ?>
-    <form id="form_Comment" action="/P4_Code_2/Articles/addComment" method="POST">
-        <input type="hidden" name="article" value="<?= $article->getId(); ?>">
+    <form id="form_Comment" action="/P4_Code_2/Articles/addComment" method="POST" data-id="<?= $article->getId(); ?>">
         <textarea type="text" rows="2" name="content" id="textComs"></textarea>
         <input type="submit" value="Envoyer" id='btn_Add_comment_form'>
     </form>

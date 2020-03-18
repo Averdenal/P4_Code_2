@@ -7,27 +7,23 @@ class User{
     }
 
     deleteUser(){
-        document.body.addEventListener('click', (evt) => {
-            if (evt.target.className === this.classDelete) {
-                evt.preventDefault();
-                var container_User = document.querySelector('#container_user')
-                $.ajax({
-                    type: "DELETE",
-                    url: evt.target.pathname,
-                    success:((reponse)=>{
-                        if(reponse != "impossible"){
-                            container_User.innerHTML ="";
-                            console.log(reponse);
-                            JSON.parse(reponse).forEach(user => {
-                                container_User.appendChild(this.create_Admin_Liste_User(user));
-                            });
-                        }else{
-                            console.log(reponse);
-                        }
-                    })
+        $('.btn_Delete_User').on('click', (evt) => {
+            evt.preventDefault();
+            $.ajax({
+                type: "DELETE",
+                url: evt.target.pathname,
+                success:((reponse)=>{
+                    if(reponse != "impossible"){
+                        $('#container_user').html(" ");
+                        JSON.parse(reponse).forEach(user => {
+                            $('#container_user').append(this.create_Admin_Liste_User(user));
+                        });
+                    }else{
+                        console.log(reponse);
+                    }
                 })
-            }
-        });
+            })
+        })
     }
     
     create_Admin_Liste_User(users){
@@ -37,22 +33,21 @@ class User{
         "<td>"+users.login+"</td>"+
         "<td>"+users.email+"</td>"+
         "<td><a class='btn btn_Delete_User btn-danger' href='"+app.basepath+"/Administration/deleteUser/"+users.id+"'></a></td></tr>");
-        return user[0];
+        return user;
     }
 
     register()
     {
         var formv = $('#register');
         if(formv !== null){
-            formv.submit((e) => { 
+            $('#register').on('submit',(e) => { 
                 e.preventDefault();
-                let info_Register = document.getElementById('info_Register');
                 $.ajax({
                     type: "POST",
                     url: app.basepath+'/Authentification/register',
                     data: formv.serialize(),
                     success: function (response) {
-                        info_Register.innerHTML = response;
+                        $("#info_Register").html(response);
                     }
                 });
             });

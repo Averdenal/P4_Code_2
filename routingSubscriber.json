@@ -21,7 +21,7 @@
         "route":"/Articles/addComment",
         "controller":"ControllerArticles",
         "action":"addComment",
-        "param":"content,article"
+        "param":"content,idArticle"
     },
     {
         "method":"DELETE",

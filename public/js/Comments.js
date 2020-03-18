@@ -6,7 +6,6 @@ class Comments
         this.delete_com();
         this.add_Comment();
         this.delete_com_admin();
-        this.className = {'admin':'btn btn_Delete_Admin btn-danger','defaut':'btn btn_Delete btn-danger'}
     }
 
     delete_com()
@@ -39,20 +38,28 @@ class Comments
     }
 
     add_Comment(){
-        var add_Comment_Form = $('#form_Comment');
-        add_Comment_Form.submit((e) =>{ 
+        $('#form_Comment').on('submit',(e) =>{ 
+            var form = $('#form_Comment');
             e.preventDefault();
             let info = document.getElementById('container_Comment');
             $.ajax({
-                url : add_Comment_Form.attr("action"),
-                type: add_Comment_Form.attr("method"),
-                data : add_Comment_Form.serialize(),
+                url : app.basepath+"/Articles/addComment",
+                type: "POST",
+                data : {
+                    idArticle: form.data('id'),
+                    content: $('textarea[name="content"]').val()
+                },
                 success:((response)=>{ 
-                    info.innerHTML = ''
+                    var comments = JSON.parse(response)
+                    comments.forEach(element => {
+                        $('#container_Comment').prepend(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                    })
+                    /*info.innerHTML = '';
+                    console.log(JSON.parse(response));
                     var comments = JSON.parse(response);
                     comments.forEach(element => {
                         info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                    });
+                    });*/
                 })
             })
         });
