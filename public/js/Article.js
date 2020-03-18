@@ -23,52 +23,42 @@ class Article
             });
         }
     }
-
-    deleteArticle()
-    {
-        document.body.addEventListener('click', (evt) => {
-            if (evt.target.className === 'btn btn_Delete_Article btn-danger') {
-                evt.preventDefault();
-                let infomsg  = document.querySelector('#info');
-                let infoArticle = document.querySelector('#list_Articles')
-                $.ajax({
-                    type: "DELETE",
-                    url: evt.target.pathname,
-                    success:((reponse) => {
-                        infomsg.appendChild(this.create_Alert('Article Supprimé'));
-                        infoArticle.innerHTML =" ";
-                        let articles = JSON.parse(reponse);
-                        articles.forEach(article => {
-                            infoArticle.appendChild(this.createListArticle(article));
-                        });
+    
+    deleteArticle(){
+        $('.btn_Delete_Article').on('click',function(){
+            var btn = $(this);
+            $.ajax({
+                type: "DELETE",
+                url: app.basepath+"/Administration/deleteArticle/"+$(this).data('id'),
+                success:((reponse) => {
+                    btn.parents('.article').remove(); //delete la ligne
                 })
-            });
-        }});
+             })
+        })
     }
 
     editArticle()
     {
-        var formEditArticle = document.getElementById('edit_Article');
-        var msg = document.querySelector('#msg');
-        if(formEditArticle !== null){
-            formEditArticle.addEventListener('submit',function(e){
-                e.preventDefault();
-                let HttpRequest = new XMLHttpRequest();
-                HttpRequest.onreadystatechange = function(){
-                    if(HttpRequest.readyState === 4){
-                        msg.innerHTML = 'maj OK'
-                    }
+        $('#edit_Article').on('submit',(e) =>{
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/P4_Code_2/Administration/majArticle",
+                data: {
+                    id: $(this).data('id'),
+                    title: $('input[name="title"]').val(),
+                    content: tinyMCE.get('Form_content').getContent()
+                },
+                success: function (response) {
+                    $('#msg').html('maj OK');
                 }
-                let data = new FormData(formEditArticle)
-                data.append('content',tinyMCE.get('Form_content').getContent());
-                HttpRequest.open('POST','/P4_Code_2/Administration/majArticle',true);
-                HttpRequest.send(data);
             });
-        }
+            
+        });
     }
 
     createListArticle(article){
-        var articleHtml = $("<tr>"+
+        return $("<tr class='article'>"+
         "<td>"+article.id+"</td>"+
         "<td>"+article.date+"</td>"+
         "<td>"+article.title+"</td>"+
@@ -76,8 +66,7 @@ class Article
         "<td>"+article.lastname+" "+article.firstname+"</td>"+
         "<td><a class='btn btn_Edit_Article btn-warning' href='"+app.basepath+"/Administration/editArticle/"+article.id+"'></a>"+
         "<a class='btn btn_Delete_Article btn-danger' href='"+app.basepath+"/Administration/deleteArticle/"+article.id+"'></a></td>"+
-        "</tr>")
-        return articleHtml[0];    
+        "</tr>");
     }
 
     create_Alert(msg){

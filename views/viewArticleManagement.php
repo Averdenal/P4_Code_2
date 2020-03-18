@@ -13,15 +13,15 @@
         </thead>
         <tbody id="list_Articles">
     <?php foreach($articles as $article): ?>
-        <tr>
+        <tr class="article" data-id="<?= $article->getId() ?>">
             <td><?= $article->getId() ?></td>
             <td><?= $article->getDate() ?></td>
             <td><?= $article->getTitle() ?></td>
             <td><?= $article->getLitleContent() ?></td>
             <td><?= $article->getFirstName().' '.$article->getLastName() ?></td>
             <td>
-                <a class="btn btn_Edit_Article btn-warning" href="<?= ROOT.'/Administration/editArticle/'.$article->getId() ?>" title="Editer"></a>
-                <a class="btn btn_Delete_Article btn-danger" href="<?= ROOT.'/Administration/deleteArticle/'.$article->getId() ?>" title="Supprimer"></a>
+                <a class="btn btn_Edit_Article btn-warning" href="<?= ROOT.'/Administration/editArticle/'.$article->getId() ?>" data-id="<?= $article->getId() ?>" title="Editer"></a>
+                <button class="btn btn_Delete_Article btn-danger" data-id="<?= $article->getId() ?>" title="Supprimer"></button>
             </td>
 
 
