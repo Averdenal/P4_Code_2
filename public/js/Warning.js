@@ -1,11 +1,10 @@
 class Warning
 {
     constructor(){
-        this.init();
+        //this.init();
     }
     init(){
         document.body.addEventListener('click', (evt) => {
-            console.log(evt.target.className);
                 switch (evt.target.className) {
                     case 'btn btn_Warning btn-warning':
                         this.addWarning(evt);

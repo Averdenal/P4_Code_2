@@ -10,15 +10,15 @@
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="zone_Comments">
+        <tbody>
     <?php foreach($comments as $comment): ?>
-        <tr>
+        <tr class="comment_Item_Admin">
             <td><?= $comment->getId() ?></td>
             <td><?= $comment->getDate() ?></td>
             <td><?= $comment->getContent() ?></td>
             <td><?= $comment->getAutor()['lastname'].' '.$comment->getAutor()['firstname'] ?></td>
             <td>
-                <a class="btn btn_Delete_Admin btn-danger" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId() ?>"></a>
+                <button class="btn btn_Delete_Comments_Admin btn-danger" data-id="<?= $comment->getId() ?>"> supprimer</button>
             </td>
 
 

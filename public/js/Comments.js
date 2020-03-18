@@ -5,45 +5,37 @@ class Comments
     {
         this.delete_com();
         this.add_Comment();
+        this.delete_com_admin();
         this.className = {'admin':'btn btn_Delete_Admin btn-danger','defaut':'btn btn_Delete btn-danger'}
     }
 
     delete_com()
     {
-        document.body.addEventListener('click', (evt) => {
-            if (evt.target.className === this.className['defaut']) {
-                evt.preventDefault();
-                let info = document.getElementById('container_Comment');
-                let infomsg = document.querySelector('#info');
-                $.ajax({
-                    url:evt.target.pathname,
-                    type:"DELETE",
-                    success:((reponse) => {
-                        infomsg.appendChild(this.create_Alert("Commentaire supprimé"));
-                        let comments = JSON.parse(reponse);
-                        info.innerHTML ="";
-                        comments.forEach(element => {
-                            info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                        });  
-                    })
-                })   
-                $(".alert").alert('close')                       
-            }else if(evt.target.className === this.className['admin']){
-                evt.preventDefault();
-                let zone_Comments = document.getElementById('zone_Comments');
-                $.ajax({
-                    url:evt.target.pathname,
-                    type:"DELETE",
-                    success: ((response)=>{
-                        zone_Comments.innerHTML ="";
-                        let comments = JSON.parse(response);
-                        comments.forEach(element => {
-                            zone_Comments.appendChild(this.create_Admin_Liste_Comment(element));
-                        });
-                    })
+        $('.btn_Delete_Comments').on('click',function(e){
+            e.preventDefault();
+            var btn = $(this);
+            $.ajax({
+                type: "DELETE",
+                url: app.basepath+"/Articles/deleteComment/"+$(this).data('idcomment')+"/"+$(this).data('idarticle'),
+                success:((reponse) => {
+                    btn.parents('.comment_Item').remove(); //delete la ligne
                 })
-            }
+             })
         });
+    }
+
+    delete_com_admin(){
+        $('.btn_Delete_Comments_Admin').on('click', function(e){
+            e.preventDefault();
+            var btn = $(this);
+            $.ajax({
+                type: "DELETE",
+                url: app.basepath+"/Administration/deleteComment/"+$(this).data('id'),
+                success: function (response) {
+                    btn.parents('.comment_Item_Admin').remove(); //delete la ligne
+                }
+            });
+        })
     }
 
     add_Comment(){
@@ -68,7 +60,7 @@ class Comments
     create_Comment(comment,user,warning){
 
         
-        var btn_Delete = "<a class='btn btn_Delete btn-danger' href='"+app.basepath+'/Articles/deleteComment/'+comment.id+'/'+comment.article+"'>Supprimer</a>";
+        var btn_Delete = "<a class='btn btn_Delete_Comments btn-danger' data-idArticle='"+comment.article+"' data-idComment='"+comment.id+"'>Supprimer</a>";
         var btn_Warning = "<a class='btn btn_Warning btn-warning' href='"+app.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article+"'>Signaler</a>";
         var warning_Ok ="<p class='btn btn_Warning_Ok'>Déjà Signalé</p>";
 

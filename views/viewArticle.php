@@ -21,7 +21,7 @@
 <?php endif; ?>
 <div class="Comment" id="container_Comment">
     <?php foreach($comments as $comment): ?>
-    <article class="card">
+    <article class="card comment_Item">
         <div class="card-body">
             <p class="card-text"><?= $comment['comment']->getContent(); ?></p>
         </div>
@@ -30,7 +30,7 @@
             <div>
             <?php if(!empty($_SESSION['auth'])): 
                 if ($_SESSION['auth'] == $comment['comment']->getAutor()['id'] || $_SESSION['rang'] == 'admin'):?>
-                    <a class="btn btn_Delete btn-danger" href="<?= ROOT.'/Articles/deleteComment/'. $comment['comment']->getId().'/'.$comment['comment']->getArticle(); ?>">Supprimer</a>
+                    <button class="btn btn_Delete_Comments btn-danger" data-idArticle="<?= $comment['comment']->getArticle() ?>" data-idComment="<?= $comment['comment']->getId() ?>">Supprimer</button>
                 <?php endif; 
                 if ($_SESSION['auth'] != $comment['comment']->getAutor()['id'] && $comment['warningByConnect'] == 0):?>
                     <a class="btn btn_Warning btn-warning" href='<?= ROOT .'/Articles/addWarning/'.$comment['comment']->getId().'/'.$comment['comment']->getArticle(); ?>'>Signaler</a>

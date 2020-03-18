@@ -61,7 +61,7 @@ tbody tr:hover{
 .btn_Admin:hover{
     background-color: #1F618D;
 }
-.btn_Delete_Admin::before, .btn_Delete_Article::before, .btn_Delete_User::before {
+.btn_Delete_Comments_Admin::before, .btn_Delete_Article::before, .btn_Delete_User::before {
     font-family: "Font Awesome 5 Pro";
     font-weight: 900;
     content: "\f2ed";
