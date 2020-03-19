@@ -41,7 +41,6 @@ class Comments
         $('#form_Comment').on('submit',(e) =>{ 
             var form = $('#form_Comment');
             e.preventDefault();
-            let info = document.getElementById('container_Comment');
             $.ajax({
                 url : app.basepath+"/Articles/addComment",
                 type: "POST",
@@ -80,11 +79,10 @@ class Comments
         {
             action += warning_Ok ;
         }
-        var comment = $("<article class='card'><div class='card-body'><p class='card-text'>"+comment.content+"</p>"+
+        return $("<article class='card'><div class='card-body'><p class='card-text'>"+comment.content+"</p>"+
         "</div><div class='card-footer text-muted justify-content-between flex'><div><p>"+comment.date+"</p></div>"+
         "<div>"+action+"</div>"+
-        "<div>"+comment.firstname+" "+comment.lastname+"</div>")
-        return comment[0];
+        "<div>"+comment.firstname+" "+comment.lastname+"</div>");
     }
 
     create_Admin_Liste_Comment(comment){
