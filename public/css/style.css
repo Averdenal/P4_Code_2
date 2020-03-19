@@ -5,6 +5,12 @@ body,html{
 main,.footer-site{
     padding: 0!important;
 }
+.active{
+    display: block!important;
+}
+.deactivated{
+    display: none!important;
+}
 .footer-site{
     background-color: black;
     height: 30px;

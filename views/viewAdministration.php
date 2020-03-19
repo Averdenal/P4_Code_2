@@ -43,8 +43,8 @@
                     <th><?= $comment->getAutor()['lastname'].' '.$comment->getAutor()['firstname']; ?></th>
                     <th><?= $comment->getNbWarning(); ?></th>
                     <th>
-                        <a class="btn btn_Valide_Warning btn-danger" href="<?= ROOT.'/Administration/deleteComment/'. $comment->getId(); ?>"></a>
-                        <a class="btn btn_Delete_Warning btn-success" href="<?= ROOT.'/Administration/deleteWarning/'. $comment->getId(); ?>"></a>
+                        <button class="btn btn_Valide_Warning btn-danger" data-id="<?= $comment->getId(); ?>"></button>
+                        <a class="btn btn_Delete_Warning btn-success" href="<?= ROOT.'/Administration/deleteWarning/'. $comment->getId(); ?>" data-id="<?=  $comment->getId(); ?>"></a>
                     </th>
                 </tr>
             <?php endforeach; ?>
