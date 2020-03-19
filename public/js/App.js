@@ -15,24 +15,21 @@ class App{
 
         let form_Connection = document.getElementById('form_Connection');
         let form_Register = document.getElementById('form_Register');
-        let closeConnexionBtn = document.getElementById('closeConnexionBtn');
         let zoneConnexion = document.getElementById('connection');
 
-        let btConnexion = document.getElementById('connexionBtn');
-        if(btConnexion !== null){
-                btConnexion.addEventListener('click',function(){
-                zoneConnexion.classList.add('active');
-            });
-        }
-        if(closeConnexionBtn !== null){
-            closeConnexionBtn.addEventListener('click',function(){
-                zoneConnexion.classList.remove('active');
-            });
-        }
+        $('#connexionBtn').on('click',function () { 
+            zoneConnexion.classList.add('active');
+        });
+
+        $('#closeConnexionBtn').on('click', function () { 
+            zoneConnexion.classList.remove('active');
+        });
+
         $('#action_Register').on('click', function () { 
             form_Connection.classList.add('deactivated');
             form_Register.classList.add('active');
         });
+        
         $('#action_Connection').on('click',function () { 
             form_Connection.classList.remove('deactivated');
             form_Register.classList.remove('active');

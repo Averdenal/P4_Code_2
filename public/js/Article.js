@@ -16,7 +16,7 @@ class Article
                     content: tinyMCE.get('Form_content').getContent()
                 },
                 success: function (response) {
-                    location.replace('/P4_Code_2/Administration/editArticle/'+ response);
+                    location.replace(app.basepath+'/Administration/editArticle/'+ response);
                 }
             });
         })
