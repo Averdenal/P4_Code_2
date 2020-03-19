@@ -50,16 +50,12 @@ class Comments
                     content: $('textarea[name="content"]').val()
                 },
                 success:((response)=>{ 
-                    var comments = JSON.parse(response)
-                    comments.forEach(element => {
-                        $('#container_Comment').prepend(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                    })
-                    /*info.innerHTML = '';
-                    console.log(JSON.parse(response));
+                    $('#textComs').val('');
+                    $('#container_Comment').html(' ');
                     var comments = JSON.parse(response);
                     comments.forEach(element => {
-                        info.appendChild(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                    });*/
+                        $('#container_Comment').append(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                    });
                 })
             })
         });
