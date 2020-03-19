@@ -12,8 +12,6 @@ class App{
     }
 
     init(){
-        //console.log($.getJSON( "../../environement.dev.json"));
-
         let form_Connection = document.getElementById('form_Connection');
         let form_Register = document.getElementById('form_Register');
         let zoneConnexion = document.getElementById('connection');

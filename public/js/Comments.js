@@ -60,12 +60,13 @@ class Comments
                     content: $('textarea[name="content"]').val()
                 },
                 success:((response)=>{ 
-                    info.append(this.create_Alert('Commentaire ajouté'))
+                    /*info.append(this.create_Alert('Commentaire ajouté'))
                     $('#textComs').val('');
                     $('#container_Comment').html(' ');
                     JSON.parse(response).forEach(element => {
                         $('#container_Comment').append(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                    });
+                    });*/
+                    location.reload();
                 })
             })
             setTimeout(() => {
