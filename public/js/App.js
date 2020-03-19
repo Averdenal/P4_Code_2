@@ -12,6 +12,7 @@ class App{
     }
 
     init(){
+        //console.log($.getJSON( "../../environement.dev.json"));
 
         let form_Connection = document.getElementById('form_Connection');
         let form_Register = document.getElementById('form_Register');
@@ -29,7 +30,7 @@ class App{
             form_Connection.classList.add('deactivated');
             form_Register.classList.add('active');
         });
-        
+
         $('#action_Connection').on('click',function () { 
             form_Connection.classList.remove('deactivated');
             form_Register.classList.remove('active');

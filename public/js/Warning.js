@@ -6,7 +6,7 @@ class Warning
         this.delete_Warning();
     }
 
-    addWarning(evt){
+    addWarning(){
         $(".btn_Warning").on('click',function (e){
             e.preventDefault();
             var btn = $(this);
@@ -22,7 +22,7 @@ class Warning
             });
         })
     }
-    valide_warning(evt)
+    valide_warning()
     {
         $('.btn_Valide_Warning').on('click',function(e) {
             e.preventDefault();
@@ -35,7 +35,7 @@ class Warning
             });
         })
     }
-    delete_Warning(evt)
+    delete_Warning()
     {
         $('.btn_Delete_Warning').on('click', function(e) {
             e.preventDefault();

@@ -11,59 +11,73 @@ class Comments
     delete_com()
     {
         $('.btn_Delete_Comments').on('click',function(e){
+            debugger
             e.preventDefault();
             var btn = $(this);
+            var info = $("#info")
             $.ajax({
                 type: "DELETE",
                 url: app.basepath+"/Articles/deleteComment/"+$(this).data('idcomment')+"/"+$(this).data('idarticle'),
                 success:((reponse) => {
-                    btn.parents('.comment_Item').remove(); //delete la ligne
+                    btn.parents('.comment_Item').remove();
+                    info.append(app.coms.create_Alert('Commentaire supprimé'))
                 })
              })
+             setTimeout(() => {
+                info.html('');
+            }, 2000);
         });
     }
 
     delete_com_admin(){
-        $('.btn_Delete_Comments_Admin').on('click', function(e){
+        $('.btn_Delete_Comments_Admin').on('click',function(e){
             e.preventDefault();
+            var info = $('#info');
             var btn = $(this);
             $.ajax({
                 type: "DELETE",
                 url: app.basepath+"/Administration/deleteComment/"+$(this).data('id'),
-                success: function (response) {
-                    btn.parents('.comment_Item_Admin').remove(); //delete la ligne
+                success:  (response) => {
+                    btn.parents('.comment_Item_Admin').remove();
+                    info.append(app.coms.create_Alert('Commentaire supprimé'))
                 }
             });
+            setTimeout(() => {
+                info.html('');
+            }, 2000);
         })
     }
 
     add_Comment(){
-        $('#form_Comment').on('submit',(e) =>{ 
-            var form = $('#form_Comment');
+        $('#form_Comment').on('submit',(e) => { 
+            var info = $('#info');
             e.preventDefault();
             $.ajax({
                 url : app.basepath+"/Articles/addComment",
                 type: "POST",
                 data : {
-                    idArticle: form.data('id'),
+                    idArticle: $('#form_Comment').data('id'),
                     content: $('textarea[name="content"]').val()
                 },
                 success:((response)=>{ 
+                    info.append(this.create_Alert('Commentaire ajouté'))
                     $('#textComs').val('');
                     $('#container_Comment').html(' ');
-                    var comments = JSON.parse(response);
-                    comments.forEach(element => {
+                    JSON.parse(response).forEach(element => {
                         $('#container_Comment').append(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                     });
                 })
             })
+            setTimeout(() => {
+                info.html('');
+            }, 2000);
         });
     }
     create_Comment(comment,user,warning){
 
         
-        var btn_Delete = "<a class='btn btn_Delete_Comments btn-danger' data-idArticle='"+comment.article+"' data-idComment='"+comment.id+"'>Supprimer</a>";
-        var btn_Warning = "<a class='btn btn_Warning btn-warning' href='"+app.basepath+'/Articles/addWarning/'+comment.id+'/'+comment.article+"'>Signaler</a>";
+        var btn_Delete = "<buttom class='btn btn_Delete_Comments btn-danger' data-idarticle='"+comment.article+"' data-idcomment='"+comment.id+"'>Supprimer</buttom>";
+        var btn_Warning = "<buttom class='btn btn_Warning btn-warning' data-idcomment='"+comment.id+"' data-idarticle= '"+comment.article+"'>Signaler</buttom>";
         var warning_Ok ="<p class='btn btn_Warning_Ok'>Déjà Signalé</p>";
 
         var action ='';
@@ -92,10 +106,10 @@ class Comments
                 "<td>"+comment.content+"</td>"+
                 "<td>"+comment.firstname+" "+comment.lastname+"</td>"+
                 "<td>"+
-                    "<a class='btn btn_Delete_Admin btn-danger' title='Supprimer' href='"+app.basepath+"/Administration/deleteComment/"+comment.id+"'></a>"+
+                    "<button class='btn btn_Delete_Admin btn-danger' title='Supprimer' data-id='"+comment.id+"'></button>"+
                 "</td>"+
             "</tr>");
-        return comment[0];
+        return comment;
     }
 
     create_Alert(msg){
@@ -104,7 +118,7 @@ class Comments
         "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"+
           "<span aria-hidden='true'>&times;</span>"+
         "</button>"+
-      "</div>")[0];
+      "</div>");
     }
     
 }

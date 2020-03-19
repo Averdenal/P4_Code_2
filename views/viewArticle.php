@@ -29,7 +29,7 @@
             <div>
             <?php if(!empty($_SESSION['auth'])): 
                 if ($_SESSION['auth'] == $comment['comment']->getAutor()['id'] || $_SESSION['rang'] == 'admin'):?>
-                    <button class="btn btn_Delete_Comments btn-danger" data-idarticle="<?= $comment['comment']->getArticle() ?>" data-idaomment="<?= $comment['comment']->getId() ?>">Supprimer</button>
+                    <button class="btn btn_Delete_Comments btn-danger" data-idarticle="<?= $comment['comment']->getArticle() ?>" data-idcomment="<?= $comment['comment']->getId() ?>">Supprimer</button>
                 <?php endif; 
                 if ($_SESSION['auth'] != $comment['comment']->getAutor()['id'] && $comment['warningByConnect'] == 0):?>
                     <button class="btn btn_Warning btn-warning" data-idarticle="<?= $comment['comment']->getArticle() ?>" data-idcomment="<?= $comment['comment']->getId() ?>" >Signaler</button>

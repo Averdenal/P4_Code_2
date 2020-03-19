@@ -1,4 +1,5 @@
 <section id="container_Comment">
+    <div id="info"></div>
     <h2>Gestion des commentaires</h2>
     <table>
         <thead>
