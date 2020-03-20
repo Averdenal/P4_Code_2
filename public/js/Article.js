@@ -37,7 +37,7 @@ class Article
 
     editArticle()
     {
-        $('#edit_Article').on('submit',(e) =>{
+        $('#edit_Article').on('submit',function (e){
             e.preventDefault();
             $.ajax({
                 type: "POST",
@@ -53,13 +53,5 @@ class Article
             });
             
         });
-    }
-    create_Alert(msg){
-        return $("<div class='alert alert-warning alert-dismissible fade show' role='alert'>"+
-        "<strong>"+msg+"</strong>"+
-        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"+
-          "<span aria-hidden='true'>&times;</span>"+
-        "</button>"+
-      "</div>")[0];
     }
 }

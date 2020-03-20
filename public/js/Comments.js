@@ -10,17 +10,17 @@ class Comments
 
     delete_com()
     {
+        $('.btn_Delete_Comments').off('click');
         $('.btn_Delete_Comments').on('click',function(e){
-            debugger
             e.preventDefault();
             var btn = $(this);
             var info = $("#info")
             $.ajax({
                 type: "DELETE",
                 url: app.basepath+"/Articles/deleteComment/"+$(this).data('idcomment')+"/"+$(this).data('idarticle'),
-                success:((reponse) => {
+                success:(() => {
                     btn.parents('.comment_Item').remove();
-                    info.append(app.coms.create_Alert('Commentaire supprimé'))
+                    info.append(app.create_Alert('Commentaire supprimé'))
                 })
              })
              setTimeout(() => {
@@ -39,7 +39,7 @@ class Comments
                 url: app.basepath+"/Administration/deleteComment/"+$(this).data('id'),
                 success:  (response) => {
                     btn.parents('.comment_Item_Admin').remove();
-                    info.append(app.coms.create_Alert('Commentaire supprimé'))
+                    info.append(app.create_Alert('Commentaire supprimé'))
                 }
             });
             setTimeout(() => {
@@ -60,13 +60,14 @@ class Comments
                     content: $('textarea[name="content"]').val()
                 },
                 success:((response)=>{ 
-                    /*info.append(this.create_Alert('Commentaire ajouté'))
+                    info.append(app.create_Alert('Commentaire ajouté'))
                     $('#textComs').val('');
                     $('#container_Comment').html(' ');
                     JSON.parse(response).forEach(element => {
                         $('#container_Comment').append(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                    });*/
-                    location.reload();
+                    });
+                    this.delete_com()
+                    //location.reload();
                 })
             })
             setTimeout(() => {
@@ -94,7 +95,7 @@ class Comments
         {
             action += warning_Ok ;
         }
-        return $("<article class='card'><div class='card-body'><p class='card-text'>"+comment.content+"</p>"+
+        return $("<article class='card comment_Item'><div class='card-body'><p class='card-text'>"+comment.content+"</p>"+
         "</div><div class='card-footer text-muted justify-content-between flex'><div><p>"+comment.date+"</p></div>"+
         "<div>"+action+"</div>"+
         "<div>"+comment.firstname+" "+comment.lastname+"</div>");
@@ -111,15 +112,6 @@ class Comments
                 "</td>"+
             "</tr>");
         return comment;
-    }
-
-    create_Alert(msg){
-        return $("<div id='alert' class='alert alert-warning alert-dismissible fade show' role='alert'>"+
-        "<strong>"+msg+"</strong>"+
-        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>"+
-          "<span aria-hidden='true'>&times;</span>"+
-        "</button>"+
-      "</div>");
     }
     
 }

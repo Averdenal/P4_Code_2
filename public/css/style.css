@@ -16,6 +16,8 @@ main,.footer-site{
     height: 30px;
     color: white;
     margin: 0;
+    position: fixed;
+    bottom: 0;
 }
 .margin-menu a{
     margin: 0 5px;
