@@ -27,7 +27,7 @@ class WarningManager extends Model
         $req = $bdd->prepare('SELECT * FROM warning WHERE commentaire = :id');
         $req->bindParam(':id',$id,PDO::PARAM_INT);
         $req->execute();
-        return $req->fetchAll(PDO::FETCH_CLASS,'warning');
+        return $req->fetchAll(PDO::FETCH_CLASS,'Warning');
     }
     /**
      * @param {int} id du commentaire
@@ -58,6 +58,7 @@ class WarningManager extends Model
     public function isWarningByUserConnect($idCommentaire, $idUserConnect)
     {
         $warnings = $this->getWarningByComment($idCommentaire);
+        var_dump($warnings);
         $verif = false;
         foreach($warnings as $warning){
             if($warning->getUser() == $idUserConnect){

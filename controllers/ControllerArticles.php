@@ -16,11 +16,14 @@ class ControllerArticles extends BaseController
 
     public function getArticleBySlug($slug)
     {
+        var_dump('demo');
         $article = $this->_articleManager->getArticleBySlug($slug);
         $user = $this->_userManager->verifConnecte();
+        var_dump($article->getId());
         $this->addParam('article', $article);
         $this->addParam('comments', $this->getCommentByArticle($article->getId()));
         $this->addParam('userIsConnect',$user['isConnect']);
+        var_dump($this->getCommentByArticle($article->getId()));
 
         $titlePage = $article->getTitle();
         
@@ -35,6 +38,7 @@ class ControllerArticles extends BaseController
         for($i=0;$i< sizeof($comments);$i++)
         {
             $tabComment[$i]['comment'] = $comments[$i];
+            var_dump($user['isConnect']);
             if($user['isConnect'] == true){
                 $tabComment[$i]['autorIsConnect'] = $user;
                 if($comments[$i]->getNbWarning()>0)
@@ -50,6 +54,7 @@ class ControllerArticles extends BaseController
                 }
             }
         }
+        var_dump($tabComment);
         return $tabComment;
         
     }
