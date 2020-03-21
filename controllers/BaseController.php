@@ -16,7 +16,6 @@ class BaseController
 
     public function viewConstruct($view)
     {   
-        var_dump($this->_param);
         ob_start();
         if($this->_param != null){
             extract($this->_param);
@@ -27,7 +26,6 @@ class BaseController
 
     public function template($view,$titlePage)
     {
-        var_dump('demo');
         $titlePage = TITLESITE.' - '.$titlePage;
         $content = $this->viewConstruct($view,$titlePage);
         require_once('views/template.php');

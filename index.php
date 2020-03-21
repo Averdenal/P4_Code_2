@@ -4,7 +4,6 @@ session_start();
 global $env;
 require_once('models/Environement.php');
 $env = Environement::get();
-var_dump($_SESSION);
 spl_autoload_register(function($class) use($env){
     foreach($env->listAutoloadFolder as $folder){ 
         if(file_exists($folder.$class.'.php'))

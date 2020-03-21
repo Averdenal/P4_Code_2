@@ -58,7 +58,6 @@ class WarningManager extends Model
     public function isWarningByUserConnect($idCommentaire, $idUserConnect)
     {
         $warnings = $this->getWarningByComment($idCommentaire);
-        var_dump($warnings);
         $verif = false;
         foreach($warnings as $warning){
             if($warning->getUser() == $idUserConnect){
