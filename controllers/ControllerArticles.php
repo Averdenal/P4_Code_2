@@ -63,7 +63,6 @@ class ControllerArticles extends BaseController
     public function deleteComment($id,$idArticle)
     {
         $comment = $this->_commentManager->getCommentById($id);
-        //var_dump($comment->getAutor());
         if( $this->_userManager->verifConnecte()['rang'] == 'admin' 
         || $this->_userManager->verifConnecte()['id'] == $comment->getAutor()['id'])
         {

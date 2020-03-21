@@ -14,6 +14,7 @@ spl_autoload_register(function($class) use($env){
         }
     }
 });
+
 require_once('_config.php');
 
 $router = new Router();

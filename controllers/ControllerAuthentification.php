@@ -11,7 +11,7 @@ class ControllerAuthentification extends BaseController
     public function loginVerif($login,$pwd)
     {
         $this->_userManager->checkLoginPassword($login,$pwd);
-        header("location:".ROOT);
+        header("location:". ROOT);
     }
     public function logout()
     {

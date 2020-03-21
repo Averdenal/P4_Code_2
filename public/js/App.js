@@ -8,7 +8,7 @@ class App{
         new Article();
         new Warning();
         new User();
-        this.basepath = "/P4_Code_2";
+        this.basepath = "";
     }
 
     init(){
