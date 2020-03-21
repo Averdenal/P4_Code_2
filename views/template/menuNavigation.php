@@ -15,7 +15,7 @@
             if($_SESSION['rang'] === 'admin'): ?>
                 <a href="<?= HTTP ?>/Administration/administrationAccueil" class="btn btn-dark"><i class="fas fa-user-shield"></i></a>
             <?php endif; ?>
-                <a href="<?= HTTP ?>/Authentification/logout" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> </a>
+                <button id="logout" href="<?= HTTP ?>/Authentification/logout" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> </button>
             <?php }else{?>
                 <button class="btn btn-info" id="connexionBtn">Connexion</button>
         <?php } ?>

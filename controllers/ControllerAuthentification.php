@@ -10,13 +10,12 @@ class ControllerAuthentification extends BaseController
 
     public function loginVerif($login,$pwd)
     {
-        $this->_userManager->checkLoginPassword($login,$pwd);
-        header("location:". ROOT);
+        echo json_encode($this->_userManager->checkLoginPassword($login,$pwd));
     }
     public function logout()
     {
         session_destroy();
-        header("location:".ROOT);
+        echo 'ok';
     }
     public function register($firstname,$lastname,$login,$email,$pwd)
     {

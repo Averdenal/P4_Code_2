@@ -3,7 +3,8 @@ class User{
     {
         this.deleteUser();
         this.register();
-        this.classDelete = 'btn btn_Delete_User btn-danger';
+        this.logout();
+        this.login();
     }
 
     deleteUser(){
@@ -35,7 +36,33 @@ class User{
         "<td><a class='btn btn_Delete_User btn-danger' href='"+app.basepath+"/Administration/deleteUser/"+users.id+"'></a></td></tr>");
         return user;
     }
-
+    login(){
+        $('#login').off();
+        $('#login').on('submit',function (e) { 
+            e.preventDefault();
+            debugger
+            $.ajax({
+                type: "POST",
+                url: "/Authentification/login",
+                data: $(this).serialize(),
+                success: function (response) {
+                    location.reload();
+                }
+            });
+        });
+    }
+    logout(){
+        $('#logout').on('click',function(e){
+            e.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: "/Authentification/logout",
+                success: function (response) {
+                    location.reload();
+                }
+            });
+        });
+    }
     register()
     {
         var formv = $('#register');
