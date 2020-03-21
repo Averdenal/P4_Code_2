@@ -7,7 +7,7 @@ class Warning
     }
 
     addWarning(){
-        $(".btn_Warning").on('click',function (e){
+        $('#container_Comment').on('click','.btn_Warning',function (e){
             e.preventDefault();
             var btn = $(this);
             $.ajax({

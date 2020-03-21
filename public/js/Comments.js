@@ -10,8 +10,7 @@ class Comments
 
     delete_com()
     {
-        $('.btn_Delete_Comments').off('click');
-        $('.btn_Delete_Comments').on('click',function(e){
+        $('#container_Comment').on('click','.btn_Delete_Comments',function(e){
             e.preventDefault();
             var btn = $(this);
             var info = $("#info")
