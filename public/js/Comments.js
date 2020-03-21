@@ -10,8 +10,8 @@ class Comments
 
     delete_com()
     {
-        $('.btn_Delete_Comments').off('click');
-        $('.btn_Delete_Comments').on('click',function(e){
+        $('#container_Comment').on('click','.btn_Delete_Comments',function(e){
+            debugger
             e.preventDefault();
             var btn = $(this);
             var info = $("#info")
@@ -30,7 +30,7 @@ class Comments
     }
 
     delete_com_admin(){
-        $('.btn_Delete_Comments_Admin').on('click',function(e){
+        $('.btn_Delete_Comments_Admin').click(function(e){
             e.preventDefault();
             var info = $('#info');
             var btn = $(this);
@@ -49,7 +49,7 @@ class Comments
     }
 
     add_Comment(){
-        $('#form_Comment').on('submit',(e) => { 
+        $('#form_Comment').submit((e) => { 
             var info = $('#info');
             e.preventDefault();
             $.ajax({
@@ -66,8 +66,6 @@ class Comments
                     JSON.parse(response).forEach(element => {
                         $('#container_Comment').append(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
                     });
-                    this.delete_com()
-                    //location.reload();
                 })
             })
             setTimeout(() => {
@@ -79,8 +77,8 @@ class Comments
 
         
         var btn_Delete = "<buttom class='btn btn_Delete_Comments btn-danger' data-idarticle='"+comment.article+"' data-idcomment='"+comment.id+"'>Supprimer</buttom>";
-        var btn_Warning = "<buttom class='btn btn_Warning btn-warning' data-idcomment='"+comment.id+"' data-idarticle= '"+comment.article+"'>Signaler</buttom>";
-        var warning_Ok ="<p class='btn btn_Warning_Ok'>Déjà Signalé</p>";
+        var btn_Warning = "<buttom class='btn btn_Warning_Add btn-warning' data-idcomment='"+comment.id+"' data-idarticle= '"+comment.article+"'>Signaler</buttom>";
+        var warning_Ok = "<p class='btn btn_Warning_Ok'>Déjà Signalé</p>";
 
         var action ='';
         if(user.id == comment.user || user.rang == 'admin'){
