@@ -7,7 +7,7 @@ class Warning
     }
 
     addWarning(){
-        $(".btn_Warning").on('click',function (e){
+        $('#container_Comment').on("click",".btn_Warning_Add",function (e){
             e.preventDefault();
             var btn = $(this);
             $.ajax({
@@ -20,6 +20,7 @@ class Warning
                     });
                 }
             });
+            app;
         })
     }
     valide_warning()
