@@ -6,7 +6,7 @@ class App{
         this.tiny();
         this.coms = new Comments();
         new Article();
-        this.warning = new Warning();
+        new Warning();
         new User();
         this.basepath = "";
     }
