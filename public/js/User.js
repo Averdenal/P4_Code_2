@@ -40,7 +40,6 @@ class User{
         $('#login').off();
         $('#login').on('submit',function (e) { 
             e.preventDefault();
-            debugger
             $.ajax({
                 type: "POST",
                 url: "/Authentification/login",
