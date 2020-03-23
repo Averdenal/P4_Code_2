@@ -9,11 +9,11 @@ class App{
         new Warning();
         new User();
         this.basepath = "";
+        this.form_Register = document.getElementById('form_Register');
+        this.form_Connection = document.getElementById('form_Connection');
     }
 
     init(){
-        let form_Connection = document.getElementById('form_Connection');
-        let form_Register = document.getElementById('form_Register');
         let zoneConnexion = document.getElementById('connection');
 
         $('#connexionBtn').on('click',function () { 
@@ -24,16 +24,22 @@ class App{
             zoneConnexion.classList.remove('active');
         });
 
-        $('#action_Register').on('click', function () { 
-            form_Connection.classList.add('deactivated');
-            form_Register.classList.add('active');
+        $('#action_Register').on('click',  () => { 
+            this.open_Register();
         });
 
-        $('#action_Connection').on('click',function () { 
-            form_Connection.classList.remove('deactivated');
-            form_Register.classList.remove('active');
+        $('#action_Connection').on('click', ()=> { 
+            this.close_Register();
          });
 
+    }
+    open_Register(){
+        this.form_Connection.classList.add('deactivated');
+        this.form_Register.classList.add('active');
+    }
+    close_Register(){
+        this.form_Connection.classList.remove('deactivated');
+        this.form_Register.classList.remove('active');
     }
 
     tiny() {

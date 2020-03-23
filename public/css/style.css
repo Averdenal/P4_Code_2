@@ -203,26 +203,28 @@ table {
     left: 50%;
     transform: translate(-50%,-50%);
     width: 500px;
-    height: 300px;
     background-color: #7ad5ff;
-    padding: 2rem;
+    padding: 1.2rem;
     border-radius: 10px;
 }
-.close{
-    font-size: 2em;
-    color: black;
-    background-color: transparent;
-    border: none;
+
+#closeConnexionBtn{
+    font-size: 25px;
+    padding: 0.5rem;
+    color: white;
+    background-color: red;
+    border-radius: 10px;
     position: absolute;
-    top: -40px;
-    right: 10px;
+    top: -20px;
+    right: -10px;
 }
-.close:hover{
-    color: red;
+#closeConnexionBtn:hover{
+    color: rgba(23, 252, 2, 0.651);
     transition: .3s;
 }
 #form_Register{
     display: none;
+    
 }
 /*****************************************************************************/
 /*********************************** ADMIN ***********************************/

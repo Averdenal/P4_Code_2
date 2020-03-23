@@ -33,6 +33,7 @@ class User{
         "<td>"+users.firstname+" "+users.lastname+"</td>"+
         "<td>"+users.login+"</td>"+
         "<td>"+users.email+"</td>"+
+        "<td>"+users.rangName+"</td>"+
         "<td><a class='btn btn_Delete_User btn-danger' href='"+app.basepath+"/Administration/deleteUser/"+users.id+"'></a></td></tr>");
         return user;
     }
@@ -57,7 +58,7 @@ class User{
                 type: "GET",
                 url: "/Authentification/logout",
                 success: function (response) {
-                    location.reload();
+                    location.replace("");
                 }
             });
         });
@@ -73,7 +74,9 @@ class User{
                     url: app.basepath+'/Authentification/register',
                     data: formv.serialize(),
                     success: function (response) {
+                        app.close_Register();
                         $("#info_Register").html(response);
+
                     }
                 });
             });

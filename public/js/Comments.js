@@ -49,29 +49,29 @@ class Comments
 
     add_Comment(){
         $('#form_Comment').on('submit',(e) => { 
-            var info = $('#info');
-            e.preventDefault();
-            $.ajax({
-                url : app.basepath+"/Articles/addComment",
-                type: "POST",
-                data : {
-                    idArticle: $('#form_Comment').data('id'),
-                    content: $('textarea[name="content"]').val()
-                },
-                success:((response)=>{ 
-                    info.append(app.create_Alert('Commentaire ajouté'))
-                    $('#textComs').val('');
-                    $('#container_Comment').html(' ');
-                    JSON.parse(response).forEach(element => {
-                        $('#container_Comment').append(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
-                    });
-                    this.delete_com()
-                    //location.reload();
+            if($('textarea[name="content"]').val() != null){
+                var info = $('#info');
+                e.preventDefault();
+                $.ajax({
+                    url : app.basepath+"/Articles/addComment",
+                    type: "POST",
+                    data : {
+                        idArticle: $('#form_Comment').data('id'),
+                        content: $('textarea[name="content"]').val()
+                    },
+                    success:((response)=>{ 
+                        info.append(app.create_Alert('Commentaire ajouté'))
+                        $('#textComs').val('');
+                        $('#container_Comment').html(' ');
+                        JSON.parse(response).forEach(element => {
+                            $('#container_Comment').append(this.create_Comment(element.comment,element.autorIsConnect,element.warningByConnect));
+                        });
+                    })
                 })
-            })
-            setTimeout(() => {
-                info.html('');
-            }, 2000);
+                setTimeout(() => {
+                    info.html('');
+                }, 2000);
+            }
         });
     }
     create_Comment(comment,user,warning){
