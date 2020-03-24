@@ -29,7 +29,7 @@ class Article
                 type: "DELETE",
                 url: app.basepath+"/Administration/deleteArticle/"+$(this).data('id'),
                 success:((reponse) => {
-                    btn.parents('.article').remove(); //delete la ligne
+                    btn.parents('.article').remove();
                 })
              })
         })
@@ -48,7 +48,7 @@ class Article
                     content: tinyMCE.get('Form_content').getContent()
                 },
                 success: function (response) {
-                    $('#msg').html('maj OK');
+                    $('#msg').append(app.create_Alert('Enregistré','success'));
                 }
             });
             

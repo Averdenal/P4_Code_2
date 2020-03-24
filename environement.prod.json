@@ -1,4 +1,0 @@
-{
-    "basepath":"",
-    "listAutoloadFolder":["controllers/","models/","models/exceptions/",""]
-}

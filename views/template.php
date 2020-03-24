@@ -27,7 +27,7 @@
                 <input type="password" name="pwd" placeholder="Mot de passe" required>
                 <button type="submit">Se connecter</button>
             </form>
-            <p>Tu n'as pas de compte? <button id="action_Register" class="btn_None">S'enregistrer</button></p>
+            <p>Tu n'as pas de compte? <a class="a_Connect" id="action_Register">S'enregistrer</a></p>
         </div>
         <div id="form_Register">
             <form id="register" method="POST" action="" class="flex flex-col">
@@ -40,7 +40,7 @@
                 <input type="password" name="pwdConfirmation" placeholder="Confirmation" required>
                 <button type="submit" class="btn btn-success">S'enregistrer</button>
             </form>
-            <p>Tu as un compte? <button class="btn_None" id="action_Connection">Se connecter</button></p>
+            <p>Tu as un compte? <a class="a_Connect" id="action_Connection">Se connecter</a></p>
         </div>
     </div>
     <?php include('template/footer.php'); ?>

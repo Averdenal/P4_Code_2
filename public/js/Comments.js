@@ -19,7 +19,7 @@ class Comments
                 url: app.basepath+"/Articles/deleteComment/"+$(this).data('idcomment')+"/"+$(this).data('idarticle'),
                 success:(() => {
                     btn.parents('.comment_Item').remove();
-                    info.append(app.create_Alert('Commentaire supprimé'))
+                    info.append(app.create_Alert('Commentaire supprimé','danger'))
                 })
              })
              setTimeout(() => {
@@ -38,7 +38,7 @@ class Comments
                 url: app.basepath+"/Administration/deleteComment/"+$(this).data('id'),
                 success:  (response) => {
                     btn.parents('.comment_Item_Admin').remove();
-                    info.append(app.create_Alert('Commentaire supprimé'))
+                    info.append(app.create_Alert('Commentaire supprimé','danger'))
                 }
             });
             setTimeout(() => {
@@ -60,7 +60,7 @@ class Comments
                         content: $('textarea[name="content"]').val()
                     },
                     success:((response)=>{ 
-                        info.append(app.create_Alert('Commentaire ajouté'))
+                        info.append(app.create_Alert('Commentaire ajouté','success'))
                         $('#textComs').val('');
                         $('#container_Comment').html(' ');
                         JSON.parse(response).forEach(element => {
