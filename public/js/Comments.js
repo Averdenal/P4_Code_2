@@ -49,9 +49,11 @@ class Comments
 
     add_Comment(){
         $('#form_Comment').on('submit',(e) => { 
-            if($('textarea[name="content"]').val() != null){
-                var info = $('#info');
-                e.preventDefault();
+            
+            var info = $('#info');
+            e.preventDefault();
+            if($('textarea[name="content"]').val() != ""){
+                $('textarea[name="content"]').removeClass('errorContent');
                 $.ajax({
                     url : app.basepath+"/Articles/addComment",
                     type: "POST",
@@ -71,6 +73,9 @@ class Comments
                 setTimeout(() => {
                     info.html('');
                 }, 2000);
+            }else{
+                debugger
+                $('textarea[name="content"]').addClass('errorContent');
             }
         });
     }

@@ -58,7 +58,7 @@ class User{
                 type: "GET",
                 url: "/Authentification/logout",
                 success: function (response) {
-                    location.replace("");
+                    location.replace("http://p4.eliptium.fr/");
                 }
             });
         });
