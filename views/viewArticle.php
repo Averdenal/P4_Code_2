@@ -31,7 +31,7 @@
                 if ($_SESSION['auth'] == $comment['comment']->getAutor()['id'] || $_SESSION['rang'] == 'admin'):?>
                     <button class="btn btn_Delete_Comments btn-danger" data-idarticle="<?= $comment['comment']->getArticle() ?>" data-idcomment="<?= $comment['comment']->getId() ?>">Supprimer</button>
                 <?php endif; 
-                if ($_SESSION['auth'] != $comment['comment']->getAutor()['id'] && $comment['warningByConnect'] == 0):?>
+                if ($_SESSION['auth'] != $comment['comment']->getAutor()['id'] && $comment['warningByConnect'] == 0 && $_SESSION['rang'] != "admin"):?>
                     <button class="btn btn_Warning btn-warning" data-idarticle="<?= $comment['comment']->getArticle() ?>" data-idcomment="<?= $comment['comment']->getId() ?>" >Signaler</button>
                 <?php elseif($comment['warningByConnect'] == 1): ?>
                     <p>Warning OK</p>

@@ -112,8 +112,21 @@ class ArticleManager extends Model
             $slug = $slug.'-'.strval($i);
             $i++;
         }
-            return $slug;      
+            return $this->supprAccent($slug);      
     }
+    function supprAccent($cc)
+	{
+		$cc = str_replace(
+            array('à', 'â', 'ä', 'á', 'ã', 'å','î', 'ï', 'ì', 'í', 'ô', 'ö', 'ò', 'ó', 'õ', 'ø','ù', 'û', 'ü', 'ú', 'é', 'è', 'ê', 'ë', 'ç', 'ÿ', 'ñ', 'ý',),
+			array('a', 'a', 'a', 'a', 'a', 'a','i', 'i', 'i', 'i','o', 'o', 'o', 'o', 'o', 'o','u', 'u', 'u', 'u', 'e', 'e', 'e', 'e','c', 'y', 'n', 'y',),
+			$cc);
+		$cc = str_replace(
+            array('À', 'Â', 'Ä', 'Á', 'Ã', 'Å','Î', 'Ï', 'Ì', 'Í', 'Ô', 'Ö', 'Ò', 'Ó', 'Õ', 'Ø', 'Ù', 'Û', 'Ü', 'Ú', 'É', 'È', 'Ê', 'Ë','Ç', 'Ÿ', 'Ñ', 'Ý',),
+			array('A', 'A', 'A', 'A', 'A', 'A', 'I', 'I', 'I', 'I', 'O', 'O', 'O', 'O', 'O', 'O','U', 'U', 'U', 'U','E', 'E', 'E', 'E','C', 'Y', 'N', 'Y',),
+			$cc);
+
+		return $cc;				
+	}
 
     function shortText($content,$maxChar = 450){
         if(strlen($content) > $maxChar){
