@@ -7,6 +7,7 @@
     <title><?= $titlePage ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= CSS ?>style.css">
+    <link rel="icon" href="<?= IMAGES ?>favicon.ico" />
     <script src="https://kit.fontawesome.com/fd17f52da4.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -30,7 +31,7 @@
             <p>Tu n'as pas de compte? <a class="a_Connect" id="action_Register">S'enregistrer</a></p>
         </div>
         <div id="form_Register">
-            <form id="register" method="POST" action="" class="flex flex-col">
+            <form id="register" class="flex flex-col">
                 <h3>S'enregister</h3>
                 <input type="text" name="firstName" placeholder="Prénom" required> 
                 <input type="text" name="lastName" placeholder="Nom" required>

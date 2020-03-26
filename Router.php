@@ -19,11 +19,13 @@ class Router
     {
         $httpResquest = new HttpRequest($url,$this->listRoute);
         $controller = new $httpResquest->route->controller($httpResquest);
+        
         if($httpResquest->param != null){
             $controller->{$httpResquest->route->action}(...$httpResquest->param);//tab key int//
         }else{
             $controller->{$httpResquest->route->action}();
         }
+        
     }
     private function selectDataRoute(){
         if($this->_userManager->verifConnecte()['isConnect']){

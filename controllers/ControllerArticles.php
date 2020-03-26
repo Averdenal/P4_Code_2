@@ -68,8 +68,6 @@ class ControllerArticles extends BaseController
         {
             $this->_commentManager->dellComment($id);
             echo json_encode($this->getCommentByArticle($idArticle));
-        }else{
-            echo "503"
         }
             
     }
